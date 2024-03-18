@@ -21,7 +21,7 @@ class MiddleTableViewCell: UITableViewCell {
         view.textColor = .black
         view.text = "강북구 꿈나무키움 장학"
         view.backgroundColor = .clear
-        view.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        view.font = UIFont.systemFont(ofSize: 15)
         view.textAlignment = .left
         view.isEnabled = false
         return view
@@ -33,7 +33,7 @@ class MiddleTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.backgroundColor = .white
         label.layer.cornerRadius = 10
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.layer.masksToBounds = true
         return label
     }()

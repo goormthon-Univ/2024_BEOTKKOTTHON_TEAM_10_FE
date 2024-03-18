@@ -29,12 +29,12 @@ class AnnoucementTableViewCell: UITableViewCell {
     }()
     private let companyLabel : UILabel = {
         let label = UILabel()
-        label.textColor = .lightGray
+        label.textColor = .gray
         label.text = "(주)우아한 청년들"
         label.textAlignment = .left
         label.backgroundColor = .clear
         label.layer.cornerRadius = 10
-        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.layer.masksToBounds = true
         return label
     }()
@@ -54,9 +54,9 @@ class AnnoucementTableViewCell: UITableViewCell {
         label.textColor = .red
         label.text = "D-1"
         label.textAlignment = .center
-        label.backgroundColor = .customGray
-        label.layer.cornerRadius = 10
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.backgroundColor = .customLightGray
+        label.layer.cornerRadius = 5
+        label.font = UIFont.systemFont(ofSize: 13)
         label.layer.masksToBounds = true
         return label
     }()

@@ -9,7 +9,7 @@ import Foundation
 import SnapKit
 import UIKit
 import iOSDropDown
-class AnnoucementViewController : UIViewController {
+class AnnoucementViewController : UIViewController, UITableViewDelegate {
     private let annoucentTableViewDelegate = AnnoucementTableViewDelegate()
     private let annoucentTableViewDatasource = AnnoucementTableViewDataSource()
     //MARK: - UI Component
@@ -72,7 +72,6 @@ class AnnoucementViewController : UIViewController {
         label.clipsToBounds = true
         return label
     }()
-    
     //순서 버튼
     private let orderBtn : DropDown = {
         let btn = DropDown()
@@ -104,6 +103,7 @@ extension AnnoucementViewController {
     private func setLayout() {
         self.view.backgroundColor = .SecondaryColor
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.title = ""
         //헤더
         self.headerView.addSubview(titleLabel)
         self.addtagStack()
@@ -137,10 +137,11 @@ extension AnnoucementViewController {
         subLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
             make.width.equalToSuperview().dividedBy(2)
-            make.bottom.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().inset(20)
         }
         orderBtn.snp.makeConstraints { make in
-            make.bottom.trailing.equalToSuperview().inset(30)
+            make.trailing.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(20)
             make.width.equalTo(80)
         }
@@ -165,7 +166,7 @@ extension AnnoucementViewController {
             let label = UILabel()
             label.text = onboard
             label.textColor = .black
-            label.font = UIFont.boldSystemFont(ofSize: 12)
+            label.font = UIFont.systemFont(ofSize: 12)
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             label.textAlignment = .center
@@ -185,6 +186,9 @@ extension AnnoucementViewController {
     private func setTableView() {
         annoucementTableView.delegate = annoucentTableViewDelegate
         annoucementTableView.dataSource = annoucentTableViewDatasource
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(DocumentViewController(), animated: true)
     }
 }
 //MARK: - Actions

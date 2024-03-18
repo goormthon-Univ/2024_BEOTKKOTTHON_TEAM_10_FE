@@ -35,6 +35,8 @@
 		E4A83D9C2BA87CA100CEC036 /* HomeFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D9B2BA87CA100CEC036 /* HomeFooterCell.swift */; };
 		E4A83D9E2BA88EA100CEC036 /* AnnoucementMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D9D2BA88EA100CEC036 /* AnnoucementMiddleCell.swift */; };
 		E4A83DA02BA898AD00CEC036 /* AnnoucementFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D9F2BA898AD00CEC036 /* AnnoucementFooterCell.swift */; };
+		E4A83DA42BA8AF6200CEC036 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */; };
+		E4A83DA62BA8B05400CEC036 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		E4A83D9B2BA87CA100CEC036 /* HomeFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterCell.swift; sourceTree = "<group>"; };
 		E4A83D9D2BA88EA100CEC036 /* AnnoucementMiddleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementMiddleCell.swift; sourceTree = "<group>"; };
 		E4A83D9F2BA898AD00CEC036 /* AnnoucementFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementFooterCell.swift; sourceTree = "<group>"; };
+		E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +104,8 @@
 		E4480C7E2BA57DD7007119B1 /* BEOTKKOTTHON_CEN */ = {
 			isa = PBXGroup;
 			children = (
+				E4A83DA12BA8AF3100CEC036 /* Feature */,
 				E4A83D6F2BA715E900CEC036 /* Service */,
-				E4A83D7B2BA8127700CEC036 /* AnnoucementVC */,
-				E4480CAB2BA585C2007119B1 /* RegisterVC */,
-				E4480CAA2BA585B5007119B1 /* LoginVC */,
-				E4480CA92BA5848E007119B1 /* HomeVC */,
 				E4480CA82BA58459007119B1 /* Core */,
 				E4480CA42BA58438007119B1 /* App */,
 				E4480C8D2BA57DD9007119B1 /* Info.plist */,
@@ -263,6 +264,27 @@
 			path = Footer;
 			sourceTree = "<group>";
 		};
+		E4A83DA12BA8AF3100CEC036 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				E4A83D7B2BA8127700CEC036 /* AnnoucementVC */,
+				E4A83DA22BA8AF5200CEC036 /* DocumentVC */,
+				E4480CA92BA5848E007119B1 /* HomeVC */,
+				E4480CAA2BA585B5007119B1 /* LoginVC */,
+				E4480CAB2BA585C2007119B1 /* RegisterVC */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		E4A83DA22BA8AF5200CEC036 /* DocumentVC */ = {
+			isa = PBXGroup;
+			children = (
+				E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */,
+				E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */,
+			);
+			path = DocumentVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,6 +377,7 @@
 				E4A83D862BA852D800CEC036 /* AnnoucementDetailViewController.swift in Sources */,
 				E4A83D782BA8092500CEC036 /* RegisterViewController.swift in Sources */,
 				E4A83D832BA8205100CEC036 /* AnnoucementTableViewCell.swift in Sources */,
+				E4A83DA42BA8AF6200CEC036 /* DocumentViewController.swift in Sources */,
 				E4A83D7D2BA8128E00CEC036 /* AnnoucementViewController.swift in Sources */,
 				E4480C842BA57DD7007119B1 /* HomeViewController.swift in Sources */,
 				E4480CA72BA58452007119B1 /* Color + Extension.swift in Sources */,
@@ -362,6 +385,7 @@
 				E4A83D752BA7495000CEC036 /* TableView + Extension.swift in Sources */,
 				E4480C802BA57DD7007119B1 /* AppDelegate.swift in Sources */,
 				E4A83D9C2BA87CA100CEC036 /* HomeFooterCell.swift in Sources */,
+				E4A83DA62BA8B05400CEC036 /* DocumentTableViewCell.swift in Sources */,
 				E4A83D732BA717F900CEC036 /* BottomTableViewCell.swift in Sources */,
 				E4480CAD2BA585CF007119B1 /* LoginViewController.swift in Sources */,
 				E4A83D9E2BA88EA100CEC036 /* AnnoucementMiddleCell.swift in Sources */,
