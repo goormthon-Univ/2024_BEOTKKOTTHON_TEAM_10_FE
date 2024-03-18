@@ -1,0 +1,790 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		580AAC952BA566F700672050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAC942BA566F700672050 /* AppDelegate.swift */; };
+		580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAC962BA566F700672050 /* SceneDelegate.swift */; };
+		580AAC992BA566F700672050 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAC982BA566F700672050 /* ViewController.swift */; };
+		580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580AAC9D2BA566F900672050 /* Assets.xcassets */; };
+		580AACA12BA566F900672050 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 580AACA02BA566F900672050 /* Base */; };
+		580AACAC2BA566F900672050 /* CenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACAB2BA566F900672050 /* CenAppTests.swift */; };
+		580AACB62BA566F900672050 /* CenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACB52BA566F900672050 /* CenAppUITests.swift */; };
+		580AACB82BA566F900672050 /* CenAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACB72BA566F900672050 /* CenAppUITestsLaunchTests.swift */; };
+		580AACC62BA5818700672050 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACC52BA5818700672050 /* SnapKit */; };
+		580AACC92BA581F400672050 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACC82BA581F400672050 /* Then */; };
+		580AACCC2BA5828D00672050 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACCB2BA5828D00672050 /* Alamofire */; };
+		580AACCF2BA582CE00672050 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACCE2BA582CE00672050 /* SwiftKeychainWrapper */; };
+		580AACD22BA582FF00672050 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACD12BA582FF00672050 /* Kingfisher */; };
+		580AACD42BA583D200672050 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580AACD32BA583D200672050 /* Color.xcassets */; };
+		580AACD62BA5845100672050 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACD52BA5845100672050 /* Color + Extension.swift */; };
+		580AACDE2BA5860400672050 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACDD2BA5860400672050 /* IncomeViewController.swift */; };
+		580AAD1C2BA6913C00672050 /* CustomProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */; };
+		580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */; };
+		580AAD212BA6AFB100672050 /* MajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD202BA6AFB100672050 /* MajorViewController.swift */; };
+		580AAD232BA6AFCE00672050 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD222BA6AFCE00672050 /* LocationViewController.swift */; };
+		580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD242BA761FA00672050 /* FinishViewController.swift */; };
+		580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 580AAD292BA8280600672050 /* iOSDropDown */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		580AACA82BA566F900672050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580AAC892BA566F700672050 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 580AAC902BA566F700672050;
+			remoteInfo = CenApp;
+		};
+		580AACB22BA566F900672050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580AAC892BA566F700672050 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 580AAC902BA566F700672050;
+			remoteInfo = CenApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		580AAC912BA566F700672050 /* CenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		580AAC942BA566F700672050 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		580AAC962BA566F700672050 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		580AAC982BA566F700672050 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		580AAC9D2BA566F900672050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		580AACA02BA566F900672050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		580AACA22BA566F900672050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		580AACA72BA566F900672050 /* CenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		580AACAB2BA566F900672050 /* CenAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenAppTests.swift; sourceTree = "<group>"; };
+		580AACB12BA566F900672050 /* CenAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CenAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		580AACB52BA566F900672050 /* CenAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenAppUITests.swift; sourceTree = "<group>"; };
+		580AACB72BA566F900672050 /* CenAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		580AACD32BA583D200672050 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		580AACD52BA5845100672050 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
+		580AACDD2BA5860400672050 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
+		580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewController.swift; sourceTree = "<group>"; };
+		580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicYearViewController.swift; sourceTree = "<group>"; };
+		580AAD202BA6AFB100672050 /* MajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorViewController.swift; sourceTree = "<group>"; };
+		580AAD222BA6AFCE00672050 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		580AAD242BA761FA00672050 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		580AAC8E2BA566F700672050 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580AACCC2BA5828D00672050 /* Alamofire in Frameworks */,
+				580AACC62BA5818700672050 /* SnapKit in Frameworks */,
+				580AACCF2BA582CE00672050 /* SwiftKeychainWrapper in Frameworks */,
+				580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */,
+				580AACC92BA581F400672050 /* Then in Frameworks */,
+				580AACD22BA582FF00672050 /* Kingfisher in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACA42BA566F900672050 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACAE2BA566F900672050 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		580AAC882BA566F700672050 = {
+			isa = PBXGroup;
+			children = (
+				580AAC932BA566F700672050 /* CenApp */,
+				580AACAA2BA566F900672050 /* CenAppTests */,
+				580AACB42BA566F900672050 /* CenAppUITests */,
+				580AAC922BA566F700672050 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		580AAC922BA566F700672050 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				580AAC912BA566F700672050 /* CenApp.app */,
+				580AACA72BA566F900672050 /* CenAppTests.xctest */,
+				580AACB12BA566F900672050 /* CenAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		580AAC932BA566F700672050 /* CenApp */ = {
+			isa = PBXGroup;
+			children = (
+				580AACDC2BA5857200672050 /* LoginVC */,
+				580AACDB2BA5856700672050 /* RegisterVC */,
+				580AACDA2BA5848A00672050 /* HomeVC */,
+				580AACD82BA5847100672050 /* App */,
+				580AACD72BA5846100672050 /* Core */,
+				580AAC9D2BA566F900672050 /* Assets.xcassets */,
+				580AACD32BA583D200672050 /* Color.xcassets */,
+				580AAC9F2BA566F900672050 /* LaunchScreen.storyboard */,
+				580AACA22BA566F900672050 /* Info.plist */,
+			);
+			path = CenApp;
+			sourceTree = "<group>";
+		};
+		580AACAA2BA566F900672050 /* CenAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				580AACAB2BA566F900672050 /* CenAppTests.swift */,
+			);
+			path = CenAppTests;
+			sourceTree = "<group>";
+		};
+		580AACB42BA566F900672050 /* CenAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				580AACB52BA566F900672050 /* CenAppUITests.swift */,
+				580AACB72BA566F900672050 /* CenAppUITestsLaunchTests.swift */,
+			);
+			path = CenAppUITests;
+			sourceTree = "<group>";
+		};
+		580AACD72BA5846100672050 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				580AACD52BA5845100672050 /* Color + Extension.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		580AACD82BA5847100672050 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				580AACD92BA5847800672050 /* Delegate */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		580AACD92BA5847800672050 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				580AAC942BA566F700672050 /* AppDelegate.swift */,
+				580AAC962BA566F700672050 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		580AACDA2BA5848A00672050 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				580AAC982BA566F700672050 /* ViewController.swift */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		580AACDB2BA5856700672050 /* RegisterVC */ = {
+			isa = PBXGroup;
+			children = (
+				580AACDD2BA5860400672050 /* IncomeViewController.swift */,
+				580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */,
+				580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */,
+				580AAD202BA6AFB100672050 /* MajorViewController.swift */,
+				580AAD222BA6AFCE00672050 /* LocationViewController.swift */,
+				580AAD242BA761FA00672050 /* FinishViewController.swift */,
+			);
+			path = RegisterVC;
+			sourceTree = "<group>";
+		};
+		580AACDC2BA5857200672050 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		580AAC902BA566F700672050 /* CenApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580AACBB2BA566F900672050 /* Build configuration list for PBXNativeTarget "CenApp" */;
+			buildPhases = (
+				580AAC8D2BA566F700672050 /* Sources */,
+				580AAC8E2BA566F700672050 /* Frameworks */,
+				580AAC8F2BA566F700672050 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CenApp;
+			packageProductDependencies = (
+				580AACC52BA5818700672050 /* SnapKit */,
+				580AACC82BA581F400672050 /* Then */,
+				580AACCB2BA5828D00672050 /* Alamofire */,
+				580AACCE2BA582CE00672050 /* SwiftKeychainWrapper */,
+				580AACD12BA582FF00672050 /* Kingfisher */,
+				580AAD292BA8280600672050 /* iOSDropDown */,
+			);
+			productName = CenApp;
+			productReference = 580AAC912BA566F700672050 /* CenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		580AACA62BA566F900672050 /* CenAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580AACBE2BA566F900672050 /* Build configuration list for PBXNativeTarget "CenAppTests" */;
+			buildPhases = (
+				580AACA32BA566F900672050 /* Sources */,
+				580AACA42BA566F900672050 /* Frameworks */,
+				580AACA52BA566F900672050 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				580AACA92BA566F900672050 /* PBXTargetDependency */,
+			);
+			name = CenAppTests;
+			productName = CenAppTests;
+			productReference = 580AACA72BA566F900672050 /* CenAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		580AACB02BA566F900672050 /* CenAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580AACC12BA566F900672050 /* Build configuration list for PBXNativeTarget "CenAppUITests" */;
+			buildPhases = (
+				580AACAD2BA566F900672050 /* Sources */,
+				580AACAE2BA566F900672050 /* Frameworks */,
+				580AACAF2BA566F900672050 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				580AACB32BA566F900672050 /* PBXTargetDependency */,
+			);
+			name = CenAppUITests;
+			productName = CenAppUITests;
+			productReference = 580AACB12BA566F900672050 /* CenAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		580AAC892BA566F700672050 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					580AAC902BA566F700672050 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					580AACA62BA566F900672050 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 580AAC902BA566F700672050;
+					};
+					580AACB02BA566F900672050 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 580AAC902BA566F700672050;
+					};
+				};
+			};
+			buildConfigurationList = 580AAC8C2BA566F700672050 /* Build configuration list for PBXProject "CenApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 580AAC882BA566F700672050;
+			packageReferences = (
+				580AACC42BA5818700672050 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				580AACC72BA581F400672050 /* XCRemoteSwiftPackageReference "Then" */,
+				580AACCA2BA5828D00672050 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				580AACCD2BA582CE00672050 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				580AACD02BA582FF00672050 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+			);
+			productRefGroup = 580AAC922BA566F700672050 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				580AAC902BA566F700672050 /* CenApp */,
+				580AACA62BA566F900672050 /* CenAppTests */,
+				580AACB02BA566F900672050 /* CenAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		580AAC8F2BA566F700672050 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */,
+				580AACA12BA566F900672050 /* Base in Resources */,
+				580AACD42BA583D200672050 /* Color.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACA52BA566F900672050 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACAF2BA566F900672050 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		580AAC8D2BA566F700672050 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580AAC992BA566F700672050 /* ViewController.swift in Sources */,
+				580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */,
+				580AACDE2BA5860400672050 /* IncomeViewController.swift in Sources */,
+				580AACD62BA5845100672050 /* Color + Extension.swift in Sources */,
+				580AAD212BA6AFB100672050 /* MajorViewController.swift in Sources */,
+				580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */,
+				580AAC952BA566F700672050 /* AppDelegate.swift in Sources */,
+				580AAD232BA6AFCE00672050 /* LocationViewController.swift in Sources */,
+				580AAD1C2BA6913C00672050 /* CustomProgressViewController.swift in Sources */,
+				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACA32BA566F900672050 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580AACAC2BA566F900672050 /* CenAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		580AACAD2BA566F900672050 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580AACB62BA566F900672050 /* CenAppUITests.swift in Sources */,
+				580AACB82BA566F900672050 /* CenAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		580AACA92BA566F900672050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 580AAC902BA566F700672050 /* CenApp */;
+			targetProxy = 580AACA82BA566F900672050 /* PBXContainerItemProxy */;
+		};
+		580AACB32BA566F900672050 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 580AAC902BA566F700672050 /* CenApp */;
+			targetProxy = 580AACB22BA566F900672050 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		580AAC9F2BA566F900672050 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				580AACA02BA566F900672050 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		580AACB92BA566F900672050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		580AACBA2BA566F900672050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		580AACBC2BA566F900672050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CenApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		580AACBD2BA566F900672050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CenApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		580AACBF2BA566F900672050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CenApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CenApp";
+			};
+			name = Debug;
+		};
+		580AACC02BA566F900672050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CenApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CenApp";
+			};
+			name = Release;
+		};
+		580AACC22BA566F900672050 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CenApp;
+			};
+			name = Debug;
+		};
+		580AACC32BA566F900672050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CenAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CenApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		580AAC8C2BA566F700672050 /* Build configuration list for PBXProject "CenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580AACB92BA566F900672050 /* Debug */,
+				580AACBA2BA566F900672050 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580AACBB2BA566F900672050 /* Build configuration list for PBXNativeTarget "CenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580AACBC2BA566F900672050 /* Debug */,
+				580AACBD2BA566F900672050 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580AACBE2BA566F900672050 /* Build configuration list for PBXNativeTarget "CenAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580AACBF2BA566F900672050 /* Debug */,
+				580AACC02BA566F900672050 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580AACC12BA566F900672050 /* Build configuration list for PBXNativeTarget "CenAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580AACC22BA566F900672050 /* Debug */,
+				580AACC32BA566F900672050 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		580AACC42BA5818700672050 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		580AACC72BA581F400672050 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		580AACCA2BA5828D00672050 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		580AACCD2BA582CE00672050 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		580AACD02BA582FF00672050 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jriosdev/iOSDropDown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		580AACC52BA5818700672050 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AACC42BA5818700672050 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		580AACC82BA581F400672050 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AACC72BA581F400672050 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		580AACCB2BA5828D00672050 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AACCA2BA5828D00672050 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		580AACCE2BA582CE00672050 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AACCD2BA582CE00672050 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		580AACD12BA582FF00672050 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AACD02BA582FF00672050 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		580AAD292BA8280600672050 /* iOSDropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
+			productName = iOSDropDown;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 580AAC892BA566F700672050 /* Project object */;
+}
