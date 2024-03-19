@@ -27,7 +27,7 @@
 		E4A83D6C2BA70DD600CEC036 /* MiddleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D6B2BA70DD600CEC036 /* MiddleTableViewCell.swift */; };
 		E4A83D732BA717F900CEC036 /* BottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D722BA717F900CEC036 /* BottomTableViewCell.swift */; };
 		E4A83D752BA7495000CEC036 /* TableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D742BA7495000CEC036 /* TableView + Extension.swift */; };
-		E4A83D782BA8092500CEC036 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D772BA8092500CEC036 /* RegisterViewController.swift */; };
+		E4A83D782BA8092500CEC036 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D772BA8092500CEC036 /* SignupViewController.swift */; };
 		E4A83D7A2BA80F6200CEC036 /* StartOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D792BA80F6200CEC036 /* StartOnboardingViewController.swift */; };
 		E4A83D7D2BA8128E00CEC036 /* AnnoucementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D7C2BA8128E00CEC036 /* AnnoucementViewController.swift */; };
 		E4A83D812BA81CB100CEC036 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = E4A83D802BA81CB100CEC036 /* iOSDropDown */; };
@@ -62,7 +62,7 @@
 		E4A83D6B2BA70DD600CEC036 /* MiddleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleTableViewCell.swift; sourceTree = "<group>"; };
 		E4A83D722BA717F900CEC036 /* BottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTableViewCell.swift; sourceTree = "<group>"; };
 		E4A83D742BA7495000CEC036 /* TableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView + Extension.swift"; sourceTree = "<group>"; };
-		E4A83D772BA8092500CEC036 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E4A83D772BA8092500CEC036 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E4A83D792BA80F6200CEC036 /* StartOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOnboardingViewController.swift; sourceTree = "<group>"; };
 		E4A83D7C2BA8128E00CEC036 /* AnnoucementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementViewController.swift; sourceTree = "<group>"; };
 		E4A83D822BA8205100CEC036 /* AnnoucementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementTableViewCell.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				E4480CAC2BA585CF007119B1 /* LoginViewController.swift */,
-				E4A83D772BA8092500CEC036 /* RegisterViewController.swift */,
+				E4A83D772BA8092500CEC036 /* SignupViewController.swift */,
 				E4A83D792BA80F6200CEC036 /* StartOnboardingViewController.swift */,
 			);
 			path = LoginVC;
@@ -423,7 +423,7 @@
 				E4A83D982BA8788600CEC036 /* HomeHeaderCell.swift in Sources */,
 				E409E1822BA954680013D913 /* LoginServiceModel.swift in Sources */,
 				E4A83D862BA852D800CEC036 /* AnnoucementDetailViewController.swift in Sources */,
-				E4A83D782BA8092500CEC036 /* RegisterViewController.swift in Sources */,
+				E4A83D782BA8092500CEC036 /* SignupViewController.swift in Sources */,
 				E4A83D832BA8205100CEC036 /* AnnoucementTableViewCell.swift in Sources */,
 				E4A83DA42BA8AF6200CEC036 /* DocumentViewController.swift in Sources */,
 				E409E1852BA969250013D913 /* ExpressionService.swift in Sources */,

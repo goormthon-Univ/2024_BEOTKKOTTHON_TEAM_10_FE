@@ -11,7 +11,7 @@ import Alamofire
 import Then
 import Kingfisher
 import UIKit
-class RegisterViewController : UIViewController, UITextFieldDelegate{
+class SignupViewController : UIViewController, UITextFieldDelegate{
     // MARK: - UI Components
     //탭 제스처
     private lazy var tapGesture : UITapGestureRecognizer = {
@@ -189,7 +189,7 @@ class RegisterViewController : UIViewController, UITextFieldDelegate{
     }
 }
 // MARK: - UI Layout
-extension RegisterViewController {
+extension SignupViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         self.view.addGestureRecognizer(tapGesture)
@@ -315,7 +315,7 @@ extension RegisterViewController {
     }
 }
 // MARK: - TextDelegate
-extension RegisterViewController {
+extension SignupViewController {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == idText || textField == pwText || textField == repwText || textField == nameText{
             if !(idText.text?.isEmpty ?? true) && !(pwText.text?.isEmpty ?? true) && !(repwText.text?.isEmpty ?? true) && !(nameText.text?.isEmpty ?? true)  {
@@ -332,7 +332,7 @@ extension RegisterViewController {
 }
 
 // MARK: - Actions
-extension RegisterViewController {
+extension SignupViewController {
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }

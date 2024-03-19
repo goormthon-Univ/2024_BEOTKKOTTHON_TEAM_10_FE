@@ -313,7 +313,7 @@ extension LoginViewController {
         }
     }
     @objc private func registerBtnTapped() {
-        self.navigationController?.pushViewController(RegisterViewController(), animated: true)
+        self.navigationController?.pushViewController(SignupViewController(), animated: true)
     }
     @objc private func findBtnTapped() {
         
