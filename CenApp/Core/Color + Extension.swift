@@ -1,12 +1,13 @@
 //
 //  Color + Extension.swift
-//  CenApp
+//  BEOTKKOTTHON_CEN
 //
-//  Created by 김민솔 on 3/16/24.
+//  Created by 정성윤 on 2024/03/16.
 //
 
 import Foundation
 import UIKit
+
 extension UIColor {
     static var PrimaryColor : UIColor {
         return UIColor(named: "PrimaryColor") ?? .white
@@ -17,5 +18,10 @@ extension UIColor {
     static var ThirdaryColor : UIColor {
         return UIColor(named: "ThirdaryColor") ?? .white
     }
+//    static var customGray : UIColor {
+//        return UIColor(named: "customGray") ?? .white
+//    }
+//    static var customLightGray : UIColor {
+//        return UIColor(named: "customLightGray") ?? .white
+//    }
 }
-
