@@ -46,8 +46,8 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     }()
     private let idDescription : UILabel = {
         let label = UILabel()
-        label.text = "*등록되지 않은 아이디입니다"
-        label.textColor = .black
+        label.text = ""
+        label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .white
         return label
@@ -89,8 +89,8 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     }()
     private let pwDescription : UILabel = {
         let label = UILabel()
-        label.text = "*비밀번호를 다시 확인해주세요"
-        label.textColor = .black
+        label.text = ""
+        label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .white
         return label
@@ -103,7 +103,6 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         btn.setTitleColor(.gray, for: .normal)
         btn.layer.cornerRadius = 15
         btn.layer.masksToBounds = true
-        btn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
         return btn
     }()
     //회원가입
@@ -136,6 +135,13 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         view.backgroundColor = .lightGray
         return view
     }()
+    //로딩 인디케이터
+    private let loadingIndicator : UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.color = .gray
+        view.style = .large
+        return view
+    }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
@@ -152,6 +158,7 @@ extension LoginViewController {
         self.navigationController?.navigationBar.tintColor = .black
         self.view.backgroundColor = .white
         self.view.addGestureRecognizer(tapGesture) //제스처등록
+        self.view.clipsToBounds = true
         self.idText.delegate = self
         self.pwText.delegate = self
         //아이디
@@ -173,6 +180,9 @@ extension LoginViewController {
         //회원가입,비밀번호 찾기
         self.view.addSubview(registerBtn)
         self.view.addSubview(findBtn)
+        
+        //로딩 인디케이터
+        self.view.addSubview(loadingIndicator)
         
         //아이디
         idLabel.snp.makeConstraints { make in
@@ -239,6 +249,11 @@ extension LoginViewController {
             make.width.equalTo(100)
             make.trailing.equalToSuperview().offset(-70)
         }
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
+            make.leading.trailing.equalToSuperview().inset(0)
+        }
     }
 }
 // MARK: - TextDelegate
@@ -249,8 +264,9 @@ extension LoginViewController {
                 loginBtn.backgroundColor = .PrimaryColor
                 loginBtn.setTitleColor(.white, for: .normal)
                 loginBtn.isEnabled = true
+                loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
             } else {
-                loginBtn.backgroundColor = .lightGray
+                loginBtn.backgroundColor = .customGray
                 loginBtn.setTitleColor(.gray, for: .normal)
                 loginBtn.isEnabled = false
             }
@@ -264,7 +280,37 @@ extension LoginViewController {
         view.endEditing(true)
     }
     @objc private func loginBtnTapped() {
-        self.navigationController?.pushViewController(StartOnboardingViewController(), animated: true)
+        self.loadingIndicator.startAnimating()
+        self.pwDescription.text = ""
+        self.idDescription.text = ""
+        if let id = idText.text,
+            let pw = pwText.text {
+            LoginService.requestLogin(userInfo: LoginModel(id: id, pw: pw)) { result in
+                if let result = result {
+                    if result.message == "success" {
+                        self.loadingIndicator.stopAnimating()
+                        self.navigationController?.pushViewController(StartOnboardingViewController(), animated: true)
+                    }
+                }else{
+                    self.loadingIndicator.stopAnimating()
+                }
+            } onError: { error in
+                let errorMessage = error.localizedDescription
+                if let code = ExpressionService.requestExpression(errorMessage: errorMessage){
+                    if code == "401" {
+                        self.pwText.text = ""
+                        self.pwDescription.text = "* 비밀번호를 다시 확인해주세요"
+                        self.loadingIndicator.stopAnimating()
+                    }else if code == "402" {
+                        self.idText.text = ""
+                        self.idDescription.text = "* 등록되지 않은 아이디입니다"
+                        self.loadingIndicator.stopAnimating()
+                    }
+                }else{ }
+            }
+        }else{
+            print("아이디 비번 입력")
+        }
     }
     @objc private func registerBtnTapped() {
         self.navigationController?.pushViewController(RegisterViewController(), animated: true)
