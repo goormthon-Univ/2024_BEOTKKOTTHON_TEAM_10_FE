@@ -41,7 +41,8 @@ class FinishViewController: CustomProgressViewController {
         updateProgressBar(progress: 4/4)
         view.backgroundColor = .white
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            let tabViewController = TabViewController()
+            UIApplication.shared.windows.first?.rootViewController = tabViewController
         }
     }
     func addSubviews() {
