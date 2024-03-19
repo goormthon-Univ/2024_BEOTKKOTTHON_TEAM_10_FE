@@ -7,6 +7,26 @@
 
 import Foundation
 import UIKit
+//MARK: - 서류
+class DocumentTableViewDataSource: NSObject, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DocumentViewController.documentCategories.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+class DocumentTableViewDelegate: NSObject, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+}
 //MARK: - 장학금 공고 테이블
 class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,6 +43,12 @@ class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
 class AnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destinationViewController = DocumentViewController()
+        if let navigationController = tableView.window?.rootViewController as? UINavigationController {
+            navigationController.pushViewController(destinationViewController, animated: true)
+        }
     }
 }
 //MARK: - 마감임박 테이블

@@ -122,7 +122,7 @@ extension HomeFooterCell {
             let label = UILabel()
             label.text = onboard
             label.textColor = .black
-            label.font = UIFont.boldSystemFont(ofSize: 12)
+            label.font = UIFont.systemFont(ofSize: 12)
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             label.textAlignment = .center
