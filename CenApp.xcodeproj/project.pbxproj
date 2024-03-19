@@ -125,6 +125,7 @@
 		58FE170B2BA9D63A00FA3363 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		58FE17112BA9D7D300FA3363 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E409E18E2BAA04C20013D913 /* CenApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CenApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +183,7 @@
 		580AAC932BA566F700672050 /* CenApp */ = {
 			isa = PBXGroup;
 			children = (
+				E409E18E2BAA04C20013D913 /* CenApp.entitlements */,
 				58FE170A2BA9D59A00FA3363 /* TabBar */,
 				58FE17042BA9B5ED00FA3363 /* Service */,
 				58FE16F92BA9B5DF00FA3363 /* Model */,
@@ -813,6 +815,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CenApp/CenApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q653PU93R6;
@@ -840,6 +843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CenApp/CenApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q653PU93R6;
