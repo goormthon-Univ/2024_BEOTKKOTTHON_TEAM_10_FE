@@ -15,7 +15,7 @@ class BottomTableViewCell: UITableViewCell {
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.customGray.cgColor
         view.layer.borderWidth = 1
         return view
     }()

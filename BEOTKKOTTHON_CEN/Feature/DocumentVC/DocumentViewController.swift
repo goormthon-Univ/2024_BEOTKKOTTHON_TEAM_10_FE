@@ -13,6 +13,14 @@ class DocumentViewController : UIViewController {
     private let documentTableViewDelegate = DocumentTableViewDelegate()
     private let documentTableViewDatasource = DocumentTableViewDataSource()
     //MARK: - UI Component
+    //카테고리 리스트
+    static let documentCategories = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+    private let categoryStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        return stackView
+    }()
     //재로드 refresh
     private lazy var refreshIndicator : UIRefreshControl = {
         let control = UIRefreshControl()
@@ -77,6 +85,9 @@ extension DocumentViewController {
         //테이블
         self.documentTableView.addSubview(refreshIndicator)
         self.view.addSubview(documentTableView)
+        //카테고리
+        createCategoryButtons()
+        self.view.addSubview(categoryStackView)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -97,6 +108,25 @@ extension DocumentViewController {
             make.height.equalTo(20)
             make.bottom.equalToSuperview().offset(-10)
         }
+        categoryStackView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(headerView.snp.bottom).offset(10)
+            make.height.equalTo(470)
+            make.width.equalTo(20)
+        }
+    }
+    private func createCategoryButtons() {
+        for (index, category) in DocumentViewController.documentCategories.enumerated() {
+            let button = UIButton()
+            button.setTitle(category, for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
+            button.tag = index
+            button.backgroundColor = .SecondaryColor
+            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+            categoryStackView.addArrangedSubview(button)
+        }
     }
 }
 //MARK: - TableViewDelegate, TableViewDataSource
@@ -111,5 +141,12 @@ extension DocumentViewController {
 }
 //MARK: - Actions
 extension DocumentViewController {
-    
+    @objc func categoryButtonTapped(_ sender: UIButton) {
+        let categoryIndex = sender.tag
+        scrollToCategory(categoryIndex)
+    }
+    func scrollToCategory(_ categoryIndex: Int) {
+        let indexPath = IndexPath(row: 0, section: categoryIndex)
+        documentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
 }

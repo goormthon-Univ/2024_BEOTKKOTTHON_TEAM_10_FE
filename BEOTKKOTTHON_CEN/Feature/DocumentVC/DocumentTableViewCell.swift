@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
-class DocumentTableViewCell: UITableViewCell {
+class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     private let consonantLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -19,24 +19,18 @@ class DocumentTableViewCell: UITableViewCell {
         label.layer.masksToBounds = true
         return label
     }()
-    //전체 뷰
-    private let totalView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+    //테이블 뷰
+    private let detailTableView : UITableView = {
+        let view = UITableView()
+        view.backgroundColor = .SecondaryColor
+        view.isEditing = false
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
+        view.separatorStyle = .none
+        view.allowsSelection = false
+        view.isScrollEnabled = false
+        view.register(DocumentDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
         return view
-    }()
-    private let titleText: UITextView = {
-        let label = UITextView()
-        label.textColor = .black
-        label.text = "가족관계증명서"
-        label.backgroundColor = .clear
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textAlignment = .left
-        label.isEditable = false
-        label.isScrollEnabled = false
-        return label
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -52,8 +46,9 @@ extension DocumentTableViewCell {
         let view = self.contentView
         view.backgroundColor = .SecondaryColor
         view.addSubview(consonantLabel)
-        totalView.addSubview(titleText)
-        view.addSubview(totalView)
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        view.addSubview(detailTableView)
         
         view.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(0)
@@ -63,15 +58,27 @@ extension DocumentTableViewCell {
             make.top.equalToSuperview().inset(10)
             make.height.equalTo(20)
         }
-        titleText.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.center.equalToSuperview()
-        }
-        totalView.snp.makeConstraints { make in
+        detailTableView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(60)
+            make.trailing.equalToSuperview().inset(50)
             make.top.equalTo(consonantLabel.snp.bottom).offset(10)
             make.bottom.equalToSuperview().inset(0)
         }
+    }
+}
+//MARK: - TableViewDelegate, TableViewDatasource
+extension DocumentTableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell", for: indexPath) as! DocumentDetailTableViewCell
+        cell.selectionStyle = .none
+        cell.backgroundColor = .SecondaryColor
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
 }

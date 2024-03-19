@@ -37,6 +37,7 @@
 		E4A83DA02BA898AD00CEC036 /* AnnoucementFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83D9F2BA898AD00CEC036 /* AnnoucementFooterCell.swift */; };
 		E4A83DA42BA8AF6200CEC036 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */; };
 		E4A83DA62BA8B05400CEC036 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */; };
+		E4A83DA92BA9422600CEC036 /* DocumentDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A83DA82BA9422600CEC036 /* DocumentDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		E4A83D9F2BA898AD00CEC036 /* AnnoucementFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementFooterCell.swift; sourceTree = "<group>"; };
 		E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
+		E4A83DA82BA9422600CEC036 /* DocumentDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,10 +281,19 @@
 		E4A83DA22BA8AF5200CEC036 /* DocumentVC */ = {
 			isa = PBXGroup;
 			children = (
+				E4A83DA72BA9420F00CEC036 /* DocumentDetail */,
 				E4A83DA32BA8AF6200CEC036 /* DocumentViewController.swift */,
 				E4A83DA52BA8B05400CEC036 /* DocumentTableViewCell.swift */,
 			);
 			path = DocumentVC;
+			sourceTree = "<group>";
+		};
+		E4A83DA72BA9420F00CEC036 /* DocumentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E4A83DA82BA9422600CEC036 /* DocumentDetailTableViewCell.swift */,
+			);
+			path = DocumentDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +394,7 @@
 				E4480CA72BA58452007119B1 /* Color + Extension.swift in Sources */,
 				E4A83D9A2BA879D800CEC036 /* HomeMiddleCell.swift in Sources */,
 				E4A83D752BA7495000CEC036 /* TableView + Extension.swift in Sources */,
+				E4A83DA92BA9422600CEC036 /* DocumentDetailTableViewCell.swift in Sources */,
 				E4480C802BA57DD7007119B1 /* AppDelegate.swift in Sources */,
 				E4A83D9C2BA87CA100CEC036 /* HomeFooterCell.swift in Sources */,
 				E4A83DA62BA8B05400CEC036 /* DocumentTableViewCell.swift in Sources */,

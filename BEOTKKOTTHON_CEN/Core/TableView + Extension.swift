@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 //MARK: - 서류
 class DocumentTableViewDataSource: NSObject, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DocumentViewController.documentCategories.count
     }
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
@@ -22,7 +24,7 @@ class DocumentTableViewDataSource: NSObject, UITableViewDataSource {
 }
 class DocumentTableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 300
     }
 }
 //MARK: - 장학금 공고 테이블
