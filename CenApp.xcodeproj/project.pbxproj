@@ -10,7 +10,6 @@
 		580AAC952BA566F700672050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAC942BA566F700672050 /* AppDelegate.swift */; };
 		580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAC962BA566F700672050 /* SceneDelegate.swift */; };
 		580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580AAC9D2BA566F900672050 /* Assets.xcassets */; };
-		580AACA12BA566F900672050 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 580AACA02BA566F900672050 /* Base */; };
 		580AACAC2BA566F900672050 /* CenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACAB2BA566F900672050 /* CenAppTests.swift */; };
 		580AACB62BA566F900672050 /* CenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACB52BA566F900672050 /* CenAppUITests.swift */; };
 		580AACB82BA566F900672050 /* CenAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACB72BA566F900672050 /* CenAppUITestsLaunchTests.swift */; };
@@ -28,6 +27,7 @@
 		580AAD232BA6AFCE00672050 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD222BA6AFCE00672050 /* LocationViewController.swift */; };
 		580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD242BA761FA00672050 /* FinishViewController.swift */; };
 		580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 580AAD292BA8280600672050 /* iOSDropDown */; };
+		588A83F72BA9E7FF006B8CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588A83F62BA9E7FF006B8CFF /* LaunchScreen.storyboard */; };
 		58FE16E12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE16C12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift */; };
 		58FE16E22BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE16C32BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift */; };
 		58FE16E32BA9B5CD00FA3363 /* AnnoucementMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE16C52BA9B5CD00FA3363 /* AnnoucementMiddleCell.swift */; };
@@ -81,7 +81,6 @@
 		580AAC942BA566F700672050 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		580AAC962BA566F700672050 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		580AAC9D2BA566F900672050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		580AACA02BA566F900672050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		580AACA22BA566F900672050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		580AACA72BA566F900672050 /* CenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		580AACAB2BA566F900672050 /* CenAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenAppTests.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		580AAD202BA6AFB100672050 /* MajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorViewController.swift; sourceTree = "<group>"; };
 		580AAD222BA6AFCE00672050 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		580AAD242BA761FA00672050 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		588A83F62BA9E7FF006B8CFF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58FE16C12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnoucementFooterCell.swift; sourceTree = "<group>"; };
 		58FE16C32BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnoucementHeaderCell.swift; sourceTree = "<group>"; };
 		58FE16C52BA9B5CD00FA3363 /* AnnoucementMiddleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnoucementMiddleCell.swift; sourceTree = "<group>"; };
@@ -162,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				580AAC932BA566F700672050 /* CenApp */,
+				588A83F62BA9E7FF006B8CFF /* LaunchScreen.storyboard */,
 				580AACAA2BA566F900672050 /* CenAppTests */,
 				580AACB42BA566F900672050 /* CenAppUITests */,
 				580AAC922BA566F700672050 /* Products */,
@@ -189,7 +190,6 @@
 				580AACD72BA5846100672050 /* Core */,
 				580AAC9D2BA566F900672050 /* Assets.xcassets */,
 				580AACD32BA583D200672050 /* Color.xcassets */,
-				580AAC9F2BA566F900672050 /* LaunchScreen.storyboard */,
 				580AACA22BA566F900672050 /* Info.plist */,
 			);
 			path = CenApp;
@@ -588,8 +588,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588A83F72BA9E7FF006B8CFF /* LaunchScreen.storyboard in Resources */,
 				580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */,
-				580AACA12BA566F900672050 /* Base in Resources */,
 				580AACD42BA583D200672050 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,17 +687,6 @@
 			targetProxy = 580AACB22BA566F900672050 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		580AAC9F2BA566F900672050 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				580AACA02BA566F900672050 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		580AACB92BA566F900672050 /* Debug */ = {
