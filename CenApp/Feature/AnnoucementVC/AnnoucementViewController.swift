@@ -16,7 +16,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
     //재로드 refresh
     private lazy var refreshIndicator : UIRefreshControl = {
         let control = UIRefreshControl()
-        control.tintColor = .customGray
+        control.tintColor = .cGray
         control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return control
     }()
@@ -83,7 +83,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
     //장학금 테이블
     private let annoucementTableView : UITableView = {
         let view = UITableView()
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.separatorStyle = .none
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
@@ -92,16 +92,24 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         view.clipsToBounds = true
         return view
     }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
         setLayout()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }
 //MARK: - UI Layout
 extension AnnoucementViewController {
     private func setLayout() {
-        self.view.backgroundColor = .SecondaryColor
+        self.view.backgroundColor = .PrimaryColor2
         self.navigationController?.navigationBar.backgroundColor = .white
         self.title = ""
         //헤더
@@ -121,7 +129,7 @@ extension AnnoucementViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(self.view.frame.height / 10)
+            make.top.equalToSuperview().inset(self.view.frame.height / 9)
             make.height.equalTo(40)
         }
         tagScrollView.snp.makeConstraints { make in
@@ -170,7 +178,7 @@ extension AnnoucementViewController {
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             label.textAlignment = .center
-            label.backgroundColor = .SecondaryColor
+            label.backgroundColor = .PrimaryColor2
             label.snp.makeConstraints { make in
                 make.width.equalTo(70)
             }
@@ -186,9 +194,6 @@ extension AnnoucementViewController {
     private func setTableView() {
         annoucementTableView.delegate = annoucentTableViewDelegate
         annoucementTableView.dataSource = annoucentTableViewDatasource
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(DocumentViewController(), animated: true)
     }
 }
 //MARK: - Actions

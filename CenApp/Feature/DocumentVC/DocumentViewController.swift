@@ -24,7 +24,7 @@ class DocumentViewController : UIViewController {
     //재로드 refresh
     private lazy var refreshIndicator : UIRefreshControl = {
         let control = UIRefreshControl()
-        control.tintColor = .customGray
+        control.tintColor = .cGray
         control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return control
     }()
@@ -56,7 +56,7 @@ class DocumentViewController : UIViewController {
     //장학금 테이블
     private let documentTableView : UITableView = {
         let view = UITableView()
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.separatorStyle = .none
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
@@ -74,7 +74,7 @@ class DocumentViewController : UIViewController {
 //MARK: - UI Layout
 extension DocumentViewController {
     private func setLayout() {
-        self.view.backgroundColor = .SecondaryColor
+        self.view.backgroundColor = .PrimaryColor2
         self.navigationController?.navigationBar.backgroundColor = .white
         //헤더
         self.headerView.addSubview(titleLabel)
@@ -91,7 +91,7 @@ extension DocumentViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(self.view.frame.height / 10)
+            make.top.equalToSuperview().inset(self.view.frame.height / 9)
             make.height.equalTo(40)
         }
         headerView.snp.makeConstraints { make in
@@ -122,7 +122,7 @@ extension DocumentViewController {
             button.setTitleColor(.black, for: .normal)
             button.addTarget(self, action: #selector(categoryButtonTapped(_:)), for: .touchUpInside)
             button.tag = index
-            button.backgroundColor = .SecondaryColor
+            button.backgroundColor = .PrimaryColor2
             button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
             categoryStackView.addArrangedSubview(button)

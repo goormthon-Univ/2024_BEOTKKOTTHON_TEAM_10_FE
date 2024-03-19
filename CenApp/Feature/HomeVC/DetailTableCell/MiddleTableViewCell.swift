@@ -46,7 +46,7 @@ class MiddleTableViewCell: UITableViewCell {
     }
     private func setLayout() {
         let view = self.contentView
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.addSubview(image)
         view.addSubview(titleLabel)
         view.addSubview(dayLabel)

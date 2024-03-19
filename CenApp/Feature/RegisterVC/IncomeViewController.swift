@@ -138,7 +138,7 @@ class IncomeViewController: CustomProgressViewController {
         }
         if radioButtonIsSelected() {
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.primary
+            nextButton.backgroundColor = UIColor.PrimaryColor
             nextButton.setTitleColor(.white, for: .normal)
         } else {
             nextButton.isEnabled = false

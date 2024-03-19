@@ -126,7 +126,7 @@ extension HomeFooterCell {
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             label.textAlignment = .center
-            label.backgroundColor = .SecondaryColor
+            label.backgroundColor = .PrimaryColor2
             label.snp.makeConstraints { make in
                 make.width.equalTo(70)
             }

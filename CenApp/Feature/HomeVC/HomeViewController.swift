@@ -45,13 +45,13 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
 extension HomeViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
-        self.title = ""
+        self.title = "홈"
         self.navigationController?.navigationBar.backgroundColor = .white
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview().inset(0)
             make.top.equalToSuperview().offset(0)
-            make.bottom.equalToSuperview().offset(-self.view.frame.height / 8.5)
+            make.bottom.equalToSuperview().offset(0)
         }
     }
 }

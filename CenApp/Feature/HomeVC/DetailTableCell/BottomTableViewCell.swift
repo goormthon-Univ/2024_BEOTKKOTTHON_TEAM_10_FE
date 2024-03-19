@@ -15,7 +15,7 @@ class BottomTableViewCell: UITableViewCell {
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.customGray.cgColor
+        view.layer.borderColor = UIColor.cGray.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -49,7 +49,7 @@ class BottomTableViewCell: UITableViewCell {
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.backgroundColor = .SecondaryColor
+        label.backgroundColor = .PrimaryColor2
         return label
     }()
     private let tagLabel2 : UILabel = {
@@ -60,7 +60,7 @@ class BottomTableViewCell: UITableViewCell {
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.backgroundColor = .SecondaryColor
+        label.backgroundColor = .PrimaryColor2
         return label
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -21,7 +21,7 @@ class HomeMiddleCell: UITableViewCell {
     //테이블 뷰
     private let middleTableView : UITableView = {
         let view = UITableView()
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.isEditing = false
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true

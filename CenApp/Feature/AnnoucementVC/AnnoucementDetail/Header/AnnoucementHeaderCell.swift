@@ -48,7 +48,7 @@ class AnnoucementHeaderCell: UITableViewCell, UITextViewDelegate {
     }()
     private let spcaing : UIView = {
         let view = UIView()
-        view.backgroundColor = .customGray
+        view.backgroundColor = .cGray
         return view
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -106,7 +106,7 @@ extension AnnoucementHeaderCell {
             label.layer.cornerRadius = 10
             label.layer.masksToBounds = true
             label.textAlignment = .center
-            label.backgroundColor = .SecondaryColor
+            label.backgroundColor = .PrimaryColor2
             label.snp.makeConstraints { make in
                 make.width.equalTo(70)
             }

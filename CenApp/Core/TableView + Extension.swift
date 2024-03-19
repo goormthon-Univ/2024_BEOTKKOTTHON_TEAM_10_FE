@@ -45,7 +45,7 @@ class AnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
         return 160
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destinationViewController = DocumentViewController()
+        let destinationViewController = AnnoucementDetailViewController()
         if let navigationController = tableView.window?.rootViewController as? UINavigationController {
             navigationController.pushViewController(destinationViewController, animated: true)
         }

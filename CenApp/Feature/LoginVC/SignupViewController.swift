@@ -175,7 +175,7 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
     //로그인 버튼
     private lazy var loginBtn : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .customGray
+        btn.backgroundColor = .cGray
         btn.setTitle("join in\t➔", for: .normal)
         btn.setTitleColor(.gray, for: .normal)
         btn.layer.cornerRadius = 15
@@ -340,7 +340,7 @@ extension SignupViewController {
                 loginBtn.isEnabled = true
                 loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
             } else {
-                loginBtn.backgroundColor = .customGray
+                loginBtn.backgroundColor = .cGray
                 loginBtn.setTitleColor(.gray, for: .normal)
                 loginBtn.isEnabled = false
             }

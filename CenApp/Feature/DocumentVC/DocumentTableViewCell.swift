@@ -14,7 +14,7 @@ class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         label.textColor = .darkGray
         label.text = "ㄱ"
         label.textAlignment = .left
-        label.backgroundColor = .SecondaryColor
+        label.backgroundColor = .PrimaryColor2
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.layer.masksToBounds = true
         return label
@@ -22,7 +22,7 @@ class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDa
     //테이블 뷰
     private let detailTableView : UITableView = {
         let view = UITableView()
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.isEditing = false
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
@@ -44,7 +44,7 @@ class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDa
 extension DocumentTableViewCell {
     private func setLayout() {
         let view = self.contentView
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.addSubview(consonantLabel)
         detailTableView.delegate = self
         detailTableView.dataSource = self
@@ -75,7 +75,7 @@ extension DocumentTableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! DocumentDetailTableViewCell
         cell.selectionStyle = .none
-        cell.backgroundColor = .SecondaryColor
+        cell.backgroundColor = .PrimaryColor2
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

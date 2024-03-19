@@ -39,6 +39,7 @@ class StartOnboardingViewController : UIViewController {
 // MARK: - UI Layout
 extension StartOnboardingViewController {
     private func setLayout() {
+        self.title = ""
         self.view.addSubview(image)
         image.snp.makeConstraints { make in
             make.edges.equalToSuperview()

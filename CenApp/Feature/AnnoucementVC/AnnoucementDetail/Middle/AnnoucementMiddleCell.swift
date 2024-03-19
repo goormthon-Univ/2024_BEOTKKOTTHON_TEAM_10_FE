@@ -95,7 +95,7 @@ class AnnoucementMiddleCell: UITableViewCell, UITextViewDelegate {
     }()
     private let spcaing : UIView = {
         let view = UIView()
-        view.backgroundColor = .customGray
+        view.backgroundColor = .cGray
         return view
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

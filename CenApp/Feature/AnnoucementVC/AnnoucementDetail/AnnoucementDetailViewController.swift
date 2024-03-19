@@ -17,7 +17,7 @@ class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, U
         btn.backgroundColor = .white
         btn.layer.cornerRadius = 10
         btn.layer.masksToBounds = true
-        btn.layer.borderColor = UIColor.customGray.cgColor
+        btn.layer.borderColor = UIColor.cGray.cgColor
         btn.layer.borderWidth = 1
         btn.setTitle("저장하기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
@@ -50,10 +50,19 @@ class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, U
         view.allowsSelection = false
         return view
     }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.tintColor = .black
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
         setLayout()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 //MARK: - setLayout

@@ -14,7 +14,7 @@ class AnnoucementTableViewCell: UITableViewCell {
         label.textColor = .darkGray
         label.text = "3월 18일"
         label.textAlignment = .left
-        label.backgroundColor = .SecondaryColor
+        label.backgroundColor = .PrimaryColor2
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.layer.masksToBounds = true
         return label
@@ -54,7 +54,7 @@ class AnnoucementTableViewCell: UITableViewCell {
         label.textColor = .red
         label.text = "D-1"
         label.textAlignment = .center
-        label.backgroundColor = .customLightGray
+        label.backgroundColor = .cLightGray
         label.layer.cornerRadius = 5
         label.font = UIFont.systemFont(ofSize: 13)
         label.layer.masksToBounds = true
@@ -62,6 +62,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setLayout()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -69,7 +70,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     }
     private func setLayout() {
         let view = self.contentView
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.addSubview(dayLabel)
         totalView.addSubview(companyLabel)
         totalView.addSubview(titleText)

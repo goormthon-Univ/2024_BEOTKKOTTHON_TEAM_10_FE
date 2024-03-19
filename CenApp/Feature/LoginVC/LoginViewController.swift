@@ -98,7 +98,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     //로그인 버튼
     private lazy var loginBtn : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .customGray
+        btn.backgroundColor = .cGray
         btn.setTitle("log in\t➔", for: .normal)
         btn.setTitleColor(.gray, for: .normal)
         btn.layer.cornerRadius = 15
@@ -108,7 +108,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     //회원가입
     private lazy var registerBtn : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .SecondaryColor
+        btn.backgroundColor = .PrimaryColor2
         btn.setTitle("회원가입", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.layer.cornerRadius = 10
@@ -120,7 +120,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     //비밀번호 찾기
     private lazy var findBtn : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .SecondaryColor
+        btn.backgroundColor = .PrimaryColor2
         btn.setTitle("비밀번호 찾기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.layer.cornerRadius = 10
@@ -266,7 +266,7 @@ extension LoginViewController {
                 loginBtn.isEnabled = true
                 loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
             } else {
-                loginBtn.backgroundColor = .customGray
+                loginBtn.backgroundColor = .cGray
                 loginBtn.setTitleColor(.gray, for: .normal)
                 loginBtn.isEnabled = false
             }
