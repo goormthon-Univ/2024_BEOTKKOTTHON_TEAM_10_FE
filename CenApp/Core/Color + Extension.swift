@@ -18,13 +18,10 @@ extension UIColor {
     static var ThirdaryColor : UIColor {
         return UIColor(named: "ThirdaryColor") ?? .white
     }
-    static var customGray : UIColor {
-        return UIColor(named: "customGray") ?? .white
-    }
-    static var customLightGray : UIColor {
-        return UIColor(named: "customLightGray") ?? .white
-    }
-    static var PrimaryColor2 : UIColor {
-        return UIColor(named: "PrimaryColor2") ?? .white
-    }
+//    static var customGray : UIColor {
+//        return UIColor(named: "customGray") ?? .white
+//    }
+//    static var customLightGray : UIColor {
+//        return UIColor(named: "customLightGray") ?? .white
+//    }
 }
