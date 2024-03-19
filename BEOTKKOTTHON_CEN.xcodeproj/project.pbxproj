@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		588A041B2BA9B02900D31095 /* CustomProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A04152BA9B02900D31095 /* CustomProgressViewController.swift */; };
+		588A041C2BA9B02900D31095 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A04162BA9B02900D31095 /* FinishViewController.swift */; };
+		588A041D2BA9B02900D31095 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A04172BA9B02900D31095 /* IncomeViewController.swift */; };
+		588A041E2BA9B02900D31095 /* MajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A04182BA9B02900D31095 /* MajorViewController.swift */; };
+		588A041F2BA9B02900D31095 /* AcademicYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A04192BA9B02900D31095 /* AcademicYearViewController.swift */; };
+		588A04202BA9B02900D31095 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A041A2BA9B02900D31095 /* LocationViewController.swift */; };
 		E409E17D2BA954370013D913 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E17C2BA954370013D913 /* LoginService.swift */; };
 		E409E1802BA954590013D913 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E17F2BA954590013D913 /* LoginModel.swift */; };
 		E409E1822BA954680013D913 /* LoginServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1812BA954680013D913 /* LoginServiceModel.swift */; };
@@ -48,6 +54,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		588A04152BA9B02900D31095 /* CustomProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomProgressViewController.swift; path = CenApp/RegisterVC/CustomProgressViewController.swift; sourceTree = SOURCE_ROOT; };
+		588A04162BA9B02900D31095 /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinishViewController.swift; path = CenApp/RegisterVC/FinishViewController.swift; sourceTree = SOURCE_ROOT; };
+		588A04172BA9B02900D31095 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IncomeViewController.swift; path = CenApp/RegisterVC/IncomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		588A04182BA9B02900D31095 /* MajorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MajorViewController.swift; path = CenApp/RegisterVC/MajorViewController.swift; sourceTree = SOURCE_ROOT; };
+		588A04192BA9B02900D31095 /* AcademicYearViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcademicYearViewController.swift; path = CenApp/RegisterVC/AcademicYearViewController.swift; sourceTree = SOURCE_ROOT; };
+		588A041A2BA9B02900D31095 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = CenApp/RegisterVC/LocationViewController.swift; sourceTree = SOURCE_ROOT; };
 		E409E17C2BA954370013D913 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E409E17F2BA954590013D913 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		E409E1812BA954680013D913 /* LoginServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceModel.swift; sourceTree = "<group>"; };
@@ -226,6 +238,12 @@
 		E4480CAB2BA585C2007119B1 /* RegisterVC */ = {
 			isa = PBXGroup;
 			children = (
+				588A04192BA9B02900D31095 /* AcademicYearViewController.swift */,
+				588A04152BA9B02900D31095 /* CustomProgressViewController.swift */,
+				588A04162BA9B02900D31095 /* FinishViewController.swift */,
+				588A04172BA9B02900D31095 /* IncomeViewController.swift */,
+				588A041A2BA9B02900D31095 /* LocationViewController.swift */,
+				588A04182BA9B02900D31095 /* MajorViewController.swift */,
 			);
 			path = RegisterVC;
 			sourceTree = "<group>";
@@ -444,10 +462,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588A04202BA9B02900D31095 /* LocationViewController.swift in Sources */,
 				E4A83D8B2BA8567E00CEC036 /* AnnoucementHeaderCell.swift in Sources */,
 				E4A83D982BA8788600CEC036 /* HomeHeaderCell.swift in Sources */,
 				E409E1822BA954680013D913 /* LoginServiceModel.swift in Sources */,
 				E4A83D862BA852D800CEC036 /* AnnoucementDetailViewController.swift in Sources */,
+				588A041B2BA9B02900D31095 /* CustomProgressViewController.swift in Sources */,
 				E4A83D782BA8092500CEC036 /* SignupViewController.swift in Sources */,
 				E4A83D832BA8205100CEC036 /* AnnoucementTableViewCell.swift in Sources */,
 				E4A83DA42BA8AF6200CEC036 /* DocumentViewController.swift in Sources */,
@@ -456,8 +476,10 @@
 				E4480C842BA57DD7007119B1 /* HomeViewController.swift in Sources */,
 				E4480CA72BA58452007119B1 /* Color + Extension.swift in Sources */,
 				E4A83D9A2BA879D800CEC036 /* HomeMiddleCell.swift in Sources */,
+				588A041E2BA9B02900D31095 /* MajorViewController.swift in Sources */,
 				E4A83D752BA7495000CEC036 /* TableView + Extension.swift in Sources */,
 				E4A83DA92BA9422600CEC036 /* DocumentDetailTableViewCell.swift in Sources */,
+				588A041D2BA9B02900D31095 /* IncomeViewController.swift in Sources */,
 				E4480C802BA57DD7007119B1 /* AppDelegate.swift in Sources */,
 				E409E18A2BA9842A0013D913 /* SignupServiceModel.swift in Sources */,
 				E409E18D2BA985A60013D913 /* SignupService.swift in Sources */,
@@ -465,6 +487,8 @@
 				E409E17D2BA954370013D913 /* LoginService.swift in Sources */,
 				E4A83D9C2BA87CA100CEC036 /* HomeFooterCell.swift in Sources */,
 				E4A83DA62BA8B05400CEC036 /* DocumentTableViewCell.swift in Sources */,
+				588A041F2BA9B02900D31095 /* AcademicYearViewController.swift in Sources */,
+				588A041C2BA9B02900D31095 /* FinishViewController.swift in Sources */,
 				E4A83D732BA717F900CEC036 /* BottomTableViewCell.swift in Sources */,
 				E4480CAD2BA585CF007119B1 /* LoginViewController.swift in Sources */,
 				E4A83D9E2BA88EA100CEC036 /* AnnoucementMiddleCell.swift in Sources */,
