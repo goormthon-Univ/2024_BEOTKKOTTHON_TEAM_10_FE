@@ -122,7 +122,6 @@ class LocationViewController: CustomProgressViewController {
         dropdown.arrowSize = 10
         dropdown.checkMarkEnabled = false
         dropdown.backgroundColor = UIColor.ThirdaryColor
-//        dropdown.appearance().selectionBackgroundColor = UIColor.PrimaryColor
         dropdown.layer.cornerRadius = 10
         dropdown.layer.masksToBounds = true
         // 선택한 항목에 대한 이벤트 처리
