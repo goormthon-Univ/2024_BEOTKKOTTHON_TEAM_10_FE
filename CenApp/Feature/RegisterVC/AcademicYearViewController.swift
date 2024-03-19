@@ -8,7 +8,6 @@
 import UIKit
 import Then
 import SnapKit
-import Kingfisher
 
 class AcademicYearViewController: CustomProgressViewController {
     //MARK: -- UI Component
@@ -105,8 +104,8 @@ class AcademicYearViewController: CustomProgressViewController {
         super.viewDidLoad()
         updateProgressBar(progress: 2/4)
         addSubviews()
-        tapGesture()
         configUI()
+        tapGesture()
         view.backgroundColor = .white
     }
     func addSubviews() {
@@ -147,14 +146,15 @@ class AcademicYearViewController: CustomProgressViewController {
             $0.centerX.equalToSuperview()
         }
         gradeChoiceLabel.snp.makeConstraints {
-            $0.top.equalTo(progressLabel.snp.bottom).offset(85)
+            $0.top.equalTo(progressLabel.snp.bottom).offset(75)
             $0.centerX.equalToSuperview()
         }
         oneContainerView.snp.makeConstraints {
             $0.top.equalTo(gradeChoiceLabel.snp.bottom).offset(40)
-            $0.leading.equalToSuperview().offset(75)
+            $0.leading.equalToSuperview().inset(75)
+            $0.trailing.equalTo(twoContainerView.snp.leading).offset(-20)
             $0.width.equalTo(113)
-            $0.height.equalTo(166)
+            $0.height.equalTo(155)
         }
         oneImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -170,7 +170,7 @@ class AcademicYearViewController: CustomProgressViewController {
             $0.top.equalTo(gradeChoiceLabel.snp.bottom).offset(40)
             $0.leading.equalTo(oneContainerView.snp.trailing).offset(20)
             $0.width.equalTo(113)
-            $0.height.equalTo(166)
+            $0.height.equalTo(155)
         }
         twoImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -186,7 +186,7 @@ class AcademicYearViewController: CustomProgressViewController {
             $0.top.equalTo(oneContainerView.snp.bottom).offset(20)
             $0.leading.equalTo(oneContainerView.snp.leading)
             $0.width.equalTo(113)
-            $0.height.equalTo(166)
+            $0.height.equalTo(155)
         }
         threeImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -202,7 +202,7 @@ class AcademicYearViewController: CustomProgressViewController {
             $0.top.equalTo(twoContainerView.snp.bottom).offset(20)
             $0.leading.equalTo(twoContainerView.snp.leading)
             $0.width.equalTo(113)
-            $0.height.equalTo(166)
+            $0.height.equalTo(155)
         }
         fourImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -216,9 +216,8 @@ class AcademicYearViewController: CustomProgressViewController {
         }
         nextButton.snp.makeConstraints {
             $0.height.equalTo(52)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-40)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-50)
         }
        
         

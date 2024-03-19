@@ -94,7 +94,6 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
     }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,15 +102,13 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
     }
 }
 //MARK: - UI Layout
 extension AnnoucementViewController {
     private func setLayout() {
-        self.view.backgroundColor = .PrimaryColor2
+        self.view.backgroundColor = .white
         self.navigationController?.navigationBar.backgroundColor = .white
-        self.title = ""
         //헤더
         self.headerView.addSubview(titleLabel)
         self.addtagStack()
@@ -124,8 +121,11 @@ extension AnnoucementViewController {
         self.view.addSubview(headerView)
         
         //테이블
+        let View = UIView()
+        View.backgroundColor = .PrimaryColor2
         self.annoucementTableView.addSubview(refreshIndicator)
-        self.view.addSubview(annoucementTableView)
+        View.addSubview(annoucementTableView)
+        self.view.addSubview(View)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -159,13 +159,17 @@ extension AnnoucementViewController {
             make.height.equalToSuperview().dividedBy(3)
         }
         annoucementTableView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(0)
-            make.top.equalTo(headerView.snp.bottom).offset(0)
+            make.top.bottom.leading.trailing.equalToSuperview().inset(0)
         }
         loadingIndicator.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(0)
             make.height.equalTo(20)
             make.bottom.equalToSuperview().offset(-10)
+        }
+        View.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.top.equalTo(headerView.snp.bottom).offset(0)
+            make.bottom.equalToSuperview().inset(self.view.frame.height / 12)
         }
     }
     private func addtagStack() {

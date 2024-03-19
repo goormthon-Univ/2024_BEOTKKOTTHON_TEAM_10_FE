@@ -82,13 +82,13 @@ extension AnnoucementDetailViewController {
             make.leading.equalToSuperview().offset(20)
             make.width.equalToSuperview().dividedBy(2.5)
             make.height.equalTo(50)
-            make.bottom.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview().offset(-20)
         }
         supportBtn.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
             make.width.equalToSuperview().dividedBy(2.5)
             make.height.equalTo(50)
-            make.bottom.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
 }
