@@ -81,8 +81,8 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
     }()
     private let idDescription : UILabel = {
         let label = UILabel()
-        label.text = "*사용가능한 아이디입니다"
-        label.textColor = .black
+        label.text = ""
+        label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .white
         return label
@@ -124,8 +124,8 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
     }()
     private let pwDescription : UILabel = {
         let label = UILabel()
-        label.text = "*몇자리 이상, 기호 포함"
-        label.textColor = .black
+        label.text = ""
+        label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .white
         return label
@@ -166,8 +166,8 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
     }()
     private let repwDescription : UILabel = {
         let label = UILabel()
-        label.text = "*비밀번호가 일치하지 않습니다"
-        label.textColor = .black
+        label.text = ""
+        label.textColor = .red
         label.font = UIFont.systemFont(ofSize: 11)
         label.backgroundColor = .white
         return label
@@ -180,8 +180,14 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
         btn.setTitleColor(.gray, for: .normal)
         btn.layer.cornerRadius = 15
         btn.layer.masksToBounds = true
-        btn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
         return btn
+    }()
+    //로딩 인디케이터
+    private let loadingIndicator : UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.color = .gray
+        view.style = .large
+        return view
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,6 +199,7 @@ extension SignupViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         self.view.addGestureRecognizer(tapGesture)
+        self.view.clipsToBounds = true
         self.nameText.delegate = self
         self.idText.delegate = self
         self.pwText.delegate = self
@@ -226,6 +233,9 @@ extension SignupViewController {
         
         //로그인
         self.view.addSubview(loginBtn)
+        
+        //로딩 인디케이터
+        self.view.addSubview(loadingIndicator)
         //타이틀
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(0)
@@ -312,6 +322,12 @@ extension SignupViewController {
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(50)
         }
+        //로딩 인디케이터
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
+            make.leading.trailing.equalToSuperview().inset(0)
+        }
     }
 }
 // MARK: - TextDelegate
@@ -322,10 +338,20 @@ extension SignupViewController {
                 loginBtn.backgroundColor = .PrimaryColor
                 loginBtn.setTitleColor(.white, for: .normal)
                 loginBtn.isEnabled = true
+                loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
             } else {
-                loginBtn.backgroundColor = .lightGray
+                loginBtn.backgroundColor = .customGray
                 loginBtn.setTitleColor(.gray, for: .normal)
                 loginBtn.isEnabled = false
+            }
+        }
+        if textField == repwText {
+            if pwText.text == repwText.text {
+                repwDescription.text = "* 비밀번호가 일치합니다"
+                repwDescription.textColor = .black
+            }else {
+                repwDescription.text = "* 비밀번호가 일치하지 않습니다"
+                repwDescription.textColor = .red
             }
         }
     }
@@ -337,7 +363,36 @@ extension SignupViewController {
         view.endEditing(true)
     }
     @objc private func loginBtnTapped() {
-        
+        self.loadingIndicator.startAnimating()
+        self.pwDescription.text = ""
+        self.idDescription.text = ""
+        if  let name = nameText.text,
+            let id = idText.text,
+            let pw = pwText.text {
+            SignupService.requestSignup(userInfo: SignupModel(userid: id, password: pw, name: name)) { result in
+                if let result = result {
+                    if result.message == "success" {
+                        self.loadingIndicator.stopAnimating()
+                        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                    }else if result.message == "exist" {
+                        self.idText.text = ""
+                        self.idDescription.text = "* 이미 존재하는 아이디입니다"
+                        self.loadingIndicator.stopAnimating()
+                    }
+                }else{
+                    self.loadingIndicator.stopAnimating()
+                }
+            } onError: { error in
+                let errorMessage = error.localizedDescription
+                if let code = ExpressionService.requestExpression(errorMessage: errorMessage){
+                    if code == "400" {
+                        print("회원가입 에러")
+                    }
+                }else{ }
+            }
+        }else{
+            print("아이디 비번 입력")
+        }
     }
     @objc private func secureBtnTapped() {
         self.pwText.isSecureTextEntry.toggle()

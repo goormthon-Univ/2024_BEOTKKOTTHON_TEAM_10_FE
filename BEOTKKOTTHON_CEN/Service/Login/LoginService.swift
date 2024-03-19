@@ -13,8 +13,8 @@ class LoginService {
     static func requestLogin(userInfo: LoginModel, completion: @escaping (LoginServiceModel?) -> Void, onError: @escaping (Error) -> Void) {
         let url = "https://www.dolshoi.shop/user/login"
         let body = [
-            "userid" : "jjang6251",
-            "password" : "1234"
+            "userid" : userInfo.id,
+            "password" : userInfo.pw
         ]
         AF.request(url, method: .post, parameters: body, encoding: JSONEncoding.default)
             .validate()

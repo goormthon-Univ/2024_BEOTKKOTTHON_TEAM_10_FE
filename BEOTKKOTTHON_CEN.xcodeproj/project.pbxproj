@@ -11,6 +11,9 @@
 		E409E1802BA954590013D913 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E17F2BA954590013D913 /* LoginModel.swift */; };
 		E409E1822BA954680013D913 /* LoginServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1812BA954680013D913 /* LoginServiceModel.swift */; };
 		E409E1852BA969250013D913 /* ExpressionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1842BA969250013D913 /* ExpressionService.swift */; };
+		E409E1882BA9841C0013D913 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1872BA9841C0013D913 /* SignupModel.swift */; };
+		E409E18A2BA9842A0013D913 /* SignupServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1892BA9842A0013D913 /* SignupServiceModel.swift */; };
+		E409E18D2BA985A60013D913 /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E18C2BA985A60013D913 /* SignupService.swift */; };
 		E4480C802BA57DD7007119B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4480C7F2BA57DD7007119B1 /* AppDelegate.swift */; };
 		E4480C822BA57DD7007119B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4480C812BA57DD7007119B1 /* SceneDelegate.swift */; };
 		E4480C842BA57DD7007119B1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4480C832BA57DD7007119B1 /* HomeViewController.swift */; };
@@ -49,6 +52,9 @@
 		E409E17F2BA954590013D913 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		E409E1812BA954680013D913 /* LoginServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceModel.swift; sourceTree = "<group>"; };
 		E409E1842BA969250013D913 /* ExpressionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionService.swift; sourceTree = "<group>"; };
+		E409E1872BA9841C0013D913 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
+		E409E1892BA9842A0013D913 /* SignupServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupServiceModel.swift; sourceTree = "<group>"; };
+		E409E18C2BA985A60013D913 /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
 		E4480C7C2BA57DD7007119B1 /* BEOTKKOTTHON_CEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEOTKKOTTHON_CEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4480C7F2BA57DD7007119B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4480C812BA57DD7007119B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,23 @@
 				E409E1842BA969250013D913 /* ExpressionService.swift */,
 			);
 			path = Expression;
+			sourceTree = "<group>";
+		};
+		E409E1862BA9840E0013D913 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1872BA9841C0013D913 /* SignupModel.swift */,
+				E409E1892BA9842A0013D913 /* SignupServiceModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		E409E18B2BA9859B0013D913 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				E409E18C2BA985A60013D913 /* SignupService.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		E4480C732BA57DD7007119B1 = {
@@ -210,6 +233,7 @@
 		E4A83D6E2BA715E200CEC036 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1862BA9840E0013D913 /* Signup */,
 				E409E17E2BA954520013D913 /* Login */,
 			);
 			path = Model;
@@ -218,6 +242,7 @@
 		E4A83D6F2BA715E900CEC036 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E409E18B2BA9859B0013D913 /* Signup */,
 				E409E1832BA969000013D913 /* Expression */,
 				E409E17B2BA9542C0013D913 /* Login */,
 			);
@@ -434,6 +459,8 @@
 				E4A83D752BA7495000CEC036 /* TableView + Extension.swift in Sources */,
 				E4A83DA92BA9422600CEC036 /* DocumentDetailTableViewCell.swift in Sources */,
 				E4480C802BA57DD7007119B1 /* AppDelegate.swift in Sources */,
+				E409E18A2BA9842A0013D913 /* SignupServiceModel.swift in Sources */,
+				E409E18D2BA985A60013D913 /* SignupService.swift in Sources */,
 				E409E1802BA954590013D913 /* LoginModel.swift in Sources */,
 				E409E17D2BA954370013D913 /* LoginService.swift in Sources */,
 				E4A83D9C2BA87CA100CEC036 /* HomeFooterCell.swift in Sources */,
@@ -442,6 +469,7 @@
 				E4480CAD2BA585CF007119B1 /* LoginViewController.swift in Sources */,
 				E4A83D9E2BA88EA100CEC036 /* AnnoucementMiddleCell.swift in Sources */,
 				E4A83DA02BA898AD00CEC036 /* AnnoucementFooterCell.swift in Sources */,
+				E409E1882BA9841C0013D913 /* SignupModel.swift in Sources */,
 				E4480C822BA57DD7007119B1 /* SceneDelegate.swift in Sources */,
 				E4A83D7A2BA80F6200CEC036 /* StartOnboardingViewController.swift in Sources */,
 				E4A83D6C2BA70DD600CEC036 /* MiddleTableViewCell.swift in Sources */,
