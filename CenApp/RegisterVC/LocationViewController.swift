@@ -12,6 +12,7 @@ import iOSDropDown
 
 class LocationViewController: CustomProgressViewController {
     let dropdown = DropDown()
+    
     let locationDropdown = DropDown()
     let locations = ["서울","경기","인천","강원","대전","세종","충남","충북","부산","울산","경남","경북","대구","광주","전남","전북","제주"]
     let seoulState = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"]
@@ -57,12 +58,6 @@ class LocationViewController: CustomProgressViewController {
         $0.layer.cornerRadius = 10
         $0.layer.masksToBounds = true
     }
-    private let firstLocationLabel = UILabel().then {
-        $0.text = "시/도"
-        $0.textAlignment = .center
-        $0.textColor = UIColor.black
-        $0.font = UIFont.systemFont(ofSize: 14)
-    }
     private let nextButton = UIButton().then {
         $0.setTitle("다음", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -79,7 +74,6 @@ class LocationViewController: CustomProgressViewController {
         configUI()
         setupDropdown()
         setupLocationDropdown()
-        nextButton.isUserInteractionEnabled = false
         view.backgroundColor = .white
         
     }
@@ -101,7 +95,7 @@ class LocationViewController: CustomProgressViewController {
         }
         dropdown.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(50)
-            $0.top.equalTo(lcoationChoiceLabel.snp.bottom).offset(20)
+            $0.top.equalTo(lcoationChoiceLabel.snp.bottom).offset(60)
             $0.width.equalTo(114) // Width 설정
             $0.height.equalTo(40) // Height 설정
         }
@@ -121,10 +115,14 @@ class LocationViewController: CustomProgressViewController {
     func setupDropdown() {
         dropdown.optionArray = locations
         dropdown.isSearchEnable = false
-        dropdown.placeholder = "시/도"
+        dropdown.text = "시/도"
         dropdown.font = UIFont.systemFont(ofSize: 14)
         dropdown.textColor = UIColor.black
+        dropdown.selectedRowColor = UIColor.PrimaryColor
+        dropdown.arrowSize = 10
+        dropdown.checkMarkEnabled = false
         dropdown.backgroundColor = UIColor.ThirdaryColor
+//        dropdown.appearance().selectionBackgroundColor = UIColor.PrimaryColor
         dropdown.layer.cornerRadius = 10
         dropdown.layer.masksToBounds = true
         // 선택한 항목에 대한 이벤트 처리
@@ -135,15 +133,20 @@ class LocationViewController: CustomProgressViewController {
     }
     func setupLocationDropdown() {
         locationDropdown.isSearchEnable = false
-        locationDropdown.placeholder = "시/군/구"
+        locationDropdown.text = "시/군/구"
         locationDropdown.font = UIFont.systemFont(ofSize: 14)
         locationDropdown.textColor = UIColor.black
+        locationDropdown.selectedRowColor = UIColor.PrimaryColor
+        locationDropdown.arrowSize = 10
+        locationDropdown.checkMarkEnabled = false
         locationDropdown.backgroundColor = UIColor.ThirdaryColor
         locationDropdown.layer.cornerRadius = 10
         locationDropdown.layer.masksToBounds = true
         // 선택한 항목에 대한 이벤트 처리
         locationDropdown.didSelect { [weak self] (selectedItem, index, id) in
             print("Selected item: \(selectedItem) at index: \(index)")
+            self?.nextButton.backgroundColor = UIColor.PrimaryColor
+            self?.nextButton.setTitleColor(.white, for: .normal)
         }
         // 시/도 선택 시 해당 시/도의 시/군/구 목록을 설정
         dropdown.didSelect { [weak self] (selectedItem, index, id) in
@@ -186,6 +189,7 @@ class LocationViewController: CustomProgressViewController {
             default:
                 locationDropdown.optionArray = []
             }
+            
         }
     }
     @objc func nextButtonTapped(_ sender: UIButton) {

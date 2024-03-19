@@ -28,7 +28,7 @@ class StartOnboardingViewController : UIViewController {
         super.viewDidLoad()
         setLayout()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            self.navigationController?.pushViewController(IncomeViewController(), animated: true)
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
