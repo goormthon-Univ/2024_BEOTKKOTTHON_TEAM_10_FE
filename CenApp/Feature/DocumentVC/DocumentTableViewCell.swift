@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
-class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource, DocumentDetailTableViewCellDelegate {
     private let consonantLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -20,7 +20,7 @@ class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         return label
     }()
     //테이블 뷰
-    private let detailTableView : UITableView = {
+    public let detailTableView : UITableView = {
         let view = UITableView()
         view.backgroundColor = .PrimaryColor2
         view.isEditing = false
@@ -76,9 +76,17 @@ extension DocumentTableViewCell {
             withIdentifier: "Cell", for: indexPath) as! DocumentDetailTableViewCell
         cell.selectionStyle = .none
         cell.backgroundColor = .PrimaryColor2
+        cell.delegate = self
+        cell.consonantBtn.setTitleColor(.black, for: .normal)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    func didTapButton(in cell: DocumentDetailTableViewCell) {
+        if detailTableView.indexPath(for: cell) != nil {
+            cell.consonantBtn.setTitleColor(.PrimaryColor, for: .normal)
+            
+        }
     }
 }

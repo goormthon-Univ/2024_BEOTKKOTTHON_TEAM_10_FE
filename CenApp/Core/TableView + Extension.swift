@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+//MARK: - 서류 디테일
 //MARK: - 서류
 class DocumentTableViewDataSource: NSObject, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -19,6 +20,7 @@ class DocumentTableViewDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
         cell.selectionStyle = .none
+        
         return cell
     }
 }

@@ -144,9 +144,29 @@ extension DocumentViewController {
     @objc func categoryButtonTapped(_ sender: UIButton) {
         let categoryIndex = sender.tag
         scrollToCategory(categoryIndex)
+        showSheet()
     }
     func scrollToCategory(_ categoryIndex: Int) {
         let indexPath = IndexPath(row: 0, section: categoryIndex)
         documentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    func showSheet() {
+        let viewControllerToPresent = BottomSheetViewController()
+        let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
+        let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let safeAreaBottom = windowScene?.windows.first?.safeAreaInsets.bottom ?? 0
+            return 300 - safeAreaBottom
+        }
+        if let sheet = viewControllerToPresent.sheetPresentationController {
+            sheet.detents = [customDetent]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 30
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        present(viewControllerToPresent, animated: true, completion: nil)
     }
 }
