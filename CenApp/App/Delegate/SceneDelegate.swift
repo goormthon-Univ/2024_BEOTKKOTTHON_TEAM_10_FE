@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else {return}
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let viewController = AnnoucementViewController(order: "마감순")
+        let viewController = DocumentViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

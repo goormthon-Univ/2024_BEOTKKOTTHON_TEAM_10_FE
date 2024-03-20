@@ -1,0 +1,13 @@
+//
+//  DocumentServiceModel.swift
+//  CenApp
+//
+//  Created by 정성윤 on 2024/03/21.
+//
+
+import Foundation
+struct DocumentServiceModel : Codable {
+    let id : Int
+    let title : String
+    let site : String?
+}

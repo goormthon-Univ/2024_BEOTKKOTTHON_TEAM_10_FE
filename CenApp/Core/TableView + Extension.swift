@@ -9,27 +9,20 @@ import Foundation
 import UIKit
 //MARK: - 서류 디테일
 //MARK: - 서류
-class DocumentTableViewDataSource: NSObject, UITableViewDataSource, DocumentTableViewCellDelegate {
-    weak var viewController: DocumentViewController?
-    
-    func didShow(in cell: DocumentTableViewCell) {
-        viewController?.showSheet()
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return DocumentViewController.documentCategories.count
-    }
+class DocumentTableViewDataSource: NSObject, UITableViewDataSource{
+    var documents : [DocumentServiceModel] = [] //서류 데이터
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return documents.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
         cell.selectionStyle = .none
-        cell.delegate = self
         return cell
     }
 }
 class DocumentTableViewDelegate: NSObject, UITableViewDelegate {
+    var documents : [DocumentServiceModel] = [] //서류 데이터
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }

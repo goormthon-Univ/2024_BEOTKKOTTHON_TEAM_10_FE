@@ -69,6 +69,7 @@ class DocumentViewController : UIViewController {
         super.viewDidLoad()
         setTableView()
         setLayout()
+        fetch()
     }
 }
 //MARK: - UI Layout
@@ -76,6 +77,7 @@ extension DocumentViewController {
     private func setLayout() {
         self.view.backgroundColor = .PrimaryColor2
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.loadingIndicator.startAnimating()
         //헤더
         self.headerView.addSubview(titleLabel)
         self.headerView.addSubview(loadingIndicator)
@@ -133,6 +135,7 @@ extension DocumentViewController {
 extension DocumentViewController {
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        fetch()
     }
     private func setTableView() {
         documentTableView.delegate = documentTableViewDelegate
@@ -140,7 +143,7 @@ extension DocumentViewController {
     }
 }
 //MARK: - Actions
-extension DocumentViewController : DocumentTableViewCellDelegate {
+extension DocumentViewController{
     @objc func categoryButtonTapped(_ sender: UIButton) {
         let categoryIndex = sender.tag
         scrollToCategory(categoryIndex)
@@ -168,7 +171,17 @@ extension DocumentViewController : DocumentTableViewCellDelegate {
         }
         present(viewControllerToPresent, animated: true, completion: nil)
     }
-    func didShow(in cell: DocumentTableViewCell) {
-        showSheet()
+    private func fetch() {
+        DocumentService.requestDocument(completion: { [weak self] documents in
+            guard let self = self, let documents = documents else { return }
+            documentTableViewDatasource.documents = documents
+            documentTableViewDelegate.documents = documents
+            DispatchQueue.main.async {
+                self.documentTableView.reloadData() // 테이블 뷰 데이터 리로드
+                self.loadingIndicator.stopAnimating()
+            }
+        }, onError: { error in
+            print("Error fetching scholarships: \(error)")
+        })
     }
 }

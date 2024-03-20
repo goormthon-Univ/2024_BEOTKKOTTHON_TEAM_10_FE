@@ -63,6 +63,8 @@
 		E409E1A32BAB34060013D913 /* AnnoucementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A22BAB34060013D913 /* AnnoucementService.swift */; };
 		E409E1A62BAB351F0013D913 /* ScholarshipDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */; };
 		E409E1AA2BAB41B40013D913 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A92BAB41B40013D913 /* Int + Extension.swift */; };
+		E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AC2BAB52CB0013D913 /* DocumentService.swift */; };
+		E409E1B02BAB53010013D913 /* DocumentServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,8 @@
 		E409E1A22BAB34060013D913 /* AnnoucementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementService.swift; sourceTree = "<group>"; };
 		E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipDayModel.swift; sourceTree = "<group>"; };
 		E409E1A92BAB41B40013D913 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
+		E409E1AC2BAB52CB0013D913 /* DocumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentService.swift; sourceTree = "<group>"; };
+		E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentServiceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +424,7 @@
 		58FE16F92BA9B5DF00FA3363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1AE2BAB52F50013D913 /* Document */,
 				E409E1A42BAB34E30013D913 /* Annoucement */,
 				58FE16F52BA9B5DF00FA3363 /* Login */,
 				58FE16F82BA9B5DF00FA3363 /* Signup */,
@@ -454,6 +459,7 @@
 		58FE17042BA9B5ED00FA3363 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1AB2BAB52C10013D913 /* Document */,
 				E409E1A12BAB33530013D913 /* Annoucement */,
 				58FE16FF2BA9B5ED00FA3363 /* Expression */,
 				58FE17012BA9B5ED00FA3363 /* Login */,
@@ -508,6 +514,22 @@
 				E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */,
 			);
 			path = Annoucement;
+			sourceTree = "<group>";
+		};
+		E409E1AB2BAB52C10013D913 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1AC2BAB52CB0013D913 /* DocumentService.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		E409E1AE2BAB52F50013D913 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */,
+			);
+			path = Document;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,6 +708,8 @@
 				58FE16E52BA9B5CD00FA3363 /* AnnoucementTableViewCell.swift in Sources */,
 				58FE16EA2BA9B5CD00FA3363 /* BottomTableViewCell.swift in Sources */,
 				58FE17052BA9B5ED00FA3363 /* ExpressionService.swift in Sources */,
+				E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */,
+				E409E1B02BAB53010013D913 /* DocumentServiceModel.swift in Sources */,
 				E409E1AA2BAB41B40013D913 /* Int + Extension.swift in Sources */,
 				58FE16E62BA9B5CD00FA3363 /* AnnoucementViewController.swift in Sources */,
 				58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */,
