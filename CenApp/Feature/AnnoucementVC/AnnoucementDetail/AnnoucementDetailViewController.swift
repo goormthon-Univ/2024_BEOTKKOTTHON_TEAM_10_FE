@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 import SnapKit
-
+import SCLAlertView
 class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - UIComponent
     //저장하기
-    private let saveBtn : UIButton = {
+    private lazy var saveBtn : UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .white
         btn.layer.cornerRadius = 10
@@ -22,10 +22,11 @@ class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, U
         btn.setTitle("저장하기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        btn.addTarget(self, action: #selector(saveBtnTapped), for: .touchUpInside)
         return btn
     }()
     //지원하기
-    private let supportBtn : UIButton = {
+    private lazy var supportBtn : UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .PrimaryColor
         btn.layer.cornerRadius = 10
@@ -33,6 +34,7 @@ class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, U
         btn.setTitle("지원하기", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        btn.addTarget(self, action: #selector(supportBtnTapped), for: .touchUpInside)
         return btn
     }()
     //상세 페이지 테이블
@@ -130,5 +132,21 @@ extension AnnoucementDetailViewController {
             }
             return cell
         }
+    }
+}
+//MARK: - Actions
+extension AnnoucementDetailViewController {
+    @objc private func saveBtnTapped() {
+        let alertView = SCLAlertView()
+        alertView.iconTintColor = .PrimaryColor
+        alertView.addButton("캘린더로 이동", backgroundColor: .PrimaryColor, textColor: .white) {
+
+        }
+        alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
+    }
+    @objc private func supportBtnTapped() {
+        if let url = URL(string: "https://swfitman.tistory.com/manage") {
+            UIApplication.shared.open(url)
+        }else { print("존재하지 않는 url") }
     }
 }

@@ -58,6 +58,7 @@
 		58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */; };
 		58FE17122BA9D7D300FA3363 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE17112BA9D7D300FA3363 /* ListViewController.swift */; };
 		E409E1912BAAB24D0013D913 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1902BAAB24D0013D913 /* DGCharts */; };
+		E409E1972BAAC3DB0013D913 /* SCLAlertView in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1962BAAC3DB0013D913 /* SCLAlertView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				580AACCC2BA5828D00672050 /* Alamofire in Frameworks */,
+				E409E1972BAAC3DB0013D913 /* SCLAlertView in Frameworks */,
 				580AACC62BA5818700672050 /* SnapKit in Frameworks */,
 				580AACCF2BA582CE00672050 /* SwiftKeychainWrapper in Frameworks */,
 				580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */,
@@ -496,6 +498,7 @@
 				580AACD12BA582FF00672050 /* Kingfisher */,
 				580AAD292BA8280600672050 /* iOSDropDown */,
 				E409E1902BAAB24D0013D913 /* DGCharts */,
+				E409E1962BAAC3DB0013D913 /* SCLAlertView */,
 			);
 			productName = CenApp;
 			productReference = 580AAC912BA566F700672050 /* CenApp.app */;
@@ -577,6 +580,7 @@
 				580AACD02BA582FF00672050 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
 				E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */,
+				E409E1952BAAC3DB0013D913 /* XCRemoteSwiftPackageReference "SCLAlertView-Swift" */,
 			);
 			productRefGroup = 580AAC922BA566F700672050 /* Products */;
 			projectDirPath = "";
@@ -1044,6 +1048,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		E409E1952BAAC3DB0013D913 /* XCRemoteSwiftPackageReference "SCLAlertView-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vikmeup/SCLAlertView-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1081,6 +1093,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
+		};
+		E409E1962BAAC3DB0013D913 /* SCLAlertView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E409E1952BAAC3DB0013D913 /* XCRemoteSwiftPackageReference "SCLAlertView-Swift" */;
+			productName = SCLAlertView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
