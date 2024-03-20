@@ -10,6 +10,7 @@ import Then
 import SnapKit
 import iOSDropDown
 
+
 class LocationViewController: CustomProgressViewController {
     let dropdown = DropDown()
     
@@ -53,7 +54,17 @@ class LocationViewController: CustomProgressViewController {
         $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 18)
     }
+    private let horizontalStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+        $0.spacing = 15
+    }
     private let firstLocationView = UIView().then {
+        $0.backgroundColor = UIColor.ThirdaryColor
+        $0.layer.cornerRadius = 10
+        $0.layer.masksToBounds = true
+    }
+    private let secondLocationView = UIView().then {
         $0.backgroundColor = UIColor.ThirdaryColor
         $0.layer.cornerRadius = 10
         $0.layer.masksToBounds = true
@@ -80,8 +91,11 @@ class LocationViewController: CustomProgressViewController {
     func addSubviews() {
         view.addSubview(progressLabel)
         view.addSubview(lcoationChoiceLabel)
-        view.addSubview(dropdown)
-        view.addSubview(locationDropdown)
+        view.addSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(firstLocationView)
+        horizontalStackView.addArrangedSubview(secondLocationView)
+        firstLocationView.addSubview(dropdown)
+        secondLocationView.addSubview(locationDropdown)
         view.addSubview(nextButton)
     }
     func configUI() {
@@ -90,26 +104,30 @@ class LocationViewController: CustomProgressViewController {
             $0.centerX.equalToSuperview()
         }
         lcoationChoiceLabel.snp.makeConstraints {
-            $0.top.equalTo(progressLabel.snp.bottom).offset(95)
+            $0.top.equalTo(progressLabel.snp.bottom).offset(75)
+            $0.height.equalTo(20)
             $0.centerX.equalToSuperview()
         }
-        dropdown.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(50)
+        horizontalStackView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(lcoationChoiceLabel.snp.bottom).offset(60)
-            $0.width.equalTo(114) // Width 설정
-            $0.height.equalTo(40) // Height 설정
+        }
+        firstLocationView.snp.makeConstraints {
+            $0.width.equalTo(130)
+        }
+        dropdown.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(10)
+        }
+        secondLocationView.snp.makeConstraints {
+            $0.width.equalTo(130)
         }
         locationDropdown.snp.makeConstraints {
-            $0.leading.equalTo(dropdown.snp.trailing).offset(20)
-            $0.top.equalTo(dropdown.snp.top)
-            $0.width.equalTo(150) // Width 설정
-            $0.height.equalTo(40) // Height 설정
+            $0.edges.equalToSuperview().inset(10)
         }
         nextButton.snp.makeConstraints {
             $0.height.equalTo(52)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-40)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-50)
         }
     }
     func setupDropdown() {
@@ -122,8 +140,6 @@ class LocationViewController: CustomProgressViewController {
         dropdown.arrowSize = 10
         dropdown.checkMarkEnabled = false
         dropdown.backgroundColor = UIColor.ThirdaryColor
-        dropdown.layer.cornerRadius = 10
-        dropdown.layer.masksToBounds = true
         // 선택한 항목에 대한 이벤트 처리
         dropdown.didSelect { [weak self] (selectedItem, index, id) in
             print("Selected item: \(selectedItem) at index: \(index)")
@@ -133,14 +149,12 @@ class LocationViewController: CustomProgressViewController {
     func setupLocationDropdown() {
         locationDropdown.isSearchEnable = false
         locationDropdown.text = "시/군/구"
-        locationDropdown.font = UIFont.systemFont(ofSize: 14)
+        locationDropdown.font = UIFont.systemFont(ofSize: 12)
         locationDropdown.textColor = UIColor.black
         locationDropdown.selectedRowColor = UIColor.PrimaryColor
         locationDropdown.arrowSize = 10
         locationDropdown.checkMarkEnabled = false
         locationDropdown.backgroundColor = UIColor.ThirdaryColor
-        locationDropdown.layer.cornerRadius = 10
-        locationDropdown.layer.masksToBounds = true
         // 선택한 항목에 대한 이벤트 처리
         locationDropdown.didSelect { [weak self] (selectedItem, index, id) in
             print("Selected item: \(selectedItem) at index: \(index)")

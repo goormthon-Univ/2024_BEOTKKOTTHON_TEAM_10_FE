@@ -100,6 +100,27 @@ class AcademicYearViewController: CustomProgressViewController {
         $0.isUserInteractionEnabled = false
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        return stackView
+    } ()
+    private lazy var containersStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 18
+        stackView.distribution = .fillEqually
+        return stackView
+    } ()
+    private lazy var containersStackView2: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 18
+        stackView.distribution = .fillEqually
+        return stackView
+    } ()
     override func viewDidLoad() {
         super.viewDidLoad()
         updateProgressBar(progress: 2/4)
@@ -111,16 +132,19 @@ class AcademicYearViewController: CustomProgressViewController {
     func addSubviews() {
         view.addSubview(progressLabel)
         view.addSubview(gradeChoiceLabel)
-        view.addSubview(oneContainerView)
+        view.addSubview(verticalStackView)
+        verticalStackView.addArrangedSubview(containersStackView)
+        containersStackView.addArrangedSubview(oneContainerView)
+        containersStackView.addArrangedSubview(twoContainerView)
         oneContainerView.addSubview(oneImageView)
         oneContainerView.addSubview(ondGradeLabel)
-        view.addSubview(twoContainerView)
         twoContainerView.addSubview(twoImageView)
         twoContainerView.addSubview(twoGradeLabel)
-        view.addSubview(threeContainerView)
+        verticalStackView.addArrangedSubview(containersStackView2)
+        containersStackView2.addArrangedSubview(threeContainerView)
+        containersStackView2.addArrangedSubview(FourContainerView)
         threeContainerView.addSubview(threeImageView)
         threeContainerView.addSubview(threeGradeLabel)
-        view.addSubview(FourContainerView)
         FourContainerView.addSubview(fourImageView)
         FourContainerView.addSubview(fourGradeLabel)
         view.addSubview(nextButton)
@@ -143,76 +167,63 @@ class AcademicYearViewController: CustomProgressViewController {
     func configUI() {
         progressLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
+            $0.height.equalTo(15)
             $0.centerX.equalToSuperview()
         }
         gradeChoiceLabel.snp.makeConstraints {
             $0.top.equalTo(progressLabel.snp.bottom).offset(75)
+            $0.height.equalTo(20)
             $0.centerX.equalToSuperview()
         }
-        oneContainerView.snp.makeConstraints {
+        verticalStackView.snp.makeConstraints {
             $0.top.equalTo(gradeChoiceLabel.snp.bottom).offset(40)
-            $0.leading.equalToSuperview().inset(75)
-            $0.trailing.equalTo(twoContainerView.snp.leading).offset(-20)
-            $0.width.equalTo(113)
-            $0.height.equalTo(155)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(nextButton.snp.top).offset(-90)
+
         }
         oneImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.width.equalTo(113)
-            $0.height.equalTo(117)
-            
+            $0.bottom.equalTo(ondGradeLabel.snp.top).offset(-10)
+            $0.leading.trailing.equalToSuperview()
         }
         ondGradeLabel.snp.makeConstraints {
             $0.top.equalTo(oneImageView.snp.bottom).offset(10)
+            $0.height.equalTo(15)
             $0.centerX.equalToSuperview()
-        }
-        twoContainerView.snp.makeConstraints {
-            $0.top.equalTo(gradeChoiceLabel.snp.bottom).offset(40)
-            $0.leading.equalTo(oneContainerView.snp.trailing).offset(20)
-            $0.width.equalTo(113)
-            $0.height.equalTo(155)
+            $0.bottom.equalToSuperview().inset(10)
         }
         twoImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.width.equalTo(113)
-            $0.height.equalTo(117)
-            
+            $0.bottom.equalTo(ondGradeLabel.snp.top).offset(-10)
+            $0.leading.trailing.equalToSuperview()
         }
         twoGradeLabel.snp.makeConstraints {
-            $0.top.equalTo(oneImageView.snp.bottom).offset(10)
+            $0.top.equalTo(twoImageView.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-        }
-        threeContainerView.snp.makeConstraints {
-            $0.top.equalTo(oneContainerView.snp.bottom).offset(20)
-            $0.leading.equalTo(oneContainerView.snp.leading)
-            $0.width.equalTo(113)
-            $0.height.equalTo(155)
+            $0.height.equalTo(15)
+            $0.bottom.equalToSuperview().inset(10)
         }
         threeImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.width.equalTo(113)
-            $0.height.equalTo(117)
-            
+            $0.bottom.equalTo(threeGradeLabel.snp.top).offset(-10)
+            $0.leading.trailing.equalToSuperview()
         }
         threeGradeLabel.snp.makeConstraints {
             $0.top.equalTo(threeImageView.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-        }
-        FourContainerView.snp.makeConstraints {
-            $0.top.equalTo(twoContainerView.snp.bottom).offset(20)
-            $0.leading.equalTo(twoContainerView.snp.leading)
-            $0.width.equalTo(113)
-            $0.height.equalTo(155)
+            $0.height.equalTo(15)
+            $0.bottom.equalToSuperview().inset(10)
         }
         fourImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.width.equalTo(113)
-            $0.height.equalTo(117)
-            
+            $0.bottom.equalTo(fourGradeLabel.snp.top).offset(-10)
+            $0.leading.trailing.equalToSuperview()
         }
         fourGradeLabel.snp.makeConstraints {
             $0.top.equalTo(fourImageView.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+            $0.height.equalTo(15)
+            $0.bottom.equalToSuperview().inset(10)
         }
         nextButton.snp.makeConstraints {
             $0.height.equalTo(52)
@@ -220,7 +231,6 @@ class AcademicYearViewController: CustomProgressViewController {
             $0.bottom.equalToSuperview().offset(-50)
         }
        
-        
         
     }
     @objc func nextButtonTapped(_ sender: UIButton) {

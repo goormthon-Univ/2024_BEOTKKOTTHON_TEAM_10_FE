@@ -66,26 +66,27 @@ class MajorViewController: CustomProgressViewController {
     func configUI() {
         progressLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
+            $0.height.equalTo(15)
             $0.centerX.equalToSuperview()
         }
         IncomeChoiceLabel.snp.makeConstraints {
-            $0.top.equalTo(progressLabel.snp.bottom).offset(85)
+            $0.top.equalTo(progressLabel.snp.bottom).offset(75)
+            $0.height.equalTo(20)
             $0.centerX.equalToSuperview()
         }
         containerView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(240)
-            $0.height.equalTo(330)
             $0.top.equalTo(IncomeChoiceLabel.snp.bottom).offset(55)
+            $0.bottom.equalTo(nextButton.snp.top).offset(-90)
         }
         majorStackview.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(10)
         }
         nextButton.snp.makeConstraints {
             $0.height.equalTo(52)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-40)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-50)
         }
     }
     func createMajorButtons() {

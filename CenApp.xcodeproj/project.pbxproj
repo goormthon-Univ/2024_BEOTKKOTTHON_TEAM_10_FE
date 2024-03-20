@@ -57,6 +57,7 @@
 		58FE170C2BA9D63A00FA3363 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE170B2BA9D63A00FA3363 /* TabViewController.swift */; };
 		58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */; };
 		58FE17122BA9D7D300FA3363 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE17112BA9D7D300FA3363 /* ListViewController.swift */; };
+		E409E1912BAAB24D0013D913 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1902BAAB24D0013D913 /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 				580AACCF2BA582CE00672050 /* SwiftKeychainWrapper in Frameworks */,
 				580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */,
 				580AACC92BA581F400672050 /* Then in Frameworks */,
+				E409E1912BAAB24D0013D913 /* DGCharts in Frameworks */,
 				580AACD22BA582FF00672050 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +495,7 @@
 				580AACCE2BA582CE00672050 /* SwiftKeychainWrapper */,
 				580AACD12BA582FF00672050 /* Kingfisher */,
 				580AAD292BA8280600672050 /* iOSDropDown */,
+				E409E1902BAAB24D0013D913 /* DGCharts */,
 			);
 			productName = CenApp;
 			productReference = 580AAC912BA566F700672050 /* CenApp.app */;
@@ -573,6 +576,7 @@
 				580AACCD2BA582CE00672050 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				580AACD02BA582FF00672050 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
+				E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 580AAC922BA566F700672050 /* Products */;
 			projectDirPath = "";
@@ -1032,6 +1036,14 @@
 				minimumVersion = 0.4.0;
 			};
 		};
+		E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1064,6 +1076,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */;
 			productName = iOSDropDown;
+		};
+		E409E1902BAAB24D0013D913 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -49,22 +49,22 @@ class IncomeViewController: CustomProgressViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateProgressBar(progress: 1/4)
-        navigationControl()
+        //navigationControl()
         addSubviews()
         configUI()
         createRadioButtons()
         view.backgroundColor = .white
     }
     //MARK: -- UINavigation
-    func navigationControl() {
-        //navigationBar 바꾸는 부분
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
-        backBarButtonItem.tintColor = .black
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-        self.navigationItem.title = "정보 입력"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-    }
+//    func navigationControl() {
+//        //navigationBar 바꾸는 부분
+//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+//        backBarButtonItem.tintColor = .black
+//        self.navigationItem.backBarButtonItem = backBarButtonItem
+//        self.navigationItem.title = "정보 입력"
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//
+//    }
     func addSubviews() {
         view.addSubview(progressLabel)
         view.addSubview(IncomeChoiceLabel)
@@ -78,7 +78,7 @@ class IncomeViewController: CustomProgressViewController {
             $0.centerX.equalToSuperview()
         }
         IncomeChoiceLabel.snp.makeConstraints {
-            $0.top.equalTo(progressLabel.snp.bottom).offset(85)
+            $0.top.equalTo(progressLabel.snp.bottom).offset(75)
             $0.centerX.equalToSuperview()
         }
         radioButtonStackView1.snp.makeConstraints {
@@ -92,9 +92,8 @@ class IncomeViewController: CustomProgressViewController {
         }
         nextButton.snp.makeConstraints {
             $0.height.equalTo(52)
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.bottom.equalToSuperview().offset(-40)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-50)
         }
         
     }
@@ -183,4 +182,3 @@ extension UIButton {
             imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
         }
 }
-
