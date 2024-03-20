@@ -11,6 +11,14 @@ import SnapKit
 import SCLAlertView
 class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - UIComponent
+    var post : ScholarshipModel
+    init(post: ScholarshipModel) {
+        self.post = post
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     //저장하기
     private lazy var saveBtn : UIButton = {
         let btn = UIButton()
@@ -106,11 +114,11 @@ extension AnnoucementDetailViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 250
+            return 220
         case 1:
-            return 350
+            return 480
         case 2:
-            return 800
+            return 400
         default:
             return UITableView.automaticDimension
         }
@@ -120,16 +128,37 @@ extension AnnoucementDetailViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "FirstCell", for: indexPath) as? AnnoucementHeaderCell else {
                 return UITableViewCell()
             }
+            cell.titleLabel.text = post.title
+            cell.subLabel.text = post.provider
             return cell
         } else if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as? AnnoucementMiddleCell else {
                 return UITableViewCell()
             }
+            if let startDate = post.startDate,
+               let endDate = post.endDate,
+               let target = post.supportTarget,
+               let target2 = post.supportTarget2,
+               let target3 = post.supportTarget3,
+               let amount = post.amount,
+               let amount2 = post.amount2,
+               let document = post.requiredDocuments {
+                cell.periodText.text = "\(startDate) ~ \(endDate)"
+                cell.targetText.text = "\(target)분위, \(target2), \(target3)"
+                cell.amountText.text = "\(amount)원, \(amount2)원"
+                cell.documentText.text = "\(document)"
+            }else{}
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdCell", for: indexPath) as? AnnoucementFooterCell else {
                 return UITableViewCell()
             }
+            if let dec = post.description,
+               let dec2 = post.description2,
+               let dec3 = post.description3,
+               let dec4 = post.description4 {
+                cell.infoText.text = "\(dec), \(dec2), \(dec3), \(dec4)"
+            }else{}
             return cell
         }
     }
@@ -145,8 +174,10 @@ extension AnnoucementDetailViewController {
         alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
     }
     @objc private func supportBtnTapped() {
-        if let url = URL(string: "https://swfitman.tistory.com/manage") {
-            UIApplication.shared.open(url)
-        }else { print("존재하지 않는 url") }
+        if let postSite = post.site {
+            if let url = URL(string: postSite) {
+                UIApplication.shared.open(url)
+            }else { print("존재하지 않는 url") }
+        }else{ print("존재하지 않는 url") }
     }
 }

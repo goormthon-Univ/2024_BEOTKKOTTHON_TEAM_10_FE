@@ -25,7 +25,7 @@ class TabViewController: UITabBarController {
         let calendarNavigationController = UINavigationController(rootViewController: calendarVC)
         
         // ListViewController 생성 및 탭바 아이템 설정
-        let listVC = AnnoucementViewController()
+        let listVC = AnnoucementViewController(order: "마감순")
         listVC.tabBarItem = UITabBarItem(title: "공고 리스트", image: UIImage(named: "list"), selectedImage: nil)
         let listNavigationController = UINavigationController(rootViewController: listVC)
         

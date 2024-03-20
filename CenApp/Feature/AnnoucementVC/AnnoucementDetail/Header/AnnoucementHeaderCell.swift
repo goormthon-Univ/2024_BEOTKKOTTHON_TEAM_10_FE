@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 class AnnoucementHeaderCell: UITableViewCell, UITextViewDelegate {
-    private let titleLabel : UITextView = {
+    public let titleLabel : UITextView = {
         let label = UITextView()
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.text = "우아한 사장님 자녀 장학금 지원 대학생 일반 장학생 모집"
@@ -36,7 +36,7 @@ class AnnoucementHeaderCell: UITableViewCell, UITextViewDelegate {
         view.distribution = .fill
         return view
     }()
-    private let subLabel : UILabel = {
+    public let subLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.text = "(주)우아한 청년들"
@@ -87,7 +87,7 @@ extension AnnoucementHeaderCell {
             make.top.equalTo(tagScrollView.snp.bottom).offset(30)
         }
         subLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(30)
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
         }
         spcaing.snp.makeConstraints { make in

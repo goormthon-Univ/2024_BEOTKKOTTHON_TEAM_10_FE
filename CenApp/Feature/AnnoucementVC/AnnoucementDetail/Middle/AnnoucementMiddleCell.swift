@@ -20,10 +20,10 @@ class AnnoucementMiddleCell: UITableViewCell, UITextViewDelegate {
         label.clipsToBounds = true
         return label
     }()
-    private let periodText : UITextView = {
+    public let periodText : UITextView = {
         let label = UITextView()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = "2024년 03월 13일 ~ 03월 20일"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.text = ""
         label.textColor = .black
         label.backgroundColor = .white
         label.textAlignment = .left
@@ -41,10 +41,10 @@ class AnnoucementMiddleCell: UITableViewCell, UITextViewDelegate {
         label.clipsToBounds = true
         return label
     }()
-    private let targetText : UITextView = {
+    public let targetText : UITextView = {
         let label = UITextView()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = "대학교/전문대학 3학기 또는 4학기 재학생 중 IT 또는 게임 분야 진로 희망자. 인문, 사회과학, 자연, 공학 등 소속 전공 구분 없이 선발"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.text = ""
         label.textColor = .black
         label.backgroundColor = .white
         label.textAlignment = .left
@@ -62,10 +62,10 @@ class AnnoucementMiddleCell: UITableViewCell, UITextViewDelegate {
         label.clipsToBounds = true
         return label
     }()
-    private let amountText : UITextView = {
+    public let amountText : UITextView = {
         let label = UITextView()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = "학기당 생활지원금 500만원(1인 연간 최대 1000만원 지원) 정규학기 기준 최대 3년 간 지원"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.text = ""
         label.textColor = .black
         label.backgroundColor = .white
         label.textAlignment = .left
@@ -83,9 +83,9 @@ class AnnoucementMiddleCell: UITableViewCell, UITextViewDelegate {
         label.clipsToBounds = true
         return label
     }()
-    private let documentText : UITextView = {
+    public let documentText : UITextView = {
         let label = UITextView()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.text = "공인인증서"
         label.textColor = .black
         label.backgroundColor = .white

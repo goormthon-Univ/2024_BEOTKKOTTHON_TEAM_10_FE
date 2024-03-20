@@ -100,11 +100,11 @@ extension HomeViewController {
 // MARK: - Actions
 extension HomeViewController {
     func didTapAnnouncementButton() {
-        let announcementVC = AnnoucementViewController()
+        let announcementVC = AnnoucementViewController(order: "마감순")
         navigationController?.pushViewController(announcementVC, animated: true)
     }
     func didTapNewAnnouncementButton() {
-        let announcementVC = AnnoucementViewController()
+        let announcementVC = AnnoucementViewController(order: "최신순")
         navigationController?.pushViewController(announcementVC, animated: true)
     }
 }

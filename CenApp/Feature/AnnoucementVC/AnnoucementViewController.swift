@@ -12,6 +12,15 @@ import iOSDropDown
 class AnnoucementViewController : UIViewController, UITableViewDelegate {
     private let annoucentTableViewDelegate = AnnoucementTableViewDelegate()
     private let annoucentTableViewDatasource = AnnoucementTableViewDataSource()
+    //이니셜라이저로 받기
+    var order : String
+    init(order: String) {
+        self.order = order
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     //MARK: - UI Component
     //재로드 refresh
     private lazy var refreshIndicator : UIRefreshControl = {
@@ -73,11 +82,12 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         return label
     }()
     //순서 버튼
-    private let orderBtn : DropDown = {
+    private lazy var orderBtn : DropDown = {
         let btn = DropDown()
         btn.backgroundColor = .white
         btn.optionArray = ["마감순", "최신순"]
         btn.optionIds = [1,2]
+        btn.addTarget(self, action: #selector(dropDownTapped), for: .touchUpInside)
         return btn
     }()
     //장학금 테이블
@@ -99,6 +109,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         setTableView()
         setLayout()
+        fetchData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -171,6 +182,7 @@ extension AnnoucementViewController {
             make.top.equalTo(headerView.snp.bottom).offset(0)
             make.bottom.equalToSuperview().inset(self.view.frame.height / 12)
         }
+        self.loadingIndicator.startAnimating()
     }
     private func addtagStack() {
         let onboardList = ["#7분위", "#공학계열", "#4학년", "#서울", "#강북구"]
@@ -194,6 +206,7 @@ extension AnnoucementViewController {
 extension AnnoucementViewController {
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        fetchData()
     }
     private func setTableView() {
         annoucementTableView.delegate = annoucentTableViewDelegate
@@ -202,9 +215,37 @@ extension AnnoucementViewController {
 }
 //MARK: - Actions
 extension AnnoucementViewController {
-    private func dropDownTapped() {
+    @objc private func dropDownTapped() {
         orderBtn.didSelect{(selectedText , index ,id) in
             print("Selected String: \(selectedText) \n index: \(index)")
+        }
+    }
+    //데이터 fetch
+    private func fetchData() {
+        if order == "마감순" {
+            AnnoucementService.scholarshipDay(completion: { [weak self] scholarships in
+                guard let self = self, let scholarships = scholarships else { return }
+                annoucentTableViewDatasource.scholarships = scholarships
+                annoucentTableViewDelegate.scholarships = scholarships
+                DispatchQueue.main.async {
+                    self.annoucementTableView.reloadData() // 테이블 뷰 데이터 리로드
+                    self.loadingIndicator.stopAnimating()
+                }
+            }, onError: { error in
+                print("Error fetching scholarships: \(error)")
+            })
+        } else if order == "최신순" {
+            AnnoucementService.scholarshipNew(completion: { [weak self] scholarships in
+                guard let self = self, let scholarships = scholarships else { return }
+                annoucentTableViewDatasource.scholarships = scholarships
+                annoucentTableViewDelegate.scholarships = scholarships
+                DispatchQueue.main.async {
+                    self.annoucementTableView.reloadData() // 테이블 뷰 데이터 리로드
+                    self.loadingIndicator.stopAnimating()
+                }
+            }, onError: { error in
+                print("Error fetching scholarships: \(error)")
+            })
         }
     }
 }

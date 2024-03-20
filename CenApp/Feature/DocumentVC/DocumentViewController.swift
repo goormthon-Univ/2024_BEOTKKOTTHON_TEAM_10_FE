@@ -140,11 +140,10 @@ extension DocumentViewController {
     }
 }
 //MARK: - Actions
-extension DocumentViewController {
+extension DocumentViewController : DocumentTableViewCellDelegate {
     @objc func categoryButtonTapped(_ sender: UIButton) {
         let categoryIndex = sender.tag
         scrollToCategory(categoryIndex)
-        showSheet()
     }
     func scrollToCategory(_ categoryIndex: Int) {
         let indexPath = IndexPath(row: 0, section: categoryIndex)
@@ -168,5 +167,8 @@ extension DocumentViewController {
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }
         present(viewControllerToPresent, animated: true, completion: nil)
+    }
+    func didShow(in cell: DocumentTableViewCell) {
+        showSheet()
     }
 }

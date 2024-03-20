@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 import SnapKit
+protocol DocumentTableViewCellDelegate: AnyObject {
+    func didShow(in cell: DocumentTableViewCell)
+}
 class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource, DocumentDetailTableViewCellDelegate {
+    weak var delegate: DocumentTableViewCellDelegate?
     private let consonantLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -86,7 +90,11 @@ extension DocumentTableViewCell {
     func didTapButton(in cell: DocumentDetailTableViewCell) {
         if detailTableView.indexPath(for: cell) != nil {
             cell.consonantBtn.setTitleColor(.PrimaryColor, for: .normal)
-            
+            didShow()
         }
+    }
+    private func didShow() {
+        print("디드쇼")
+        delegate?.didShow(in: self)
     }
 }

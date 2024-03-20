@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 class AnnoucementTableViewCell: UITableViewCell {
-    private let dayLabel : UILabel = {
+    public let dayLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.text = "3월 18일"
@@ -27,18 +27,16 @@ class AnnoucementTableViewCell: UITableViewCell {
         view.layer.masksToBounds = true
         return view
     }()
-    private let companyLabel : UILabel = {
+    public let companyLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.text = "(주)우아한 청년들"
         label.textAlignment = .left
         label.backgroundColor = .clear
-        label.layer.cornerRadius = 10
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.layer.masksToBounds = true
         return label
     }()
-    private let titleText: UITextView = {
+    public let titleText: UITextView = {
         let label = UITextView()
         label.textColor = .black
         label.text = "2024년 우아한 사장님 자녀 장학금 지원 대학생 일반 장학생 모집"
@@ -49,7 +47,7 @@ class AnnoucementTableViewCell: UITableViewCell {
         label.isScrollEnabled = false
         return label
     }()
-    private let deadlineLabel : UILabel = {
+    public let deadlineLabel : UILabel = {
         let label = UILabel()
         label.textColor = .red
         label.text = "D-1"
