@@ -68,6 +68,7 @@
 		E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */; };
 		E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1BC2BAC038E0013D913 /* LogoutService.swift */; };
 		E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */; };
+		E409E1C42BAC1C880013D913 /* CreateNewpwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckModel.swift; sourceTree = "<group>"; };
 		E409E1BC2BAC038E0013D913 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwViewController.swift; sourceTree = "<group>"; };
+		E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewpwViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */,
+				E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */,
 			);
 			path = Findpw;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				58FE16EB2BA9B5CD00FA3363 /* MiddleTableViewCell.swift in Sources */,
 				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
 				E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */,
+				E409E1C42BAC1C880013D913 /* CreateNewpwViewController.swift in Sources */,
 				58FE16FD2BA9B5DF00FA3363 /* SignupServiceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
