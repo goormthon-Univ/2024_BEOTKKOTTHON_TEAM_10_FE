@@ -69,6 +69,9 @@
 		E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1BC2BAC038E0013D913 /* LogoutService.swift */; };
 		E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */; };
 		E409E1CE2BACA7930013D913 /* mainCoin.gif in Resources */ = {isa = PBXBuildFile; fileRef = E409E1CD2BACA7930013D913 /* mainCoin.gif */; };
+		E409E1D12BACAAF40013D913 /* FindpwService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D02BACAAF40013D913 /* FindpwService.swift */; };
+		E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D32BACAC1C0013D913 /* FindpwModel.swift */; };
+		E409E1D62BACAC3D0013D913 /* FindpwServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D52BACAC3D0013D913 /* FindpwServiceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +151,9 @@
 		E409E1BC2BAC038E0013D913 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwViewController.swift; sourceTree = "<group>"; };
 		E409E1CD2BACA7930013D913 /* mainCoin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mainCoin.gif; sourceTree = "<group>"; };
+		E409E1D02BACAAF40013D913 /* FindpwService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwService.swift; sourceTree = "<group>"; };
+		E409E1D32BACAC1C0013D913 /* FindpwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwModel.swift; sourceTree = "<group>"; };
+		E409E1D52BACAC3D0013D913 /* FindpwServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwServiceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +537,7 @@
 		E409E1B12BABFD570013D913 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1CF2BACAAE90013D913 /* Findpw */,
 				E409E1BB2BAC03800013D913 /* Logout */,
 				58FE17032BA9B5ED00FA3363 /* Signup */,
 				E409E1B32BABFD630013D913 /* LoginCheck */,
@@ -550,6 +557,7 @@
 		E409E1B62BABFDB10013D913 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1D22BACAC130013D913 /* Findpw */,
 				E409E1B72BABFDC20013D913 /* LoginCheck */,
 				58FE16F82BA9B5DF00FA3363 /* Signup */,
 				58FE16F52BA9B5DF00FA3363 /* Login */,
@@ -606,6 +614,23 @@
 				E409E1CD2BACA7930013D913 /* mainCoin.gif */,
 			);
 			path = Gif;
+			sourceTree = "<group>";
+		};
+		E409E1CF2BACAAE90013D913 /* Findpw */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1D02BACAAF40013D913 /* FindpwService.swift */,
+			);
+			path = Findpw;
+			sourceTree = "<group>";
+		};
+		E409E1D22BACAC130013D913 /* Findpw */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1D32BACAC1C0013D913 /* FindpwModel.swift */,
+				E409E1D52BACAC3D0013D913 /* FindpwServiceModel.swift */,
+			);
+			path = Findpw;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -765,6 +790,7 @@
 				58FE16ED2BA9B5CD00FA3363 /* HomeHeaderCell.swift in Sources */,
 				58FE17072BA9B5ED00FA3363 /* SignupService.swift in Sources */,
 				E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */,
+				E409E1D62BACAC3D0013D913 /* FindpwServiceModel.swift in Sources */,
 				580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */,
 				58FE17092BA9B61F00FA3363 /* TableView + Extension.swift in Sources */,
 				58FE16E82BA9B5CD00FA3363 /* DocumentTableViewCell.swift in Sources */,
@@ -775,6 +801,7 @@
 				58FE16E12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift in Sources */,
 				580AACD62BA5845100672050 /* Color + Extension.swift in Sources */,
 				58FE16EC2BA9B5CD00FA3363 /* HomeFooterCell.swift in Sources */,
+				E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */,
 				58FE16FC2BA9B5DF00FA3363 /* SignupModel.swift in Sources */,
 				580AAD212BA6AFB100672050 /* MajorViewController.swift in Sources */,
 				E409E1A62BAB351F0013D913 /* ScholarshipDayModel.swift in Sources */,
@@ -783,6 +810,7 @@
 				58FE16EE2BA9B5CD00FA3363 /* HomeMiddleCell.swift in Sources */,
 				58FE16F02BA9B5CD00FA3363 /* LoginViewController.swift in Sources */,
 				58FE16E52BA9B5CD00FA3363 /* AnnoucementTableViewCell.swift in Sources */,
+				E409E1D12BACAAF40013D913 /* FindpwService.swift in Sources */,
 				58FE16EA2BA9B5CD00FA3363 /* BottomTableViewCell.swift in Sources */,
 				58FE17052BA9B5ED00FA3363 /* ExpressionService.swift in Sources */,
 				E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */,

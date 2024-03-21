@@ -169,6 +169,7 @@ extension FindpwViewController {
         self.title = ""
         self.nameText.delegate = self
         self.idText.delegate = self
+        self.pwText.delegate = self
         //타이틀
         self.view.addSubview(titleLabel)
         //이름
@@ -270,8 +271,8 @@ extension FindpwViewController {
 // MARK: - TextDelegate
 extension FindpwViewController {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField == idText || textField == nameText{
-            if !(idText.text?.isEmpty ?? true) && !(nameText.text?.isEmpty ?? true)  {
+        if textField == idText || textField == nameText || textField == pwText{
+            if !(idText.text?.isEmpty ?? true) && !(nameText.text?.isEmpty ?? true)  && !(pwText.text?.isEmpty ?? true) {
                 loginBtn.backgroundColor = .PrimaryColor
                 loginBtn.setTitleColor(.white, for: .normal)
                 loginBtn.isEnabled = true
@@ -295,25 +296,23 @@ extension FindpwViewController {
         self.pwDescription.text = ""
         self.idDescription.text = ""
         if  let name = nameText.text,
-            let id = idText.text{
-//            SignupService.requestSignup(userInfo: SignupModel(userid: id, password: "", name: name)) { result in
-//                if let result = result {
-//                    if result.message == "success" {
-//                        self.loadingIndicator.stopAnimating()
-//                    }
-//                }else{
-//                    self.loadingIndicator.stopAnimating()
-//                }
-//            } onError: { error in
-//                self.idDescription.text = "* 등록되지 않은 아이디입니다"
-//                self.loadingIndicator.stopAnimating()
-//                let errorMessage = error.localizedDescription
-//                if let code = ExpressionService.requestExpression(errorMessage: errorMessage){
-//                    if code == "400" {
-//                        print("회원가입 에러")
-//                    }
-//                }else{ }
-//            }
+            let id = idText.text,
+            let pw = pwText.text{
+            FindpwService.requestFindpw(userInfo: FindpwModel(userid: id, password: pw, name: name)) { result in
+                if let result = result {
+                    if result.message == "success" {
+                        self.loadingIndicator.stopAnimating()
+                    }else if result.message == "no user" {
+                        self.idDescription.text = "* 등록되지 않은 아이디입니다"
+                        self.loadingIndicator.stopAnimating()
+                    }
+                }else{
+                    self.loadingIndicator.stopAnimating()
+                }
+            } onError: { error in
+                self.idDescription.text = "* 등록되지 않은 아이디입니다"
+                self.loadingIndicator.stopAnimating()
+            }
         }else{
             print("아이디 비번 입력")
         }
