@@ -15,20 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let JWTaccessToken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken"){
             print("\(JWTaccessToken)")
-            LoginCheckService.requestLogin { result in
-                if let message = result?.message {
-                    if message == "login" {
-                        let viewController = TabViewController()
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.window?.rootViewController = navigationController
-                    }
-                }
-            } onError: { error in
-                LogoutService.requestLogout()
-                let viewController = LoginViewController()
-                let navigationController = UINavigationController(rootViewController: viewController)
-                self.window?.rootViewController = navigationController
-            }
+            let viewController = TabViewController()
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.window?.rootViewController = navigationController
         }else{
             let viewController = LoginViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
@@ -38,5 +27,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
     }
 }
-
-
+//MARK: - LoginCheckConnection
+//LoginCheckService.requestLogin { result in
+//    if let message = result?.message {
+//        if message == "login" {
+//        }
+//    }
+//} onError: { error in
+//    LogoutService.requestLogout()
+//    let viewController = LoginViewController()
+//    let navigationController = UINavigationController(rootViewController: viewController)
+//    self.window?.rootViewController = navigationController
+//}
