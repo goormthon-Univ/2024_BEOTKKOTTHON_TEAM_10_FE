@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window?.rootViewController = navigationController
         }else{
-            let viewController = LoginViewController()
+            let viewController = TabViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
             window?.rootViewController = navigationController
         }

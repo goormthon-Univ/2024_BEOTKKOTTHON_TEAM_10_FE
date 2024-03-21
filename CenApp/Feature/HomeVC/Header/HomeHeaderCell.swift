@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
-
+import Kingfisher
 protocol HomeHeaderCellDelegate: AnyObject {
     func didTapAnnouncementButton()
 }
@@ -16,11 +16,12 @@ class HomeHeaderCell: UITableViewCell {
     weak var delegate: HomeHeaderCellDelegate?
     //버튼 처리
     var announcementButtonAction: (() -> Void)?
-    private let scholarshipImage : UIImageView = {
-        let view = UIImageView()
+    private let scholarshipImage : AnimatedImageView = {
+        let view = AnimatedImageView()
         view.backgroundColor = .clear
-        view.image = UIImage(named: "mainScholarship")
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
         view.clipsToBounds = true
         return view
     }()
@@ -95,6 +96,9 @@ extension HomeHeaderCell {
             make.leading.equalToSuperview().inset(25)
             make.width.equalTo(170)
             make.height.equalTo(50)
+        }
+        if let gifUrl = Bundle.main.url(forResource: "mainCoin", withExtension: "gif") {
+            scholarshipImage.kf.setImage(with: gifUrl)
         }
     }
 }

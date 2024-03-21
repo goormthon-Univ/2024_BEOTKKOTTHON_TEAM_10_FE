@@ -90,8 +90,8 @@ class FindpwViewController : UIViewController, UITextFieldDelegate{
     //비밀번호
     private let pwLabel : UILabel = {
         let label = UILabel()
-        label.text = "비밀번호"
-        label.textColor = .black
+        label.text = "새로운 비밀번호"
+        label.textColor = .PrimaryColor
         label.font = UIFont.systemFont(ofSize: 15)
         label.backgroundColor = .white
         return label
@@ -182,6 +182,13 @@ extension FindpwViewController {
         self.view.addSubview(idView)
         self.view.addSubview(idDescription)
         
+        //비밀번호
+        self.view.addSubview(pwLabel)
+        self.pwView.addSubview(pwText)
+        self.pwView.addSubview(pwSecureBtn)
+        self.view.addSubview(pwView)
+        self.view.addSubview(pwDescription)
+        
         //로그인
         self.view.addSubview(loginBtn)
         
@@ -195,7 +202,7 @@ extension FindpwViewController {
         //이름
         nameLabel.snp.makeConstraints { make in
             make.left.trailing.equalToSuperview().inset(30)
-            make.center.equalToSuperview().offset(-100)
+            make.center.equalToSuperview().offset(-150)
         }
         nameText.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(10)
@@ -224,9 +231,31 @@ extension FindpwViewController {
             make.leading.trailing.equalToSuperview().inset(30)
         }
         
+        //비밀번호
+        pwLabel.snp.makeConstraints { make in
+            make.left.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(idDescription.snp.bottom).offset(30)
+        }
+        pwText.snp.makeConstraints { make in
+            make.leading.top.bottom.equalToSuperview().inset(10)
+            make.trailing.equalToSuperview().inset(50)
+        }
+        pwSecureBtn.snp.makeConstraints { make in
+            make.trailing.top.bottom.equalToSuperview().inset(10)
+        }
+        pwView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(pwLabel.snp.bottom).offset(10)
+            make.height.equalTo(40)
+        }
+        pwDescription.snp.makeConstraints { make in
+            make.top.equalTo(pwView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(30)
+        }
+        
         //로그인
         loginBtn.snp.makeConstraints { make in
-            make.top.equalTo(idDescription.snp.bottom).offset(100)
+            make.top.equalTo(pwDescription.snp.bottom).offset(50)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(50)
         }
@@ -267,8 +296,6 @@ extension FindpwViewController {
         self.idDescription.text = ""
         if  let name = nameText.text,
             let id = idText.text{
-            //수정필요
-            self.navigationController?.pushViewController(CreateNewpwViewController(post: [name, id]), animated: true)
 //            SignupService.requestSignup(userInfo: SignupModel(userid: id, password: "", name: name)) { result in
 //                if let result = result {
 //                    if result.message == "success" {

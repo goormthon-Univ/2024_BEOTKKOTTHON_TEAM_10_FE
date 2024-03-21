@@ -68,7 +68,7 @@
 		E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */; };
 		E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1BC2BAC038E0013D913 /* LogoutService.swift */; };
 		E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */; };
-		E409E1C42BAC1C880013D913 /* CreateNewpwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */; };
+		E409E1CE2BACA7930013D913 /* mainCoin.gif in Resources */ = {isa = PBXBuildFile; fileRef = E409E1CD2BACA7930013D913 /* mainCoin.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +147,7 @@
 		E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckModel.swift; sourceTree = "<group>"; };
 		E409E1BC2BAC038E0013D913 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 		E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwViewController.swift; sourceTree = "<group>"; };
-		E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewpwViewController.swift; sourceTree = "<group>"; };
+		E409E1CD2BACA7930013D913 /* mainCoin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mainCoin.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +213,7 @@
 				58FE16E02BA9B5CD00FA3363 /* Feature */,
 				580AACD82BA5847100672050 /* App */,
 				580AACD72BA5846100672050 /* Core */,
+				E409E1C52BAC9E6C0013D913 /* Gif */,
 				580AAC9D2BA566F900672050 /* Assets.xcassets */,
 				580AACD32BA583D200672050 /* Color.xcassets */,
 				580AACA22BA566F900672050 /* Info.plist */,
@@ -595,9 +596,16 @@
 			isa = PBXGroup;
 			children = (
 				E409E1C12BAC0DE50013D913 /* FindpwViewController.swift */,
-				E409E1C32BAC1C880013D913 /* CreateNewpwViewController.swift */,
 			);
 			path = Findpw;
+			sourceTree = "<group>";
+		};
+		E409E1C52BAC9E6C0013D913 /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1CD2BACA7930013D913 /* mainCoin.gif */,
+			);
+			path = Gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -726,6 +734,7 @@
 			files = (
 				588A83F72BA9E7FF006B8CFF /* LaunchScreen.storyboard in Resources */,
 				580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */,
+				E409E1CE2BACA7930013D913 /* mainCoin.gif in Resources */,
 				580AACD42BA583D200672050 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -797,7 +806,6 @@
 				58FE16EB2BA9B5CD00FA3363 /* MiddleTableViewCell.swift in Sources */,
 				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
 				E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */,
-				E409E1C42BAC1C880013D913 /* CreateNewpwViewController.swift in Sources */,
 				58FE16FD2BA9B5DF00FA3363 /* SignupServiceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
