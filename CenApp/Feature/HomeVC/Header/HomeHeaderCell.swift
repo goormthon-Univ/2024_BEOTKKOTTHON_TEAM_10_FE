@@ -38,12 +38,6 @@ class HomeHeaderCell: UITableViewCell {
         btn.setImage(UIImage(named: "bell"), for: .normal)
         return btn
     }()
-    //장학금 이미지
-    private let headerView : UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
     private let scholarshipImage : UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .clear

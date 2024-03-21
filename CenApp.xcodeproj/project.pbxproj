@@ -65,6 +65,9 @@
 		E409E1AA2BAB41B40013D913 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A92BAB41B40013D913 /* Int + Extension.swift */; };
 		E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AC2BAB52CB0013D913 /* DocumentService.swift */; };
 		E409E1B02BAB53010013D913 /* DocumentServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */; };
+		E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1B42BABFD780013D913 /* LoginCheckService.swift */; };
+		E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */; };
+		E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1BC2BAC038E0013D913 /* LogoutService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +143,9 @@
 		E409E1A92BAB41B40013D913 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		E409E1AC2BAB52CB0013D913 /* DocumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentService.swift; sourceTree = "<group>"; };
 		E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentServiceModel.swift; sourceTree = "<group>"; };
+		E409E1B42BABFD780013D913 /* LoginCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckService.swift; sourceTree = "<group>"; };
+		E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckModel.swift; sourceTree = "<group>"; };
+		E409E1BC2BAC038E0013D913 /* LogoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,10 +430,9 @@
 		58FE16F92BA9B5DF00FA3363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1B62BABFDB10013D913 /* Auth */,
 				E409E1AE2BAB52F50013D913 /* Document */,
 				E409E1A42BAB34E30013D913 /* Annoucement */,
-				58FE16F52BA9B5DF00FA3363 /* Login */,
-				58FE16F82BA9B5DF00FA3363 /* Signup */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,11 +464,10 @@
 		58FE17042BA9B5ED00FA3363 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1B12BABFD570013D913 /* Auth */,
 				E409E1AB2BAB52C10013D913 /* Document */,
 				E409E1A12BAB33530013D913 /* Annoucement */,
 				58FE16FF2BA9B5ED00FA3363 /* Expression */,
-				58FE17012BA9B5ED00FA3363 /* Login */,
-				58FE17032BA9B5ED00FA3363 /* Signup */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -530,6 +534,51 @@
 				E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */,
 			);
 			path = Document;
+			sourceTree = "<group>";
+		};
+		E409E1B12BABFD570013D913 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1BB2BAC03800013D913 /* Logout */,
+				58FE17032BA9B5ED00FA3363 /* Signup */,
+				E409E1B32BABFD630013D913 /* LoginCheck */,
+				58FE17012BA9B5ED00FA3363 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E409E1B32BABFD630013D913 /* LoginCheck */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1B42BABFD780013D913 /* LoginCheckService.swift */,
+			);
+			path = LoginCheck;
+			sourceTree = "<group>";
+		};
+		E409E1B62BABFDB10013D913 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1B72BABFDC20013D913 /* LoginCheck */,
+				58FE16F82BA9B5DF00FA3363 /* Signup */,
+				58FE16F52BA9B5DF00FA3363 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		E409E1B72BABFDC20013D913 /* LoginCheck */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1B82BABFDDB0013D913 /* LoginCheckModel.swift */,
+			);
+			path = LoginCheck;
+			sourceTree = "<group>";
+		};
+		E409E1BB2BAC03800013D913 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1BC2BAC038E0013D913 /* LogoutService.swift */,
+			);
+			path = Logout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -687,6 +736,7 @@
 				58FE16FA2BA9B5DF00FA3363 /* LoginModel.swift in Sources */,
 				58FE16ED2BA9B5CD00FA3363 /* HomeHeaderCell.swift in Sources */,
 				58FE17072BA9B5ED00FA3363 /* SignupService.swift in Sources */,
+				E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */,
 				580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */,
 				58FE17092BA9B61F00FA3363 /* TableView + Extension.swift in Sources */,
 				58FE16E82BA9B5CD00FA3363 /* DocumentTableViewCell.swift in Sources */,
@@ -715,6 +765,7 @@
 				58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */,
 				E409E19D2BAAEEC90013D913 /* BottomSheetViewController.swift in Sources */,
 				580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */,
+				E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */,
 				58FE170C2BA9D63A00FA3363 /* TabViewController.swift in Sources */,
 				580AAC952BA566F700672050 /* AppDelegate.swift in Sources */,
 				58FE16E22BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift in Sources */,
@@ -722,6 +773,7 @@
 				58FE16E92BA9B5CD00FA3363 /* DocumentViewController.swift in Sources */,
 				58FE16F12BA9B5CD00FA3363 /* SignupViewController.swift in Sources */,
 				580AAD1C2BA6913C00672050 /* CustomProgressViewController.swift in Sources */,
+				E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */,
 				58FE17062BA9B5ED00FA3363 /* LoginService.swift in Sources */,
 				58FE16F22BA9B5CD00FA3363 /* StartOnboardingViewController.swift in Sources */,
 				58FE16EB2BA9B5CD00FA3363 /* MiddleTableViewCell.swift in Sources */,

@@ -100,7 +100,8 @@ extension HomeFooterCell {
             make.width.equalTo(checkScrollView.snp.width).offset(70)
         }
         moveToAnnouncement.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(30)
             make.width.height.equalTo(20)
         }
         View.snp.makeConstraints { make in

@@ -22,7 +22,6 @@ class LoginService {
                 switch response.result {
                 case .success(let data):
                     if let access = data.accesstoken {
-
                         //키체인 저장
                         KeychainWrapper.standard.set(access, forKey: "JWTaccesstoken")
                         let loginServiceModel = LoginServiceModel(message: data.message, accesstoken: access)
