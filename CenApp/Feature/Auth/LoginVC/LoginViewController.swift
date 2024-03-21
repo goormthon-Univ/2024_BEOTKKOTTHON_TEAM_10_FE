@@ -145,6 +145,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.tintColor = .black
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -316,7 +317,7 @@ extension LoginViewController {
         self.navigationController?.pushViewController(SignupViewController(), animated: true)
     }
     @objc private func findBtnTapped() {
-        
+        self.navigationController?.pushViewController(FindpwViewController(), animated: true)
     }
     @objc private func secureBtnTapped() {
         self.pwText.isSecureTextEntry.toggle()

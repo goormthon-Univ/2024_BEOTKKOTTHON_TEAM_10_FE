@@ -82,14 +82,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         return label
     }()
     //순서 버튼
-    private lazy var orderBtn : DropDown = {
-        let btn = DropDown()
-        btn.backgroundColor = .white
-        btn.optionArray = ["마감순", "최신순"]
-        btn.optionIds = [1,2]
-        btn.addTarget(self, action: #selector(dropDownTapped), for: .touchUpInside)
-        return btn
-    }()
+    private let dropdown = DropDown()
     //장학금 테이블
     private let annoucementTableView : UITableView = {
         let view = UITableView()
@@ -109,6 +102,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         setTableView()
         setLayout()
+        setupDropdown()
         fetchData()
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,7 +120,7 @@ extension AnnoucementViewController {
         self.tagScrollView.addSubview(tagStackView)
         self.headerView.addSubview(tagScrollView)
         self.headerView.addSubview(subLabel)
-        self.headerView.addSubview(orderBtn)
+        self.headerView.addSubview(dropdown)
         self.headerView.addSubview(loadingIndicator)
         
         self.view.addSubview(headerView)
@@ -158,10 +152,10 @@ extension AnnoucementViewController {
             make.width.equalToSuperview().dividedBy(2)
             make.bottom.equalToSuperview().inset(20)
         }
-        orderBtn.snp.makeConstraints { make in
+        dropdown.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview().inset(20)
-            make.height.equalTo(20)
+            make.bottom.equalToSuperview().inset(15)
+            make.height.equalTo(30)
             make.width.equalTo(80)
         }
         headerView.snp.makeConstraints { make in
@@ -215,9 +209,25 @@ extension AnnoucementViewController {
 }
 //MARK: - Actions
 extension AnnoucementViewController {
-    @objc private func dropDownTapped() {
-        orderBtn.didSelect{(selectedText , index ,id) in
-            print("Selected String: \(selectedText) \n index: \(index)")
+    private func setupDropdown() {
+        dropdown.optionArray = ["마감순", "최신순"]
+        dropdown.isSearchEnable = false
+        dropdown.text = order
+        dropdown.font = UIFont.systemFont(ofSize: 14)
+        dropdown.textColor = UIColor.black
+        dropdown.selectedRowColor = UIColor.PrimaryColor
+        dropdown.arrowSize = 10
+        dropdown.checkMarkEnabled = false
+        dropdown.backgroundColor = UIColor.white
+        // 선택한 항목에 대한 이벤트 처리
+        dropdown.didSelect { (selectedItem, index, id) in
+            if index == 0 {
+                self.order = "마감순"
+                self.fetchData()
+            }else if index == 1 {
+                self.order = "최신순"
+                self.fetchData()
+            }
         }
     }
     //데이터 fetch

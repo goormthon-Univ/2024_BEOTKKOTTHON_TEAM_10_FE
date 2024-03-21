@@ -147,9 +147,17 @@ class FindpwViewController : UIViewController, UITextFieldDelegate{
         view.style = .large
         return view
     }()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationItem.hidesBackButton = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationItem.hidesBackButton = true
     }
 }
 // MARK: - UI Layout

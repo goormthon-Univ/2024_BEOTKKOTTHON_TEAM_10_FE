@@ -965,7 +965,7 @@
 				DEVELOPMENT_TEAM = Q653PU93R6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CenApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CEN;
+				INFOPLIST_KEY_CFBundleDisplayName = cen;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -997,7 +997,7 @@
 				DEVELOPMENT_TEAM = Q653PU93R6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CenApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CEN;
+				INFOPLIST_KEY_CFBundleDisplayName = cen;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
