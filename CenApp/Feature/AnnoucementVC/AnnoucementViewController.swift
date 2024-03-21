@@ -180,7 +180,7 @@ extension AnnoucementViewController {
         View.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(0)
             make.top.equalTo(headerView.snp.bottom).offset(0)
-            make.bottom.equalToSuperview().inset(self.view.frame.height / 12)
+            make.bottom.equalToSuperview().inset(0)
         }
         self.loadingIndicator.startAnimating()
     }

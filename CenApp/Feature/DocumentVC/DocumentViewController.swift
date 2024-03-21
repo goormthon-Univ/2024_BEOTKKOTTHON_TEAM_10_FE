@@ -113,7 +113,7 @@ extension DocumentViewController {
         categoryStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
             make.top.equalTo(headerView.snp.bottom).offset(10)
-            make.height.equalTo(470)
+            make.height.equalTo(460)
             make.width.equalTo(20)
         }
     }

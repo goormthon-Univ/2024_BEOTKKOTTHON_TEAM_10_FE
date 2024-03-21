@@ -11,10 +11,11 @@ class TabViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        self.LoginCheck() //로그인 확인
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.LoginCheck() //로그인 확인
+        self.tabBar.backgroundColor = .white
         // HomeViewController 생성 및 탭바 아이템 설정
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "House"), selectedImage: nil)

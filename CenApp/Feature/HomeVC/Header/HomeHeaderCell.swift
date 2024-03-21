@@ -16,28 +16,6 @@ class HomeHeaderCell: UITableViewCell {
     weak var delegate: HomeHeaderCellDelegate?
     //버튼 처리
     var announcementButtonAction: (() -> Void)?
-    private let mainIcon : UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = .clear
-        view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "mainIcon")
-        return view
-    }()
-    //검색 버튼
-    private lazy var searchBtn : UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .clear
-        btn.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        btn.tintColor = .gray
-        return btn
-    }()
-    //알림 버튼
-    private lazy var alertBtn : UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .clear
-        btn.setImage(UIImage(named: "bell"), for: .normal)
-        return btn
-    }()
     private let scholarshipImage : UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .clear
@@ -98,31 +76,11 @@ extension HomeHeaderCell {
     private func setLayout() {
         let view = self.contentView
         view.backgroundColor = .white
-        view.addSubview(mainIcon)
-        view.addSubview(alertBtn)
-        view.addSubview(searchBtn)
         view.addSubview(scholarshipImage)
         view.addSubview(scholarshipAmount)
         view.addSubview(announcementBtn)
-        
-        
-        mainIcon.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(0)
-            make.width.height.equalTo(50)
-            make.leading.equalToSuperview().inset(20)
-        }
-        alertBtn.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(20)
-            make.width.height.equalTo(24)
-        }
-        searchBtn.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.trailing.equalTo(alertBtn.snp.leading).offset(-20)
-            make.width.height.equalTo(24)
-        }
         scholarshipImage.snp.makeConstraints { make in
-            make.top.equalTo(mainIcon.snp.bottom).offset(0)
+            make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview().inset(0)
             make.height.equalToSuperview()
         }
@@ -133,7 +91,7 @@ extension HomeHeaderCell {
             make.width.equalTo(232)
         }
         announcementBtn.snp.makeConstraints { make in
-            make.bottom.equalTo(scholarshipImage.snp.bottom).offset(-75)
+            make.bottom.equalTo(scholarshipImage.snp.bottom).offset(-50)
             make.leading.equalToSuperview().inset(25)
             make.width.equalTo(170)
             make.height.equalTo(50)

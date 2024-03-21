@@ -11,6 +11,23 @@ import SnapKit
 
 class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, HomeHeaderCellDelegate, HomeFooterCellDelegate {
     //MARK: - UIComponent
+    private lazy var mainIcon : UIBarButtonItem = {
+        let view = UIBarButtonItem(image: UIImage(named: "mainIcon"), style: .plain, target: self, action: nil)
+        view.tintColor = .PrimaryColor
+        return view
+    }()
+    //검색 버튼
+    private lazy var searchBtn : UIBarButtonItem = {
+        let btn = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        btn.tintColor = .gray
+        return btn
+    }()
+    //알림 버튼
+    private lazy var alertBtn : UIBarButtonItem = {
+        let btn = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: self, action: nil)
+        btn.tintColor = .gray
+        return btn
+    }()
     //상세 페이지 테이블
     private let tableView : UITableView = {
         let view = UITableView()
@@ -28,7 +45,7 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +62,8 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
 extension HomeViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
-        self.title = "홈"
+        self.navigationItem.leftBarButtonItem = mainIcon
+        self.navigationItem.rightBarButtonItems = [alertBtn, searchBtn]
         self.navigationController?.navigationBar.backgroundColor = .white
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -67,7 +85,7 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 400
+            return 370
         case 1:
             return 250
         case 2:
