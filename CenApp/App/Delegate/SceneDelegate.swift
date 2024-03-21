@@ -13,13 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         guard let windowScene = (scene as? UIWindowScene) else {return}
         window = UIWindow(frame: UIScreen.main.bounds)
-        if let JWTaccessToken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken"){
-            print("\(JWTaccessToken)")
+        if KeychainWrapper.standard.string(forKey: "JWTaccesstoken") != nil{
             let viewController = TabViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window?.rootViewController = navigationController
         }else{
-            let viewController = LoginViewController()
+            let viewController = HomeViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
             window?.rootViewController = navigationController
         }
