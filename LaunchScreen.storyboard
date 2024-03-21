@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +21,12 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="PrimaryColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ecw-Yr-lO0" secondAttribute="bottom" id="6vo-AG-TNQ"/>
                             <constraint firstItem="ecw-Yr-lO0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7fS-Fe-8Fs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ecw-Yr-lO0" secondAttribute="trailing" id="7q2-YW-iFm"/>
                             <constraint firstItem="ecw-Yr-lO0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="S1g-J8-HGS"/>
-                            <constraint firstItem="ecw-Yr-lO0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YFH-6P-dDu"/>
                             <constraint firstItem="ecw-Yr-lO0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sBf-g5-wqE"/>
                         </constraints>
                     </view>
@@ -38,5 +38,8 @@
     </scenes>
     <resources>
         <image name="Splash" width="430" height="932"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.29803921568627451" green="0.56470588235294117" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

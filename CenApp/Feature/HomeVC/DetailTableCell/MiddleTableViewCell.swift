@@ -52,7 +52,7 @@ class MiddleTableViewCell: UITableViewCell {
         view.addSubview(dayLabel)
         image.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(15)
-            make.width.height.equalTo(15)
+            make.width.height.equalTo(20)
         }
         dayLabel.snp.makeConstraints { make in
             make.top.trailing.equalToSuperview().inset(15)
