@@ -27,15 +27,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
     }
 }
-//MARK: - LoginCheckConnection
-//LoginCheckService.requestLogin { result in
-//    if let message = result?.message {
-//        if message == "login" {
-//        }
-//    }
-//} onError: { error in
-//    LogoutService.requestLogout()
-//    let viewController = LoginViewController()
-//    let navigationController = UINavigationController(rootViewController: viewController)
-//    self.window?.rootViewController = navigationController
-//}

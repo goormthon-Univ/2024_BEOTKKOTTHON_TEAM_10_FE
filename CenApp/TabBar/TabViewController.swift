@@ -11,6 +11,7 @@ class TabViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        self.LoginCheck() //로그인 확인
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,4 +43,18 @@ class TabViewController: UITabBarController {
         self.navigationController?.isNavigationBarHidden = false
     }
 }
-
+//MARK: - LoginCheckConnection
+extension TabViewController {
+    private func LoginCheck() {
+        LoginCheckService.requestLogin { result in
+            if let message = result?.message {
+                if message == "login" {
+                    return
+                }
+            }
+        } onError: { error in
+            LogoutService.requestLogout()
+            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+        }
+    }
+}
