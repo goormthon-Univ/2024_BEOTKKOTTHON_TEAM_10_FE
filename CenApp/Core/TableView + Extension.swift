@@ -43,39 +43,58 @@ class AnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
 }
 //MARK: - 마감임박 테이블
 class mainSupportTableViewDataSource: NSObject, UITableViewDataSource {
+    var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if scholarships.count == 0 {
+            return 0
+        }else {
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! MiddleTableViewCell
         cell.selectionStyle = .none
+        cell.backgroundColor = .PrimaryColor2
+        let scholarship = scholarships[indexPath.row]
+        cell.titleLabel.text = scholarship.title
+        if let dday = scholarship.dday {
+            cell.dayLabel.text = "D-\(dday)" //데드라인
+        }
         return cell
     }
 }
-
 class mainSupportTableViewDelegate: NSObject, UITableViewDelegate {
+    var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 }
 //MARK: - 새로운 공고 테이블
 class newAnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
+    var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if scholarships.count == 0{
+            return 0
+        }else {
+            return 5
+        }
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BottomTableViewCell
         cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         cell.selectionStyle = .none
         cell.backgroundColor = .white
+        let scholarship = scholarships[indexPath.row]
+        cell.titleLabel.text = scholarship.title
+        cell.subLabel.text = scholarship.provider
+        
         return cell
     }
 }
-
 class newAnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
+    var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }

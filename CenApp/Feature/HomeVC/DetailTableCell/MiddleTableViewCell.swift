@@ -16,20 +16,20 @@ class MiddleTableViewCell: UITableViewCell {
         view.contentMode = .scaleAspectFit
         return view
     }()
-    private let titleLabel: UITextField = {
+    public let titleLabel: UITextField = {
         let view = UITextField()
         view.textColor = .black
-        view.text = "강북구 꿈나무키움 장학"
+        view.text = ""
         view.backgroundColor = .clear
         view.font = UIFont.systemFont(ofSize: 15)
         view.textAlignment = .left
         view.isEnabled = false
         return view
     }()
-    private let dayLabel : UILabel = {
+    public let dayLabel : UILabel = {
         let label = UILabel()
         label.textColor = .red
-        label.text = "D-1"
+        label.text = ""
         label.textAlignment = .center
         label.backgroundColor = .white
         label.layer.cornerRadius = 10

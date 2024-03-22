@@ -28,26 +28,8 @@ class HomeHeaderCell: UITableViewCell {
     //장학금 수령액
     private let scholarshipAmount : UITextView = {
         let view = UITextView()
-        let attributedText = NSMutableAttributedString()
-        
-        let firstPart = NSAttributedString(string: "지금 신청만 하면", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)
-        ])
-        let secondPart = NSAttributedString(string: "\n365만원", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.PrimaryColor,
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)
-        ])
-        let thirdPart = NSAttributedString(string: "을\n받을 수 있어요", attributes: [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)
-        ])
-        attributedText.append(firstPart)
-        attributedText.append(secondPart)
-        attributedText.append(thirdPart)
         view.isEditable = false
         view.isScrollEnabled = false
-        view.attributedText = attributedText
         view.backgroundColor = .clear
         view.textAlignment = .left
         view.clipsToBounds = true
@@ -66,6 +48,7 @@ class HomeHeaderCell: UITableViewCell {
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        AmountData()
         setLayout()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -106,5 +89,29 @@ extension HomeHeaderCell {
 extension HomeHeaderCell {
     @objc private func announcementBtnTapped() {
         delegate?.didTapAnnouncementButton()
+    }
+    public func AmountData() {
+        AmountService.requestAmount(completion: { [weak self] amount in
+            guard let self = self, let amount = amount else { return }
+            let attributedText = NSMutableAttributedString()
+            let firstPart = NSAttributedString(string: "지금 신청만 하면", attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.black,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)
+            ])
+            let secondPart = NSAttributedString(string: "\n\(amount)", attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.PrimaryColor,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)
+            ])
+            let thirdPart = NSAttributedString(string: "을\n받을 수 있어요", attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.black,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)
+            ])
+            attributedText.append(firstPart)
+            attributedText.append(secondPart)
+            attributedText.append(thirdPart)
+            self.scholarshipAmount.attributedText = attributedText
+        }, onError: { error in
+            print("Error fetching scholarships: \(error)")
+        })
     }
 }

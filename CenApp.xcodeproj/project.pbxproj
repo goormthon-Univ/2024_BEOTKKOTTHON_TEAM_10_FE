@@ -71,6 +71,8 @@
 		E409E1D12BACAAF40013D913 /* FindpwService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D02BACAAF40013D913 /* FindpwService.swift */; };
 		E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D32BACAC1C0013D913 /* FindpwModel.swift */; };
 		E409E1D62BACAC3D0013D913 /* FindpwServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D52BACAC3D0013D913 /* FindpwServiceModel.swift */; };
+		E409E1D82BAD7A0B0013D913 /* AmountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D72BAD7A0B0013D913 /* AmountService.swift */; };
+		E409E1DA2BAD7A810013D913 /* AmountServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,8 @@
 		E409E1D02BACAAF40013D913 /* FindpwService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwService.swift; sourceTree = "<group>"; };
 		E409E1D32BACAC1C0013D913 /* FindpwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwModel.swift; sourceTree = "<group>"; };
 		E409E1D52BACAC3D0013D913 /* FindpwServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindpwServiceModel.swift; sourceTree = "<group>"; };
+		E409E1D72BAD7A0B0013D913 /* AmountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountService.swift; sourceTree = "<group>"; };
+		E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountServiceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				E409E1A22BAB34060013D913 /* AnnoucementService.swift */,
+				E409E1D72BAD7A0B0013D913 /* AmountService.swift */,
 			);
 			path = Annoucement;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */,
+				E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */,
 			);
 			path = Annoucement;
 			sourceTree = "<group>";
@@ -780,6 +786,7 @@
 				58FE17072BA9B5ED00FA3363 /* SignupService.swift in Sources */,
 				E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */,
 				E409E1D62BACAC3D0013D913 /* FindpwServiceModel.swift in Sources */,
+				E409E1DA2BAD7A810013D913 /* AmountServiceModel.swift in Sources */,
 				580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */,
 				58FE17092BA9B61F00FA3363 /* TableView + Extension.swift in Sources */,
 				58FE16E82BA9B5CD00FA3363 /* DocumentTableViewCell.swift in Sources */,
@@ -819,6 +826,7 @@
 				E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */,
 				58FE17062BA9B5ED00FA3363 /* LoginService.swift in Sources */,
 				58FE16F22BA9B5CD00FA3363 /* StartOnboardingViewController.swift in Sources */,
+				E409E1D82BAD7A0B0013D913 /* AmountService.swift in Sources */,
 				58FE16EB2BA9B5CD00FA3363 /* MiddleTableViewCell.swift in Sources */,
 				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
 				E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */,

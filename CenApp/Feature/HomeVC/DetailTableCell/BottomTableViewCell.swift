@@ -19,29 +19,29 @@ class BottomTableViewCell: UITableViewCell {
         view.layer.borderWidth = 1
         return view
     }()
-    private let titleLabel: UILabel = {
+    public let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "성적장학금"
+        label.text = ""
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.font = UIFont.systemFont(ofSize: 20)
         label.backgroundColor = .white
         return label
     }()
-    private let subLabel : UILabel = {
+    public let subLabel : UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.textAlignment = .left
-        label.text = "한국장학재단"
+        label.text = ""
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.font = UIFont.systemFont(ofSize: 15)
         label.backgroundColor = .white
         return label
     }()
-    private let tagLabel1 : UILabel = {
+    public let tagLabel1 : UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
@@ -52,7 +52,7 @@ class BottomTableViewCell: UITableViewCell {
         label.backgroundColor = .PrimaryColor2
         return label
     }()
-    private let tagLabel2 : UILabel = {
+    public let tagLabel2 : UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center

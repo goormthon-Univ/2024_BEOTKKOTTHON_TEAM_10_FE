@@ -49,7 +49,7 @@ class HomeFooterCell: UITableViewCell {
         return btn
     }()
     //장학금 테이블
-    private let checkTableView : UITableView = {
+    public let checkTableView : UITableView = {
         let view = UITableView()
         view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         view.backgroundColor = .white
@@ -64,6 +64,8 @@ class HomeFooterCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
+        setTable()
+        fetchData()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,6 +73,10 @@ class HomeFooterCell: UITableViewCell {
 }
 //MARK: - Layout
 extension HomeFooterCell {
+    private func setTable() {
+        checkTableView.delegate = secondTableViewDelegate
+        checkTableView.dataSource = secondTableViewDataSource
+    }
     private func setLayout() {
         let view = self.contentView
         self.checkTableView.delegate = secondTableViewDelegate
@@ -140,5 +146,18 @@ extension HomeFooterCell {
 extension HomeFooterCell {
     @objc private func announcementBtnTapped() {
         delegate?.didTapNewAnnouncementButton()
+    }
+    //데이터 fetch
+    public func fetchData() {
+        AnnoucementService.scholarshipNew(completion: { [weak self] scholarships in
+            guard let self = self, let scholarships = scholarships else { return }
+            self.secondTableViewDelegate.scholarships = scholarships
+            self.secondTableViewDataSource.scholarships = scholarships
+            DispatchQueue.main.async {
+                self.checkTableView.reloadData() // 테이블 뷰 데이터 리로드
+            }
+        }, onError: { error in
+            print("Error fetching scholarships: \(error)")
+        })
     }
 }

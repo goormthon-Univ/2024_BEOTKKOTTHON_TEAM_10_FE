@@ -169,7 +169,7 @@ extension AnnoucementDetailViewController {
         let alertView = SCLAlertView()
         alertView.iconTintColor = .PrimaryColor
         alertView.addButton("캘린더로 이동", backgroundColor: .PrimaryColor, textColor: .white) {
-
+            
         }
         alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
     }

@@ -11,6 +11,13 @@ import SnapKit
 
 class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, HomeHeaderCellDelegate, HomeFooterCellDelegate {
     //MARK: - UIComponent
+    //재로드 refresh
+    private lazy var refreshIndicator : UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = .cGray
+        control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        return control
+    }()
     private lazy var mainIcon : UIBarButtonItem = {
         let view = UIBarButtonItem(image: UIImage(named: "mainIcon"), style: .plain, target: self, action: nil)
         view.tintColor = .PrimaryColor
@@ -65,6 +72,7 @@ extension HomeViewController {
         self.navigationItem.leftBarButtonItem = mainIcon
         self.navigationItem.rightBarButtonItems = [alertBtn, searchBtn]
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.tableView.addSubview(refreshIndicator)
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview().inset(0)
@@ -117,6 +125,23 @@ extension HomeViewController {
 }
 // MARK: - Actions
 extension HomeViewController {
+    @objc private func refreshData() {
+        refreshIndicator.endRefreshing()
+        // 첫 번째 셀 초기화와 재설정
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HomeHeaderCell {
+            cell.delegate = self
+            cell.AmountData()
+        }
+        // 두 번째 셀 초기화와 재설정
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? HomeMiddleCell {
+            cell.fetchData()
+        }
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? HomeFooterCell {
+            cell.delegate = self
+            cell.fetchData()
+        }
+        tableView.reloadData()
+    }
     func didTapAnnouncementButton() {
         let announcementVC = AnnoucementViewController(order: "마감순")
         navigationController?.pushViewController(announcementVC, animated: true)
