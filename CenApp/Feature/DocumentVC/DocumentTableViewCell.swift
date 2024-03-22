@@ -15,12 +15,12 @@ class DocumentTableViewCell: UITableViewCell{
     weak var delegate: DocumentCellDelegate?
     private var index: Int = 0
     //버튼을 추가
-    public let Categories : [String] = ["공인인증서", "가족관계증명서", "기초생활수급 증명서"]
+    public var Categories : [String] = [""]
+    public var Sites : [String] = [""]
     //ㄱ,ㄴ,ㄷ...순
     public let consonantLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
-        label.text = "ㄱ"
         label.textAlignment = .left
         label.backgroundColor = .PrimaryColor2
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -50,7 +50,6 @@ extension DocumentTableViewCell {
         let view = self.contentView
         view.backgroundColor = .PrimaryColor2
         view.addSubview(consonantLabel)
-        AddBtnStack()
         view.addSubview(BtnStack)
         view.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(0)
@@ -67,7 +66,13 @@ extension DocumentTableViewCell {
             make.height.equalTo(CGFloat(Categories.count) * CGFloat(62))
         }
     }
+    public func setupCategories(_ categories: [String], _ sites: [String]) {
+        Sites = sites
+        Categories = categories
+        AddBtnStack()
+    }
     private func AddBtnStack() {
+        var i = 0
         for (index, cell) in Categories.enumerated() {
             //버튼을 담을 뷰
             let View = UIView()
@@ -84,11 +89,21 @@ extension DocumentTableViewCell {
             label.backgroundColor = .clear
             label.text = cell
             label.textAlignment = .left
+            label.clipsToBounds = true
             label.font = UIFont.boldSystemFont(ofSize: 15)
+            
+            let siteLabel = UITextField()
+            siteLabel.textColor = .white
+            siteLabel.backgroundColor = .clear
+            siteLabel.isEnabled = false
+            siteLabel.clipsToBounds = true
+            siteLabel.text = Sites[i]
+            i += 1
             
             self.index = index
             View.addSubview(Btn)
             View.addSubview(label)
+            View.addSubview(siteLabel)
             BtnStack.addArrangedSubview(View)
             View.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(0)
@@ -100,6 +115,9 @@ extension DocumentTableViewCell {
             label.snp.makeConstraints { make in
                 make.top.bottom.equalToSuperview().inset(0)
                 make.leading.trailing.equalToSuperview().inset(20)
+            }
+            BtnStack.snp.updateConstraints { make in
+                make.height.equalTo(CGFloat(Categories.count) * CGFloat(62))
             }
         }
     }

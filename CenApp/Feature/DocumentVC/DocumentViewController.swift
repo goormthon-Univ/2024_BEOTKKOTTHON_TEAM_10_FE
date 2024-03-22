@@ -11,7 +11,7 @@ import UIKit
 import iOSDropDown
 class DocumentViewController : UIViewController {
     //MARK: - UI Component
-    private var documents : [DocumentServiceModel] = []
+    private var documents = DocumentServiceModel(ㄱ: [], ㄴ: [], ㄷ: [])
     //카테고리 리스트
     static let documentCategories = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
     private let categoryStackView: UIStackView = {
@@ -68,7 +68,6 @@ class DocumentViewController : UIViewController {
         super.viewDidLoad()
         setTableView()
         setLayout()
-        fetch()
     }
 }
 //MARK: - UI Layout
@@ -139,9 +138,10 @@ extension DocumentViewController : UITableViewDelegate, UITableViewDataSource, D
     private func setTableView() {
         documentTableView.delegate = self
         documentTableView.dataSource = self
+        fetch()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return documents.count
+        return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
@@ -149,18 +149,42 @@ extension DocumentViewController : UITableViewDelegate, UITableViewDataSource, D
         cell.selectionStyle = .none
         cell.backgroundColor = .PrimaryColor2
         cell.delegate = self
-//        let document = documents[indexPath.row]
-        
+        switch indexPath.row {
+        case 0:
+            cell.setupCategories(documents.ㄱ.compactMap { $0.title }, documents.ㄱ.compactMap { $0.site })
+            cell.consonantLabel.text = "ㄱ"
+        case 1:
+            cell.setupCategories(documents.ㄴ.compactMap { $0.title }, documents.ㄴ.compactMap { $0.site })
+            cell.consonantLabel.text = "ㄴ"
+        case 2:
+            cell.setupCategories(documents.ㄷ.compactMap { $0.title }, documents.ㄷ.compactMap { $0.site })
+            cell.consonantLabel.text = "ㄷ"
+        default:
+            break
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        return CGFloat(documents.compactMap { $0.title }.count) * CGFloat(20)
-        return 300
+        switch indexPath.row {
+        case 0:
+            return CGFloat(documents.ㄱ.count) * CGFloat(100)
+        case 1:
+            return CGFloat(documents.ㄴ.count) * CGFloat(100)
+        case 2:
+            return CGFloat(documents.ㄷ.count) * CGFloat(100)
+        default:
+            break
+        }
+        return 200
     }
     func didTapBtn(in cell: DocumentTableViewCell, atIndex index: Int) {
         if let label = cell.BtnStack.arrangedSubviews[index].subviews.compactMap({ $0 as? UILabel }).first {
             label.textColor = .PrimaryColor
-            showSheet(Info: DocumentServiceModel(id: documents[index].id, title: documents[index].title, site: documents[index].site))
+            if let title = label.text,
+               let siteText = cell.BtnStack.arrangedSubviews[index].subviews.compactMap({ $0 as? UITextField }).first {
+                let site = siteText.text
+                showSheet(Info: Document(id: 0, title: title, site: site))
+            }
         }
     }
     func bottomSheetDismissed() {
@@ -182,13 +206,13 @@ extension DocumentViewController{
         scrollToCategory(categoryIndex)
     }
     func scrollToCategory(_ categoryIndex: Int) {
-        let indexPath = IndexPath(row: 0, section: categoryIndex)
+        let indexPath = IndexPath(row: categoryIndex, section: 0)
         documentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
-    func showSheet(Info : DocumentServiceModel) {
+    func showSheet(Info : Document) {
         let viewControllerToPresent = BottomSheetViewController(Info: Info)
         viewControllerToPresent.dismissDelegate = self
-        let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
+        let detentIdentifier =  UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
             let safeAreaBottom = windowScene?.windows.first?.safeAreaInsets.bottom ?? 0
@@ -205,6 +229,7 @@ extension DocumentViewController{
         present(viewControllerToPresent, animated: true, completion: nil)
     }
     private func fetch() {
+        self.loadingIndicator.startAnimating()
         DocumentService.requestDocument(completion: { [weak self] documents in
             guard let self = self, let documents = documents else { return }
             self.documents = documents

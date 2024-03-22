@@ -13,8 +13,8 @@ protocol BottomSheetDismissDelegate: AnyObject {
 }
 class BottomSheetViewController : UIViewController {
     weak var dismissDelegate: BottomSheetDismissDelegate?
-    var Info : DocumentServiceModel
-    init(Info : DocumentServiceModel) {
+    var Info : Document
+    init(Info : Document) {
         self.Info = Info
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,6 +54,7 @@ class BottomSheetViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        setValue()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -91,7 +92,7 @@ extension BottomSheetViewController {
 extension BottomSheetViewController {
     private func setValue() {
         self.titleLabel.text = Info.title
-//        self.decLabel.text = Info.
+        self.decLabel.text = "어디? 들어와야함"
     }
     @objc private func supportBtnTapped() {
         if let postSite = Info.site {
