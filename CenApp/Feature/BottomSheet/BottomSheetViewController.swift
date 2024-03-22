@@ -8,23 +8,32 @@
 import Foundation
 import UIKit
 import SnapKit
-
+protocol BottomSheetDismissDelegate: AnyObject {
+    func bottomSheetDismissed()
+}
 class BottomSheetViewController : UIViewController {
+    weak var dismissDelegate: BottomSheetDismissDelegate?
+    var Info : DocumentServiceModel
+    init(Info : DocumentServiceModel) {
+        self.Info = Info
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     //서류이름
-    private let titleLabel : UILabel = {
+    public let titleLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-        label.text = "공인인증서"
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 35)
         label.textAlignment = .left
         return label
     }()
     //서류 상세
-    private let decLabel : UILabel = {
+    public let decLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-        label.text = "KB 국민은행"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .left
@@ -45,6 +54,12 @@ class BottomSheetViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed {
+            dismissDelegate?.bottomSheetDismissed()
+        }
     }
 }
 //MARK: - UI Layout
@@ -70,5 +85,19 @@ extension BottomSheetViewController {
             make.top.equalTo(decLabel.snp.bottom).offset(50)
             make.height.equalTo(50)
         }
+    }
+}
+//MARK: - Actions
+extension BottomSheetViewController {
+    private func setValue() {
+        self.titleLabel.text = Info.title
+//        self.decLabel.text = Info.
+    }
+    @objc private func supportBtnTapped() {
+        if let postSite = Info.site {
+            if let url = URL(string: postSite) {
+                UIApplication.shared.open(url)
+            }else { print("존재하지 않는 url") }
+        }else{ print("존재하지 않는 url") }
     }
 }

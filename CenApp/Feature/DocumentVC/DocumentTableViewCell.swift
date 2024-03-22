@@ -8,8 +8,16 @@
 import Foundation
 import UIKit
 import SnapKit
-class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
-    private let consonantLabel : UILabel = {
+protocol DocumentCellDelegate : AnyObject {
+    func didTapBtn(in cell: DocumentTableViewCell, atIndex index: Int)
+}
+class DocumentTableViewCell: UITableViewCell{
+    weak var delegate: DocumentCellDelegate?
+    private var index: Int = 0
+    //버튼을 추가
+    public let Categories : [String] = ["공인인증서", "가족관계증명서", "기초생활수급 증명서"]
+    //ㄱ,ㄴ,ㄷ...순
+    public let consonantLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.text = "ㄱ"
@@ -19,17 +27,13 @@ class DocumentTableViewCell: UITableViewCell, UITableViewDelegate, UITableViewDa
         label.layer.masksToBounds = true
         return label
     }()
-    //테이블 뷰
-    public let detailTableView : UITableView = {
-        let view = UITableView()
+    //버튼들을 담을 스택
+    public let BtnStack : UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 10
         view.backgroundColor = .PrimaryColor2
-        view.isEditing = false
-        view.layer.cornerRadius = 10
-        view.layer.masksToBounds = true
-        view.separatorStyle = .none
-        view.allowsSelection = false
-        view.isScrollEnabled = false
-        view.register(DocumentDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.distribution = .fill
         return view
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,45 +50,65 @@ extension DocumentTableViewCell {
         let view = self.contentView
         view.backgroundColor = .PrimaryColor2
         view.addSubview(consonantLabel)
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
-        view.addSubview(detailTableView)
-        
+        AddBtnStack()
+        view.addSubview(BtnStack)
         view.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(0)
         }
         consonantLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(30)
             make.top.equalToSuperview().inset(10)
             make.height.equalTo(20)
         }
-        detailTableView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(50)
+        BtnStack.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(30)
+            make.trailing.equalToSuperview().inset(60)
             make.top.equalTo(consonantLabel.snp.bottom).offset(10)
-            make.bottom.equalToSuperview().inset(0)
+            make.height.equalTo(CGFloat(Categories.count) * CGFloat(62))
+        }
+    }
+    private func AddBtnStack() {
+        for (index, cell) in Categories.enumerated() {
+            //버튼을 담을 뷰
+            let View = UIView()
+            View.backgroundColor = .white
+            View.layer.cornerRadius = 10
+            View.layer.masksToBounds = true
+            //버튼
+            let Btn = UIButton()
+            Btn.backgroundColor = .clear
+            Btn.clipsToBounds = true
+            Btn.addTarget(self, action: #selector(BtnTapped), for: .touchUpInside)
+            //label
+            let label = UILabel()
+            label.backgroundColor = .clear
+            label.text = cell
+            label.textAlignment = .left
+            label.font = UIFont.boldSystemFont(ofSize: 15)
+            
+            self.index = index
+            View.addSubview(Btn)
+            View.addSubview(label)
+            BtnStack.addArrangedSubview(View)
+            View.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(0)
+                make.height.equalTo(55)
+            }
+            Btn.snp.makeConstraints { make in
+                make.leading.trailing.top.bottom.equalToSuperview().inset(0)
+            }
+            label.snp.makeConstraints { make in
+                make.top.bottom.equalToSuperview().inset(0)
+                make.leading.trailing.equalToSuperview().inset(20)
+            }
         }
     }
 }
-//MARK: - TableViewDelegate, TableViewDatasource
+//MARK: - Actions
 extension DocumentTableViewCell {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "Cell", for: indexPath) as! DocumentDetailTableViewCell
-        cell.selectionStyle = .none
-        cell.backgroundColor = .PrimaryColor2
-        cell.consonantBtn.setTitleColor(.black, for: .normal)
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    func didTapButton(in cell: DocumentDetailTableViewCell) {
-        if detailTableView.indexPath(for: cell) != nil {
-            cell.consonantBtn.setTitleColor(.PrimaryColor, for: .normal)
+    @objc private func BtnTapped(sender: UIButton) {
+        if let index = BtnStack.arrangedSubviews.firstIndex(of: sender.superview!) {
+            delegate?.didTapBtn(in: self, atIndex: index)
         }
     }
 }

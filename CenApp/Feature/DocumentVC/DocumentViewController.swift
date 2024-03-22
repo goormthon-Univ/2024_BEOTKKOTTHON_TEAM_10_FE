@@ -10,9 +10,8 @@ import SnapKit
 import UIKit
 import iOSDropDown
 class DocumentViewController : UIViewController {
-    private let documentTableViewDelegate = DocumentTableViewDelegate()
-    private let documentTableViewDatasource = DocumentTableViewDataSource()
     //MARK: - UI Component
+    private var documents : [DocumentServiceModel] = []
     //카테고리 리스트
     static let documentCategories = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
     private let categoryStackView: UIStackView = {
@@ -132,14 +131,48 @@ extension DocumentViewController {
     }
 }
 //MARK: - TableViewDelegate, TableViewDataSource
-extension DocumentViewController {
+extension DocumentViewController : UITableViewDelegate, UITableViewDataSource, DocumentCellDelegate, BottomSheetDismissDelegate{
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
         fetch()
     }
     private func setTableView() {
-        documentTableView.delegate = documentTableViewDelegate
-        documentTableView.dataSource = documentTableViewDatasource
+        documentTableView.delegate = self
+        documentTableView.dataSource = self
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return documents.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
+        cell.selectionStyle = .none
+        cell.backgroundColor = .PrimaryColor2
+        cell.delegate = self
+//        let document = documents[indexPath.row]
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //        return CGFloat(documents.compactMap { $0.title }.count) * CGFloat(20)
+        return 300
+    }
+    func didTapBtn(in cell: DocumentTableViewCell, atIndex index: Int) {
+        if let label = cell.BtnStack.arrangedSubviews[index].subviews.compactMap({ $0 as? UILabel }).first {
+            label.textColor = .PrimaryColor
+            showSheet(Info: DocumentServiceModel(id: documents[index].id, title: documents[index].title, site: documents[index].site))
+        }
+    }
+    func bottomSheetDismissed() {
+        for cell in documentTableView.visibleCells {
+            if let documentCell = cell as? DocumentTableViewCell {
+                for subview in documentCell.BtnStack.arrangedSubviews {
+                    if let label = subview.subviews.compactMap({ $0 as? UILabel }).first {
+                        label.textColor = .black
+                    }
+                }
+            }
+        }
     }
 }
 //MARK: - Actions
@@ -152,8 +185,9 @@ extension DocumentViewController{
         let indexPath = IndexPath(row: 0, section: categoryIndex)
         documentTableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
-    func showSheet() {
-        let viewControllerToPresent = BottomSheetViewController()
+    func showSheet(Info : DocumentServiceModel) {
+        let viewControllerToPresent = BottomSheetViewController(Info: Info)
+        viewControllerToPresent.dismissDelegate = self
         let detentIdentifier = UISheetPresentationController.Detent.Identifier("customDetent")
         let customDetent = UISheetPresentationController.Detent.custom(identifier: detentIdentifier) { _ in
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -164,7 +198,6 @@ extension DocumentViewController{
             sheet.detents = [customDetent]
             sheet.prefersGrabberVisible = true
             sheet.preferredCornerRadius = 30
-            sheet.largestUndimmedDetentIdentifier = .medium
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
@@ -174,8 +207,7 @@ extension DocumentViewController{
     private func fetch() {
         DocumentService.requestDocument(completion: { [weak self] documents in
             guard let self = self, let documents = documents else { return }
-            documentTableViewDatasource.documents = documents
-            documentTableViewDelegate.documents = documents
+            self.documents = documents
             DispatchQueue.main.async {
                 self.documentTableView.reloadData() // 테이블 뷰 데이터 리로드
                 self.loadingIndicator.stopAnimating()

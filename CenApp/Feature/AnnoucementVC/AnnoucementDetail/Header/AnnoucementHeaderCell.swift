@@ -12,7 +12,7 @@ class AnnoucementHeaderCell: UITableViewCell, UITextViewDelegate {
     public let titleLabel : UITextView = {
         let label = UITextView()
         label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.text = "우아한 사장님 자녀 장학금 지원 대학생 일반 장학생 모집"
+        label.text = ""
         label.textColor = .black
         label.backgroundColor = .white
         label.textAlignment = .left

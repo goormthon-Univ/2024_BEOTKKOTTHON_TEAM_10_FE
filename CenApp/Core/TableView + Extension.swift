@@ -7,26 +7,6 @@
 
 import Foundation
 import UIKit
-//MARK: - 서류 디테일
-//MARK: - 서류
-class DocumentTableViewDataSource: NSObject, UITableViewDataSource{
-    var documents : [DocumentServiceModel] = [] //서류 데이터
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return documents.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "Cell", for: indexPath) as! DocumentTableViewCell
-        cell.selectionStyle = .none
-        return cell
-    }
-}
-class DocumentTableViewDelegate: NSObject, UITableViewDelegate {
-    var documents : [DocumentServiceModel] = [] //서류 데이터
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
-    }
-}
 //MARK: - 장학금 공고 테이블
 class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
     var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
@@ -37,10 +17,14 @@ class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell", for: indexPath) as! AnnoucementTableViewCell
         cell.selectionStyle = .none
+        
         let scholarship = scholarships[indexPath.row]
         cell.titleText.text = scholarship.title //타이틀
         cell.companyLabel.text = scholarship.provider //제공자
-        
+        cell.dayLabel.text = scholarship.endDate //마감일
+        if let dday = scholarship.dday {
+            cell.deadlineLabel.text = "D-\(dday)" //데드라인
+        }
         return cell
     }
 }

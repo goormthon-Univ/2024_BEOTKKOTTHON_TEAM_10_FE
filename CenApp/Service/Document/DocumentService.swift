@@ -16,7 +16,6 @@ class DocumentService {
         AF.request(url, method: .get, encoding: JSONEncoding.default)
             .validate()
             .responseDecodable(of: [DocumentServiceModel].self ) { response in
-                print("서류 결과 \(response.description)")
                 switch response.result {
                 case .success(let data):
                     completion(data)
