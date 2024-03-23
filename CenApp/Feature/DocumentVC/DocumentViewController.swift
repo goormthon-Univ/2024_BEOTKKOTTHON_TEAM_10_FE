@@ -12,9 +12,9 @@ import iOSDropDown
 import NVActivityIndicatorView
 class DocumentViewController : UIViewController {
     //MARK: - UI Component
-    private var documents = DocumentServiceModel(ㄱ: [], ㄴ: [], ㄷ: [])
+    private var documents = DocumentServiceModel(ㄱ: [], ㄷ: [], ㅈ: [], ㅎ: [])
     //카테고리 리스트
-    static let documentCategories = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+    static let documentCategories = ["ㄱ", "ㄷ", "ㅈ", "ㅎ"]
     private let categoryStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -76,6 +76,7 @@ class DocumentViewController : UIViewController {
         super.viewDidLoad()
         setTableView()
         setLayout()
+        fetch()
     }
 }
 //MARK: - UI Layout
@@ -96,7 +97,10 @@ extension DocumentViewController {
         self.view.addSubview(documentTableView)
         //카테고리
         createCategoryButtons()
+        let View = UIView()
+        View.backgroundColor = .white
         self.view.addSubview(categoryStackView)
+        self.view.addSubview(View)
         self.view.addSubview(errormessage)
         
         titleLabel.snp.makeConstraints { make in
@@ -121,7 +125,7 @@ extension DocumentViewController {
         categoryStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20)
             make.top.equalTo(headerView.snp.bottom).offset(10)
-            make.height.equalTo(460)
+            make.height.equalTo(140)
             make.width.equalTo(20)
         }
         errormessage.snp.makeConstraints { make in
@@ -148,15 +152,15 @@ extension DocumentViewController {
 extension DocumentViewController : UITableViewDelegate, UITableViewDataSource, DocumentCellDelegate, BottomSheetDismissDelegate{
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        setTableView()
         fetch()
     }
     private func setTableView() {
         documentTableView.delegate = self
         documentTableView.dataSource = self
-        fetch()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
@@ -166,27 +170,34 @@ extension DocumentViewController : UITableViewDelegate, UITableViewDataSource, D
         cell.delegate = self
         switch indexPath.row {
         case 0:
-            cell.setupCategories(documents.ㄱ.compactMap { $0.title }, documents.ㄱ.compactMap { $0.site })
+            cell.setupCategories(documents: documents.ㄱ)
             cell.consonantLabel.text = "ㄱ"
         case 1:
-            cell.setupCategories(documents.ㄴ.compactMap { $0.title }, documents.ㄴ.compactMap { $0.site })
-            cell.consonantLabel.text = "ㄴ"
-        case 2:
-            cell.setupCategories(documents.ㄷ.compactMap { $0.title }, documents.ㄷ.compactMap { $0.site })
+            cell.setupCategories(documents: documents.ㄷ)
             cell.consonantLabel.text = "ㄷ"
+        case 2:
+            cell.setupCategories(documents: documents.ㅈ)
+            cell.consonantLabel.text = "ㅈ"
+        case 3:
+            cell.setupCategories(documents: documents.ㅎ)
+            cell.consonantLabel.text = "ㅎ"
         default:
-            break
+            cell.setupCategories(documents: [])
+            cell.consonantLabel.text = ""
         }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
             return CGFloat(documents.ㄱ.count) * CGFloat(100)
         case 1:
-            return CGFloat(documents.ㄴ.count) * CGFloat(100)
-        case 2:
             return CGFloat(documents.ㄷ.count) * CGFloat(100)
+        case 2:
+            return CGFloat(documents.ㅈ.count) * CGFloat(100)
+        case 3:
+            return CGFloat(documents.ㅎ.count) * CGFloat(100)
         default:
             break
         }

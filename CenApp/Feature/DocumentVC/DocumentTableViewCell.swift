@@ -43,6 +43,10 @@ class DocumentTableViewCell: UITableViewCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
 }
 //MARK: - UI Layout
 extension DocumentTableViewCell {
@@ -66,13 +70,14 @@ extension DocumentTableViewCell {
             make.height.equalTo(CGFloat(Categories.count) * CGFloat(62))
         }
     }
-    public func setupCategories(_ categories: [String], _ sites: [String]) {
-        Sites = sites
-        Categories = categories
+    public func setupCategories(documents : [Document]) {
+        self.Sites = documents.compactMap { $0.site }
+        self.Categories =  documents.compactMap { $0.title }
         AddBtnStack()
     }
     private func AddBtnStack() {
         var i = 0
+        BtnStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for (index, cell) in Categories.enumerated() {
             //버튼을 담을 뷰
             let View = UIView()

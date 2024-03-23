@@ -7,7 +7,7 @@
 
 import Foundation
 struct DocumentServiceModel : Codable {
-    let ㄱ, ㄴ, ㄷ : [Document]
+    let ㄱ, ㄷ, ㅈ, ㅎ  : [Document]
 //    ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ
 }
 struct Document: Codable {
