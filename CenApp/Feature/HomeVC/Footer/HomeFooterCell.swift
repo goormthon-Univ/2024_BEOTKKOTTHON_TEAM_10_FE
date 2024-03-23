@@ -186,8 +186,8 @@ extension HomeFooterCell {
             if errorcode == "404" {
                 self.errormessage.text = "추천 장학금이 없습니다⚠️"
             }else{
-                LogoutService.requestLogout()
-                self.logoutDelegate()
+//                LogoutService.requestLogout()
+//                self.logoutDelegate()
             }
             print("Error fetching scholarships: \(error)")
         })

@@ -80,17 +80,18 @@ class CalendarTableViewCell: UITableViewCell {
     public func addTapGestureToIngButton() {
         ingButton.addTarget(self, action: #selector(ingButtonTapped), for: .touchUpInside)
     }
+    var indexPath: IndexPath?
     // ingView 클릭 시 호출되는 메서드
     @objc func ingViewTapped() {
         delegate?.ingViewDidTap()
-        }
+    }
     // ingButton 클릭 시 호출되는 메서드
     @objc func ingButtonTapped() {
         print("ingButtonTapped() called")
-
-        delegate?.ingButtonDidTap()
+        guard let indexPath = indexPath else { return }
+        delegate?.ingButtonDidTap(in: self, at: indexPath)
     }
-   //진행상황 버튼
+    //진행상황 버튼
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //서버에서 데이터 받아와서 셀
@@ -167,8 +168,8 @@ class CalendarTableViewCell: UITableViewCell {
 //    }
 }
 protocol CalendarTableViewCellDelegate: AnyObject {
+    func ingButtonDidTap(in cell: CalendarTableViewCell, at indexPath: IndexPath)
     func ingViewDidTap()
-    func ingButtonDidTap()
 }
 extension CalendarTableViewCell {
     func amountdata() {

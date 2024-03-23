@@ -148,30 +148,16 @@ extension AnnoucementDetailViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as? AnnoucementMiddleCell else {
                 return UITableViewCell()
             }
-            if let startDate = post.startDate,
-               let endDate = post.endDate,
-               let target = post.supportTarget,
-               let target2 = post.supportTarget2,
-               let target3 = post.supportTarget3,
-               let amount = post.amount,
-               let amount2 = post.amount2,
-               let document = post.requiredDocuments {
-                cell.periodText.text = "\(startDate) ~ \(endDate)"
-                cell.targetText.text = "\(target)분위, \(target2), \(target3)"
-                cell.amountText.text = "\(amount)원, \(amount2)원"
-                cell.documentText.text = "\(document)"
-            }else{}
+            cell.periodText.text = "\(post.startDate ?? "") ~ \(post.endDate ?? "")"
+            cell.targetText.text = "\(post.supportTarget ?? "")분위, \(post.supportTarget2 ?? ""), \(post.supportTarget3 ?? "")"
+            cell.amountText.text = "\(post.amount ?? "")원, \(post.amount2 ?? "")원"
+            cell.documentText.text = "\(post.requiredDocuments ?? "")"
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdCell", for: indexPath) as? AnnoucementFooterCell else {
                 return UITableViewCell()
             }
-            if let dec = post.description,
-               let dec2 = post.description2,
-               let dec3 = post.description3,
-               let dec4 = post.description4 {
-                cell.infoText.text = "\(dec), \(dec2), \(dec3), \(dec4)"
-            }else{}
+            cell.infoText.text = "\(post.description ?? ""), \(post.description2 ?? ""), \(post.description3 ?? ""), \(post.description4 ?? "")"
             return cell
         }
     }
@@ -190,12 +176,15 @@ extension AnnoucementDetailViewController {
                         self.navigationController?.pushViewController(CalendarViewController(), animated: true)
                     }
                     alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
+                }else{
+                    let alertView = SCLAlertView()
+                    alertView.showError("저장 실패!")
                 }
             } onError: { error in
                 self.loadingIndicator.stopAnimating()
                 //로그아웃
-                LogoutService.requestLogout()
-                self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                let alertView = SCLAlertView()
+                alertView.showError("저장 실패!")
             }
         }
     }

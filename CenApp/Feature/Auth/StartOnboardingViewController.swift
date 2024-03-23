@@ -23,6 +23,7 @@ class StartOnboardingViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.backgroundColor = .PrimaryColor
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class StartOnboardingViewController : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.backgroundColor = .white
     }
 }
 // MARK: - UI Layout

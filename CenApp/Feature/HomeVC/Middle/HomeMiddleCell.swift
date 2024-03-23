@@ -121,8 +121,8 @@ extension HomeMiddleCell {
                 self.loadingIndicator.stopAnimating()
             }else{
                 self.loadingIndicator.stopAnimating()
-                LogoutService.requestLogout()
-                self.logoutDelegate()
+//                LogoutService.requestLogout()
+//                self.logoutDelegate()
             }
             print("Error fetching scholarships: \(error)")
         })

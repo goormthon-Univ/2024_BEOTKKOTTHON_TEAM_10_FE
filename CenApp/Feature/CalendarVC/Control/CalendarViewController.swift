@@ -51,14 +51,13 @@ class CalendarViewController: UIViewController, UITableViewDelegate {
     private lazy var refreshIndicator : UIRefreshControl = {
         let control = UIRefreshControl()
         control.tintColor = .SecondaryColor
-       // control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return control
     }()
     //MARK: -- 함수호출
     override func viewDidLoad() {
         super.viewDidLoad()
-        calendartTableView.delegate = calendarTableViewDelegate
-        calendartTableView.dataSource = calendarTableViewDatasource
+        setTable()
         let currentDate = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: currentDate)
@@ -125,11 +124,11 @@ class CalendarViewController: UIViewController, UITableViewDelegate {
         }, onError: { error in
             print("Error fetching scholarships: \(error)")
         })
-
-
-
     }
-    
+    func setTable() {
+        calendartTableView.delegate = calendarTableViewDelegate
+        calendartTableView.dataSource = calendarTableViewDatasource
+    }
     func configure() {
         configureTitleLabel()
         configureWeekStackView()
@@ -346,18 +345,12 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
 }
 //MARK: - CalendarTableViewCellDelegate
 extension CalendarViewController: CalendarTableViewCellDelegate {
-    func ingButtonDidTap() {
-        print("button tapped")
-        let popupVC = PopupViewController(title: "지원상태 변경")
-        popupVC.modalPresentationStyle = .overFullScreen
-        present(popupVC, animated: false)
+    func ingButtonDidTap(in cell: CalendarTableViewCell, at indexPath: IndexPath) {
+        
     }
     
     func ingViewDidTap() {
-        print("view tapped")
-        let popupVC = PopupViewController(title: "지원상태 변경")
-        popupVC.modalPresentationStyle = .overFullScreen
-        present(popupVC, animated: false)
+        
     }
 }
 //MARK: - TableViewDelegate, TableViewDataSource
@@ -386,49 +379,27 @@ extension CalendarViewController  {
            }
        }
 }
-//extension CalendarViewController: UITableViewDataSource {
-   
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 20
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(
-//            withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as! CalendarTableViewCell
-//        cell.delegate = self //델리게이트 설정
-//        cell.selectionStyle = .none
-//        let scholarship = scholarships[indexPath.row]
-//        cell.dayLabel.text = scholarship.endDate
-//        cell.companyLabel.text = scholarship.provider
-//        cell.titleText.text = scholarship.title
-//        if let dday = scholarship.dday {
-//            cell.dayLabel.text = "D-\(dday)" //데드라인
-//        }
-//        return cell
-//    }
-    //테이블 뷰 셀 클릭 시
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//       // self.navigationController?.pushViewController(AnnoucementDetailViewController(post: scholarship), animated: true)
-//        print("cell click")
-//    }
-//    @objc private func refreshData() {
-//        refreshIndicator.endRefreshing()
-//    }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 160
-//    }
-//    func updateDayLabel(at indexPath: IndexPath, with text: String) {
-//        if let cell = calendartTableView.cellForRow(at: indexPath) as? CalendarTableViewCell {
-//            print(text)
-//            print("클릭 ")
-//            cell.update(day: text)
-//        }
-//    }
-//}
 
 extension CalendarViewController {
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        setTable()
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: currentDate)
+        let month = String(format: "%02d", calendar.component(.month, from: currentDate))
+        CalendarAPI.fetchMonthData(year: String(year), month: month,completion: { [weak self] scholarships in
+            guard let self = self, let scholarships = scholarships else {return}
+            calendarTableViewDatasource.scholarships = scholarships
+            calendarTableViewDelegate.scholarships = scholarships
+            DispatchQueue.main.async {
+                print("tableview didload")
+                self.calendartTableView.reloadData() // 테이블 뷰 데이터 리로드
+                
+            }
+        },onError: {error in
+            print("Error fetching scholarships: \(error)")
+        })
     }
     private func configureCalendar() {
         self.dateFormatter.dateFormat = "M월"

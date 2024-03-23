@@ -151,9 +151,9 @@ extension HomeViewController {
         navigationController?.pushViewController(announcementVC, animated: true)
     }
     func didFooterLogout() {
-        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+//        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     func didMiddleLogout() {
-        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+//        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }

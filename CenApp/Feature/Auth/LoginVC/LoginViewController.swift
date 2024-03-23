@@ -147,6 +147,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate{
         super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.tintColor = .black
+        self.tabBarController?.tabBar.isHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()

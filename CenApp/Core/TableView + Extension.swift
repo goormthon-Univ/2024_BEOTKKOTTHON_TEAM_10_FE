@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SCLAlertView
 //MARK: - 장학금 공고 테이블
 class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
     var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
@@ -159,38 +160,72 @@ class CalendarTableViewDelegate : NSObject, UITableViewDelegate {
     var scholarships: [CalendarModel] = [] // 장학금 데이터 배열
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("셀셀셀 click")
         let scholarship = scholarships[indexPath.row]
-        let destinationViewController = AnnoucementDetailViewController(post:ScholarshipModel(id: scholarship.id, title: scholarship.title, description: scholarship.description, description2: scholarship.description2, description3: scholarship.description3, description4: scholarship.description4, provider: scholarship.provider, startDate: scholarship.start_date, endDate: scholarship.end_date, amount: scholarship.amount, amount2: scholarship.amount2, supportRanking: scholarship.supportRanking, supportGrade: scholarship.supportGrade, supportTarget: scholarship.supportTarget, supportTarget2: scholarship.supportTarget2, supportTarget3: scholarship.supportTarget3, supportCityProvince: scholarship.support_city_province, supportCityCountryDistrict: scholarship.support_city_country_district, supportMajor: scholarship.support_major, requiredDocuments: scholarship.required_documents, site: scholarship.site, createdAt: nil, dday: Int(scholarship.d_day!)))
-        
-        if let currentViewController = UIApplication.shared.keyWindow?.rootViewController {
-            // Check if the current view controller is embedded in a navigation controller
-            if let navigationController = currentViewController.navigationController {
-                navigationController.pushViewController(destinationViewController, animated: true)
-            } else {
-                // If not embedded in a navigation controller, present the destination view controller
-                currentViewController.present(destinationViewController, animated: true, completion: nil)
-            }
+        let model = ScholarshipModel(id: scholarship.id, title: scholarship.title, description: scholarship.description, description2: scholarship.description2, description3: scholarship.description3, description4: scholarship.description4, provider: scholarship.provider, startDate: scholarship.start_date, endDate: scholarship.end_date, amount: scholarship.amount, amount2: scholarship.amount2, supportRanking: scholarship.supportRanking, supportGrade: scholarship.supportGrade, supportTarget: scholarship.supportTarget, supportTarget2: scholarship.supportTarget2, supportTarget3: scholarship.supportTarget3, supportCityProvince: scholarship.support_city_province, supportCityCountryDistrict: scholarship.support_city_country_district, supportMajor: scholarship.support_major, requiredDocuments: scholarship.required_documents, site: scholarship.site, createdAt: nil, dday: Int(scholarship.d_day!))
+        let destinationViewController = AnnoucementDetailViewController(post: model)
+        if let navigationController = tableView.window?.rootViewController as? UINavigationController {
+            navigationController.pushViewController(destinationViewController, animated: true)
         }
     }
 }
-
-class CalendarTableViewDataSource : NSObject, UITableViewDataSource {
+class CalendarTableViewDataSource : NSObject, UITableViewDataSource, CalendarTableViewCellDelegate {
+    
     var scholarships: [CalendarModel] = [] // 장학금 데이터 배열
+    func ingButtonDidTap(in cell: CalendarTableViewCell, at indexPath: IndexPath) {
+        let scholarship = scholarships[indexPath.row]
+        
+        let alertView = SCLAlertView()
+        alertView.iconTintColor = .PrimaryColor
+        alertView.addButton("지원 중", backgroundColor: .ThirdaryColor, textColor: .black) {
+            CalenderService.requestApplying(info: scholarship.id ?? 0, status: "APPLYING") { result in
+                
+            } onError: { error in
+                
+            }
+        }
+        alertView.addButton("지원 완료", backgroundColor: .ThirdaryColor, textColor: .black) {
+            CalenderService.requestApplying(info: scholarship.id ?? 0, status: "COMPLETED") { result in
+                
+            } onError: { error in
+                
+            }
+        }
+        alertView.addButton("저장 취소", backgroundColor: .ThirdaryColor, textColor: .black) {
+            CalenderService.deleteCalender(scholarshipId: scholarship.id ?? 0) { result in
+                
+            }onError: { error in
+                
+            }
+        }
+        alertView.showCustom("\n지원상태 변경\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
+    }
+    func ingViewDidTap() {
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scholarships.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as! CalendarTableViewCell
-        //cell.delegate = self //델리게이트 설정
+        cell.delegate = self //델리게이트 설정
         cell.selectionStyle = .none
+        cell.indexPath = indexPath
         cell.backgroundColor = .PrimaryColor2
         let scholarship = scholarships[indexPath.row]
         cell.dayLabel.text = scholarship.end_date
         cell.companyLabel.text = scholarship.provider
         cell.titleText.text = scholarship.title
         cell.deadlineLabel.text = scholarship.d_day
+        if let dDayString = scholarship.d_day, dDayString.hasPrefix("D-"), let dDay = Int(dDayString.dropFirst(2)) {
+            if dDay <= 3 {
+                cell.deadlineLabel.textColor = .red
+            } else {
+                cell.deadlineLabel.textColor = .black
+            }
+        } else {
+            cell.deadlineLabel.textColor = .black
+        }
         switch scholarship.status {
         case "SAVED":
             cell.ingButton.setImage(UIImage(named: "Elipse2"), for: .normal)

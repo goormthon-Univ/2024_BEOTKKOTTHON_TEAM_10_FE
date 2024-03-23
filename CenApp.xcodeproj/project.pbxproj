@@ -94,6 +94,7 @@
 		E409E2492BAF51260013D913 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2402BAF51260013D913 /* PopupViewController.swift */; };
 		E409E24A2BAF51260013D913 /* MypopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2412BAF51260013D913 /* MypopupView.swift */; };
 		E409E24C2BAF52320013D913 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E24B2BAF52320013D913 /* CalendarTableViewCell.swift */; };
+		E409E24F2BAF5E120013D913 /* CalenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E24E2BAF5E120013D913 /* CalenderService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		E409E2402BAF51260013D913 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		E409E2412BAF51260013D913 /* MypopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypopupView.swift; sourceTree = "<group>"; };
 		E409E24B2BAF52320013D913 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarTableViewCell.swift; path = CenApp/Feature/Mypage/CalendarTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		E409E24E2BAF5E120013D913 /* CalenderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +497,7 @@
 		58FE17042BA9B5ED00FA3363 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E409E24D2BAF5DF90013D913 /* Calender */,
 				E409E21C2BAEB3790013D913 /* Alert */,
 				E409E1DB2BAE7EC00013D913 /* Tag */,
 				E409E1B12BABFD570013D913 /* Auth */,
@@ -785,6 +788,14 @@
 			path = PopControl;
 			sourceTree = "<group>";
 		};
+		E409E24D2BAF5DF90013D913 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				E409E24E2BAF5E120013D913 /* CalenderService.swift */,
+			);
+			path = Calender;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -998,6 +1009,7 @@
 				E409E2442BAF51260013D913 /* CalendarAPI.swift in Sources */,
 				E409E2432BAF51260013D913 /* CalendarDateFormatter.swift in Sources */,
 				E409E2312BAF4E700013D913 /* CalendarEndModel.swift in Sources */,
+				E409E24F2BAF5E120013D913 /* CalenderService.swift in Sources */,
 				58FE16F12BA9B5CD00FA3363 /* SignupViewController.swift in Sources */,
 				E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */,
 				58FE17062BA9B5ED00FA3363 /* LoginService.swift in Sources */,
