@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else {return}
         window = UIWindow(frame: UIScreen.main.bounds)
         if KeychainWrapper.standard.string(forKey: "JWTaccesstoken") != nil{
-            let viewController = DocumentViewController()
+            let viewController = TabViewController()
             let navigationController = UINavigationController(rootViewController: viewController)
             self.window?.rootViewController = navigationController
         }else{

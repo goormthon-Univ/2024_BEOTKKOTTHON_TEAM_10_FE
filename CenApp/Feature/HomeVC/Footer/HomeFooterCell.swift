@@ -66,6 +66,7 @@ class HomeFooterCell: UITableViewCell {
         setLayout()
         setTable()
         fetchData()
+        fetchHashTag()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -82,7 +83,6 @@ extension HomeFooterCell {
         self.checkTableView.delegate = secondTableViewDelegate
         self.checkTableView.dataSource = secondTableViewDataSource
         view.addSubview(checkLaebl)
-        self.addCheckStack()
         self.checkScrollView.addSubview(checkStackView)
         view.addSubview(checkScrollView)
         view.addSubview(moveToAnnouncement)
@@ -123,8 +123,7 @@ extension HomeFooterCell {
             make.width.equalTo(view.frame.height)
         }
     }
-    private func addCheckStack() {
-        let onboardList = ["#7분위", "#공학계열", "#4학년", "#서울", "#강북구"]
+    private func addCheckStack(onboardList : [String]) {
         for onboard in onboardList {
             let label = UILabel()
             label.text = onboard
@@ -148,6 +147,13 @@ extension HomeFooterCell {
         delegate?.didTapNewAnnouncementButton()
     }
     //데이터 fetch
+    public func fetchHashTag() {
+        HashtagService.requestTag{ result in
+            self.addCheckStack(onboardList: [result.grade, result.major, result.ranking, result.region_city_country_district, result.region_city_province])
+        } onError: { error in
+            print("Error fetching scholarships: \(error)")
+        }
+    }
     public func fetchData() {
         AnnoucementService.scholarshipNew(completion: { [weak self] scholarships in
             guard let self = self, let scholarships = scholarships else { return }
