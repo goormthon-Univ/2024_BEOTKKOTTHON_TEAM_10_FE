@@ -49,6 +49,10 @@ class IncomeViewController: CustomProgressViewController {
         $0.layer.masksToBounds = true
         $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         updateProgressBar(progress: 1/4)

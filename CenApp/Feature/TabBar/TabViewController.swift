@@ -15,6 +15,7 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LoginCheck()
+        fetchDeviceToken()
         self.tabBar.backgroundColor = .white
         // HomeViewController 생성 및 탭바 아이템 설정
         let homeVC = HomeViewController()
@@ -66,7 +67,7 @@ extension TabViewController {
                 }
             }
         } onError: { error in
-            
+            print("알람 허용 안함")
         }
     }
 }

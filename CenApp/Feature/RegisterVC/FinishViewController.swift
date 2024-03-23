@@ -49,9 +49,17 @@ class FinishViewController: CustomProgressViewController {
         }
         view.backgroundColor = .white
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let tabViewController = TabViewController()
-            UIApplication.shared.windows.first?.rootViewController = tabViewController
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                let tabViewController = TabViewController()
+                let navigationController = UINavigationController(rootViewController: tabViewController)
+                sceneDelegate.window?.rootViewController = navigationController
+                self.navigationController?.pushViewController(TabViewController(), animated: true)
+            }
         }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     func addSubviews() {
         view.addSubview(progressLabel)

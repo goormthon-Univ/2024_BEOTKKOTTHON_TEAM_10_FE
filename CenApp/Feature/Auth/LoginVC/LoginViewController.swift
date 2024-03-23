@@ -335,8 +335,12 @@ extension LoginViewController {
                            let message = jsonObject["message"] as? String {
                             if message == "true" {
                                 // 온보딩 정보가 저장된 사용자인 경우
-                                let tabViewController = TabViewController()
-                                UIApplication.shared.windows.first?.rootViewController = tabViewController
+                                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                                    let tabViewController = TabViewController()
+                                    let navigationController = UINavigationController(rootViewController: tabViewController)
+                                    sceneDelegate.window?.rootViewController = navigationController
+                                    self?.navigationController?.pushViewController(TabViewController(), animated: true)
+                                }
                             } else if message == "false" {
                                 // 온보딩 정보가 저장되지 않은 사용자인 경우
                                 self?.navigationController?.pushViewController(StartOnboardingViewController(), animated: true)
