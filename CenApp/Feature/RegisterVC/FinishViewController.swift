@@ -8,6 +8,8 @@
 import UIKit
 import Then
 import SnapKit
+import Then
+import Kingfisher
 
 class FinishViewController: CustomProgressViewController {
     //MARK: -- UI Component
@@ -17,10 +19,13 @@ class FinishViewController: CustomProgressViewController {
         $0.textAlignment = .center
         $0.font = UIFont.systemFont(ofSize: 12)
     }
-    private let finishImageView = UIImageView().then {
-        $0.contentMode = .scaleAspectFit
-        $0.image = UIImage(named: "Frame")
-    }
+    private let finishImageView : AnimatedImageView = {
+        let view = AnimatedImageView()
+        view.backgroundColor = .clear
+        view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
+        return view
+    }()
     private let finishLabel = UILabel().then {
         $0.text = "저장 완료!"
         $0.textColor = UIColor.PrimaryColor
@@ -39,6 +44,9 @@ class FinishViewController: CustomProgressViewController {
         addSubviews()
         configUI()
         updateProgressBar(progress: 4/4)
+        if let gifUrl = Bundle.main.url(forResource: "confetti4", withExtension: "gif") {
+            finishImageView.kf.setImage(with: gifUrl)
+        }
         view.backgroundColor = .white
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let tabViewController = TabViewController()
@@ -60,9 +68,10 @@ class FinishViewController: CustomProgressViewController {
         finishImageView.snp.makeConstraints {
             $0.top.equalTo(progressLabel.snp.bottom).offset(70)
             $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(246)
         }
         finishLabel.snp.makeConstraints {
-            $0.top.equalTo(finishImageView.snp.bottom).offset(47)
+            $0.top.equalTo(finishImageView.snp.bottom).offset(50)
             $0.centerX.equalToSuperview()
         }
         alramLabel.snp.makeConstraints {

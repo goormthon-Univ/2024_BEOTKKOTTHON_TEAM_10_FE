@@ -9,9 +9,15 @@ import UIKit
 import Then
 import SnapKit
 import iOSDropDown
-
+import SwiftKeychainWrapper
+import Alamofire
 
 class LocationViewController: CustomProgressViewController {
+    var ranking: String?
+    var grade: String?
+    var major: String?
+    var region_city_province: String?
+    var region_city_country_district: String?
     let dropdown = DropDown()
     
     let locationDropdown = DropDown()
@@ -140,11 +146,6 @@ class LocationViewController: CustomProgressViewController {
         dropdown.arrowSize = 10
         dropdown.checkMarkEnabled = false
         dropdown.backgroundColor = UIColor.ThirdaryColor
-        // 선택한 항목에 대한 이벤트 처리
-        dropdown.didSelect { [weak self] (selectedItem, index, id) in
-            print("Selected item: \(selectedItem) at index: \(index)")
-                   
-        }
     }
     func setupLocationDropdown() {
         locationDropdown.isSearchEnable = false
@@ -158,46 +159,65 @@ class LocationViewController: CustomProgressViewController {
         // 선택한 항목에 대한 이벤트 처리
         locationDropdown.didSelect { [weak self] (selectedItem, index, id) in
             print("Selected item: \(selectedItem) at index: \(index)")
+            self?.region_city_country_district = selectedItem
             self?.nextButton.backgroundColor = UIColor.PrimaryColor
             self?.nextButton.setTitleColor(.white, for: .normal)
         }
         // 시/도 선택 시 해당 시/도의 시/군/구 목록을 설정
         dropdown.didSelect { [weak self] (selectedItem, index, id) in
             guard let self = self else { return }
+            
             switch selectedItem {
             case "서울":
+                self.region_city_province = "서울"
                 locationDropdown.optionArray = self.seoulState
             case "경기":
+                self.region_city_province = "경기"
                 locationDropdown.optionArray = self.keyongkiState
             case "인천":
+                self.region_city_province = "인천"
                 locationDropdown.optionArray = self.incheonState
             case "강원":
+                self.region_city_province = "강원"
                 locationDropdown.optionArray = self.kangwonState
             case "대전":
+                self.region_city_province = "대전"
                 locationDropdown.optionArray = self.daegeonState
             case "세종":
+                self.region_city_province = "세종"
                 locationDropdown.optionArray = self.sejongState
             case "충남":
+                self.region_city_province = "충남"
                 locationDropdown.optionArray = self.cheungnamState
             case "충북":
+                self.region_city_province = "충북"
                 locationDropdown.optionArray = self.chungbookState
             case "부산":
+                self.region_city_province = "부산"
                 locationDropdown.optionArray = self.busanState
             case "울산":
+                self.region_city_province = "울산"
                 locationDropdown.optionArray = self.ulsanState
             case "경남":
+                self.region_city_province = "경남"
                 locationDropdown.optionArray = self.gyeongnamState
             case "경북":
+                self.region_city_province = "경북"
                 locationDropdown.optionArray = self.gyeongbukState
             case "대구":
+                self.region_city_province = "대구"
                 locationDropdown.optionArray = self.daeguState
             case "광주":
+                self.region_city_province = "광주"
                 locationDropdown.optionArray = self.gwangjuState
             case "전남":
+                self.region_city_province = "전남"
                 locationDropdown.optionArray = self.gyeongnamState
             case "전북":
+                self.region_city_province = "전북"
                 locationDropdown.optionArray = self.gyeongbukState
             case "제주":
+                self.region_city_province = "제주"
                 locationDropdown.optionArray = self.jejuState
             default:
                 locationDropdown.optionArray = []
@@ -206,7 +226,44 @@ class LocationViewController: CustomProgressViewController {
         }
     }
     @objc func nextButtonTapped(_ sender: UIButton) {
-        let finishVC = FinishViewController()
-        self.navigationController?.pushViewController(finishVC, animated: true)
+        guard let ranking = self.ranking,
+              let grade = self.grade,
+              let major = self.major,
+              let region_city_province = self.region_city_province,
+              let region_city_country_district = self.region_city_country_district else {
+            // 필수 파라미터가 모두 선택되지 않은 경우 처리
+            return
+        }
+        if let accessToken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
+            print("AccessToken in Keychain: \(accessToken)")
+        } else {
+            print("AccessToken not found in Keychain")
+        }
+        // Alamofire를 사용하여 서버로 POST 요청 보내기
+        let parameters: [String: Any] = [
+            "ranking": ranking,
+            "grade": grade,
+            "major": major,
+            "region_city_province": region_city_province,
+            "region_city_country_district": region_city_country_district
+        ]
+        print("Parameters: \(parameters)") // 파라미터 값 출력
+
+        if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
+            let url = "https://www.dolshoi.shop/user/onboard"
+            AF.request(url, method: .post, parameters: parameters, headers: ["accesstoken" : JWTaccesstoken])
+                .validate()
+                .response { response in
+                    switch response.result {
+                    case .success:
+                        // 서버로부터 응답 성공 시 FinishViewController로 이동
+                        let finishVC = FinishViewController()
+                        self.navigationController?.pushViewController(finishVC, animated: true)
+                    case .failure(let error):
+                        // 서버 요청 실패 시 에러 처리
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+        }
     }
 }

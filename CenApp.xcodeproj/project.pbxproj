@@ -20,12 +20,6 @@
 		580AACD22BA582FF00672050 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 580AACD12BA582FF00672050 /* Kingfisher */; };
 		580AACD42BA583D200672050 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580AACD32BA583D200672050 /* Color.xcassets */; };
 		580AACD62BA5845100672050 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACD52BA5845100672050 /* Color + Extension.swift */; };
-		580AACDE2BA5860400672050 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AACDD2BA5860400672050 /* IncomeViewController.swift */; };
-		580AAD1C2BA6913C00672050 /* CustomProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */; };
-		580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */; };
-		580AAD212BA6AFB100672050 /* MajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD202BA6AFB100672050 /* MajorViewController.swift */; };
-		580AAD232BA6AFCE00672050 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD222BA6AFCE00672050 /* LocationViewController.swift */; };
-		580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580AAD242BA761FA00672050 /* FinishViewController.swift */; };
 		580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 580AAD292BA8280600672050 /* iOSDropDown */; };
 		588A83F72BA9E7FF006B8CFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588A83F62BA9E7FF006B8CFF /* LaunchScreen.storyboard */; };
 		58FE16E12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE16C12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift */; };
@@ -54,7 +48,6 @@
 		58FE17072BA9B5ED00FA3363 /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE17022BA9B5ED00FA3363 /* SignupService.swift */; };
 		58FE17092BA9B61F00FA3363 /* TableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE17082BA9B61F00FA3363 /* TableView + Extension.swift */; };
 		58FE170C2BA9D63A00FA3363 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE170B2BA9D63A00FA3363 /* TabViewController.swift */; };
-		58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */; };
 		E409E1912BAAB24D0013D913 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1902BAAB24D0013D913 /* DGCharts */; };
 		E409E1972BAAC3DB0013D913 /* SCLAlertView in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1962BAAC3DB0013D913 /* SCLAlertView */; };
 		E409E19D2BAAEEC90013D913 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E19C2BAAEEC90013D913 /* BottomSheetViewController.swift */; };
@@ -75,6 +68,20 @@
 		E409E1DA2BAD7A810013D913 /* AmountServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */; };
 		E409E1DD2BAE7ED00013D913 /* HashtagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1DC2BAE7ED00013D913 /* HashtagService.swift */; };
 		E409E1E02BAE7F690013D913 /* HashtagServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1DF2BAE7F690013D913 /* HashtagServiceModel.swift */; };
+		E409E1E22BAEA60A0013D913 /* confetti4.gif in Resources */ = {isa = PBXBuildFile; fileRef = E409E1E12BAEA60A0013D913 /* confetti4.gif */; };
+		E409E1F22BAEAE920013D913 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1EB2BAEAE920013D913 /* FinishViewController.swift */; };
+		E409E1F32BAEAE920013D913 /* MajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1ED2BAEAE920013D913 /* MajorViewController.swift */; };
+		E409E1F42BAEAE920013D913 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1EE2BAEAE920013D913 /* LocationViewController.swift */; };
+		E409E1F52BAEAE920013D913 /* AcademicYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1EF2BAEAE920013D913 /* AcademicYearViewController.swift */; };
+		E409E1F62BAEAE920013D913 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1F02BAEAE920013D913 /* IncomeViewController.swift */; };
+		E409E1F72BAEAE920013D913 /* CustomProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1F12BAEAE920013D913 /* CustomProgressViewController.swift */; };
+		E409E2142BAEAF7C0013D913 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E20B2BAEAF7C0013D913 /* CalendarCollectionViewCell.swift */; };
+		E409E2152BAEAF7C0013D913 /* CalendarDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E20D2BAEAF7C0013D913 /* CalendarDateFormatter.swift */; };
+		E409E2162BAEAF7C0013D913 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E20F2BAEAF7C0013D913 /* CalendarViewController.swift */; };
+		E409E2172BAEAF7C0013D913 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2112BAEAF7C0013D913 /* PopupViewController.swift */; };
+		E409E2182BAEAF7C0013D913 /* MypopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2122BAEAF7C0013D913 /* MypopupView.swift */; };
+		E409E2192BAEAF7C0013D913 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2132BAEAF7C0013D913 /* CalendarManager.swift */; };
+		E409E21B2BAEAF860013D913 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E21A2BAEAF860013D913 /* CalendarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,12 +114,6 @@
 		580AACB72BA566F900672050 /* CenAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		580AACD32BA583D200672050 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		580AACD52BA5845100672050 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
-		580AACDD2BA5860400672050 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
-		580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewController.swift; sourceTree = "<group>"; };
-		580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicYearViewController.swift; sourceTree = "<group>"; };
-		580AAD202BA6AFB100672050 /* MajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorViewController.swift; sourceTree = "<group>"; };
-		580AAD222BA6AFCE00672050 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		580AAD242BA761FA00672050 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		588A83F62BA9E7FF006B8CFF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58FE16C12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnoucementFooterCell.swift; sourceTree = "<group>"; };
 		58FE16C32BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnoucementHeaderCell.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		58FE17022BA9B5ED00FA3363 /* SignupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
 		58FE17082BA9B61F00FA3363 /* TableView + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView + Extension.swift"; sourceTree = "<group>"; };
 		58FE170B2BA9D63A00FA3363 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E409E18E2BAA04C20013D913 /* CenApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CenApp.entitlements; sourceTree = "<group>"; };
 		E409E19C2BAAEEC90013D913 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		E409E1A22BAB34060013D913 /* AnnoucementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementService.swift; sourceTree = "<group>"; };
@@ -160,6 +160,20 @@
 		E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountServiceModel.swift; sourceTree = "<group>"; };
 		E409E1DC2BAE7ED00013D913 /* HashtagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagService.swift; sourceTree = "<group>"; };
 		E409E1DF2BAE7F690013D913 /* HashtagServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagServiceModel.swift; sourceTree = "<group>"; };
+		E409E1E12BAEA60A0013D913 /* confetti4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = confetti4.gif; sourceTree = "<group>"; };
+		E409E1EB2BAEAE920013D913 /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		E409E1ED2BAEAE920013D913 /* MajorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MajorViewController.swift; sourceTree = "<group>"; };
+		E409E1EE2BAEAE920013D913 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		E409E1EF2BAEAE920013D913 /* AcademicYearViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcademicYearViewController.swift; sourceTree = "<group>"; };
+		E409E1F02BAEAE920013D913 /* IncomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
+		E409E1F12BAEAE920013D913 /* CustomProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressViewController.swift; sourceTree = "<group>"; };
+		E409E20B2BAEAF7C0013D913 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		E409E20D2BAEAF7C0013D913 /* CalendarDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateFormatter.swift; sourceTree = "<group>"; };
+		E409E20F2BAEAF7C0013D913 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		E409E2112BAEAF7C0013D913 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		E409E2122BAEAF7C0013D913 /* MypopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypopupView.swift; sourceTree = "<group>"; };
+		E409E2132BAEAF7C0013D913 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		E409E21A2BAEAF860013D913 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,19 +291,6 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		580AACDB2BA5856700672050 /* RegisterVC */ = {
-			isa = PBXGroup;
-			children = (
-				580AACDD2BA5860400672050 /* IncomeViewController.swift */,
-				580AAD1B2BA6913C00672050 /* CustomProgressViewController.swift */,
-				580AAD1E2BA6AF8F00672050 /* AcademicYearViewController.swift */,
-				580AAD202BA6AFB100672050 /* MajorViewController.swift */,
-				580AAD222BA6AFCE00672050 /* LocationViewController.swift */,
-				580AAD242BA761FA00672050 /* FinishViewController.swift */,
-			);
-			path = RegisterVC;
-			sourceTree = "<group>";
-		};
 		58FE16C22BA9B5CD00FA3363 /* Footer */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,11 +401,11 @@
 		58FE16E02BA9B5CD00FA3363 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				E409E2092BAEAF7C0013D913 /* CalendarVC */,
+				E409E1EA2BAEAE920013D913 /* RegisterVC */,
 				E409E1BE2BAC0D6B0013D913 /* Auth */,
 				58FE170A2BA9D59A00FA3363 /* TabBar */,
 				E409E19B2BAAEEBB0013D913 /* BottomSheet */,
-				58FE170D2BA9D72100FA3363 /* CalendarVC */,
-				580AACDB2BA5856700672050 /* RegisterVC */,
 				58FE16CB2BA9B5CD00FA3363 /* AnnoucementVC */,
 				58FE16D02BA9B5CD00FA3363 /* DocumentVC */,
 				58FE16DB2BA9B5CD00FA3363 /* HomeVC */,
@@ -483,14 +484,6 @@
 				58FE170B2BA9D63A00FA3363 /* TabViewController.swift */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		58FE170D2BA9D72100FA3363 /* CalendarVC */ = {
-			isa = PBXGroup;
-			children = (
-				58FE170E2BA9D76900FA3363 /* CalendarViewController.swift */,
-			);
-			path = CalendarVC;
 			sourceTree = "<group>";
 		};
 		E409E19B2BAAEEBB0013D913 /* BottomSheet */ = {
@@ -612,6 +605,7 @@
 		E409E1C52BAC9E6C0013D913 /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				E409E1E12BAEA60A0013D913 /* confetti4.gif */,
 				E409E1CD2BACA7930013D913 /* mainCoin.gif */,
 			);
 			path = Gif;
@@ -648,6 +642,73 @@
 				E409E1DF2BAE7F690013D913 /* HashtagServiceModel.swift */,
 			);
 			path = Hashtag;
+			sourceTree = "<group>";
+		};
+		E409E1EA2BAEAE920013D913 /* RegisterVC */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1EB2BAEAE920013D913 /* FinishViewController.swift */,
+				E409E1EC2BAEAE920013D913 /* Network */,
+				E409E1F12BAEAE920013D913 /* CustomProgressViewController.swift */,
+			);
+			path = RegisterVC;
+			sourceTree = "<group>";
+		};
+		E409E1EC2BAEAE920013D913 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E409E1ED2BAEAE920013D913 /* MajorViewController.swift */,
+				E409E1EE2BAEAE920013D913 /* LocationViewController.swift */,
+				E409E1EF2BAEAE920013D913 /* AcademicYearViewController.swift */,
+				E409E1F02BAEAE920013D913 /* IncomeViewController.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E409E2092BAEAF7C0013D913 /* CalendarVC */ = {
+			isa = PBXGroup;
+			children = (
+				E409E20A2BAEAF7C0013D913 /* Cell */,
+				E409E20C2BAEAF7C0013D913 /* Model */,
+				E409E20E2BAEAF7C0013D913 /* Control */,
+			);
+			path = CalendarVC;
+			sourceTree = "<group>";
+		};
+		E409E20A2BAEAF7C0013D913 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E409E21A2BAEAF860013D913 /* CalendarTableViewCell.swift */,
+				E409E20B2BAEAF7C0013D913 /* CalendarCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E409E20C2BAEAF7C0013D913 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E409E20D2BAEAF7C0013D913 /* CalendarDateFormatter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E409E20E2BAEAF7C0013D913 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				E409E20F2BAEAF7C0013D913 /* CalendarViewController.swift */,
+				E409E2102BAEAF7C0013D913 /* PopControl */,
+				E409E2132BAEAF7C0013D913 /* CalendarManager.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		E409E2102BAEAF7C0013D913 /* PopControl */ = {
+			isa = PBXGroup;
+			children = (
+				E409E2112BAEAF7C0013D913 /* PopupViewController.swift */,
+				E409E2122BAEAF7C0013D913 /* MypopupView.swift */,
+			);
+			path = PopControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,6 +839,7 @@
 				580AAC9E2BA566F900672050 /* Assets.xcassets in Resources */,
 				E409E1CE2BACA7930013D913 /* mainCoin.gif in Resources */,
 				580AACD42BA583D200672050 /* Color.xcassets in Resources */,
+				E409E1E22BAEA60A0013D913 /* confetti4.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,16 +865,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FE16E42BA9B5CD00FA3363 /* AnnoucementDetailViewController.swift in Sources */,
+				E409E2142BAEAF7C0013D913 /* CalendarCollectionViewCell.swift in Sources */,
+				E409E1F72BAEAE920013D913 /* CustomProgressViewController.swift in Sources */,
 				58FE16FA2BA9B5DF00FA3363 /* LoginModel.swift in Sources */,
 				58FE16ED2BA9B5CD00FA3363 /* HomeHeaderCell.swift in Sources */,
 				58FE17072BA9B5ED00FA3363 /* SignupService.swift in Sources */,
 				E409E1B92BABFDDB0013D913 /* LoginCheckModel.swift in Sources */,
+				E409E1F22BAEAE920013D913 /* FinishViewController.swift in Sources */,
+				E409E2182BAEAF7C0013D913 /* MypopupView.swift in Sources */,
 				E409E1D62BACAC3D0013D913 /* FindpwServiceModel.swift in Sources */,
 				E409E1DA2BAD7A810013D913 /* AmountServiceModel.swift in Sources */,
-				580AAD1F2BA6AF8F00672050 /* AcademicYearViewController.swift in Sources */,
 				58FE17092BA9B61F00FA3363 /* TableView + Extension.swift in Sources */,
 				58FE16E82BA9B5CD00FA3363 /* DocumentTableViewCell.swift in Sources */,
-				580AACDE2BA5860400672050 /* IncomeViewController.swift in Sources */,
+				E409E2152BAEAF7C0013D913 /* CalendarDateFormatter.swift in Sources */,
 				E409E1A32BAB34060013D913 /* AnnoucementService.swift in Sources */,
 				58FE16E32BA9B5CD00FA3363 /* AnnoucementMiddleCell.swift in Sources */,
 				58FE16E12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift in Sources */,
@@ -820,33 +885,35 @@
 				58FE16EC2BA9B5CD00FA3363 /* HomeFooterCell.swift in Sources */,
 				E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */,
 				58FE16FC2BA9B5DF00FA3363 /* SignupModel.swift in Sources */,
-				580AAD212BA6AFB100672050 /* MajorViewController.swift in Sources */,
 				E409E1A62BAB351F0013D913 /* ScholarshipDayModel.swift in Sources */,
 				58FE16EF2BA9B5CD00FA3363 /* HomeViewController.swift in Sources */,
 				58FE16FB2BA9B5DF00FA3363 /* LoginServiceModel.swift in Sources */,
 				58FE16EE2BA9B5CD00FA3363 /* HomeMiddleCell.swift in Sources */,
 				58FE16F02BA9B5CD00FA3363 /* LoginViewController.swift in Sources */,
+				E409E2162BAEAF7C0013D913 /* CalendarViewController.swift in Sources */,
 				58FE16E52BA9B5CD00FA3363 /* AnnoucementTableViewCell.swift in Sources */,
 				E409E1D12BACAAF40013D913 /* FindpwService.swift in Sources */,
 				E409E1E02BAE7F690013D913 /* HashtagServiceModel.swift in Sources */,
 				58FE16EA2BA9B5CD00FA3363 /* BottomTableViewCell.swift in Sources */,
 				58FE17052BA9B5ED00FA3363 /* ExpressionService.swift in Sources */,
 				E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */,
+				E409E1F32BAEAE920013D913 /* MajorViewController.swift in Sources */,
 				E409E1B02BAB53010013D913 /* DocumentServiceModel.swift in Sources */,
 				E409E1AA2BAB41B40013D913 /* Int + Extension.swift in Sources */,
+				E409E1F62BAEAE920013D913 /* IncomeViewController.swift in Sources */,
 				58FE16E62BA9B5CD00FA3363 /* AnnoucementViewController.swift in Sources */,
-				58FE170F2BA9D76900FA3363 /* CalendarViewController.swift in Sources */,
 				E409E19D2BAAEEC90013D913 /* BottomSheetViewController.swift in Sources */,
-				580AAD252BA761FA00672050 /* FinishViewController.swift in Sources */,
+				E409E2192BAEAF7C0013D913 /* CalendarManager.swift in Sources */,
 				E409E1BD2BAC038E0013D913 /* LogoutService.swift in Sources */,
+				E409E1F42BAEAE920013D913 /* LocationViewController.swift in Sources */,
 				58FE170C2BA9D63A00FA3363 /* TabViewController.swift in Sources */,
 				580AAC952BA566F700672050 /* AppDelegate.swift in Sources */,
 				58FE16E22BA9B5CD00FA3363 /* AnnoucementHeaderCell.swift in Sources */,
-				580AAD232BA6AFCE00672050 /* LocationViewController.swift in Sources */,
 				E409E1DD2BAE7ED00013D913 /* HashtagService.swift in Sources */,
 				58FE16E92BA9B5CD00FA3363 /* DocumentViewController.swift in Sources */,
+				E409E21B2BAEAF860013D913 /* CalendarTableViewCell.swift in Sources */,
+				E409E1F52BAEAE920013D913 /* AcademicYearViewController.swift in Sources */,
 				58FE16F12BA9B5CD00FA3363 /* SignupViewController.swift in Sources */,
-				580AAD1C2BA6913C00672050 /* CustomProgressViewController.swift in Sources */,
 				E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */,
 				58FE17062BA9B5ED00FA3363 /* LoginService.swift in Sources */,
 				58FE16F22BA9B5CD00FA3363 /* StartOnboardingViewController.swift in Sources */,
@@ -855,6 +922,7 @@
 				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
 				E409E1C22BAC0DE50013D913 /* FindpwViewController.swift in Sources */,
 				58FE16FD2BA9B5DF00FA3363 /* SignupServiceModel.swift in Sources */,
+				E409E2172BAEAF7C0013D913 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

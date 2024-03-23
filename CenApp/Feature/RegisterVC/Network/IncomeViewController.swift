@@ -7,8 +7,11 @@
 import UIKit
 import SnapKit
 import Then
+import SwiftKeychainWrapper
+import Alamofire
 
 class IncomeViewController: CustomProgressViewController {
+    var ranking: String?
     //MARK: -- UI Component
     private let progressLabel = UILabel().then {
         $0.text = "1/4"
@@ -55,16 +58,8 @@ class IncomeViewController: CustomProgressViewController {
         createRadioButtons()
         view.backgroundColor = .white
     }
-    //MARK: -- UINavigation
-//    func navigationControl() {
-//        //navigationBar 바꾸는 부분
-//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
-//        backBarButtonItem.tintColor = .black
-//        self.navigationItem.backBarButtonItem = backBarButtonItem
-//        self.navigationItem.title = "정보 입력"
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//
-//    }
+    //MARK: -- UI
+
     func addSubviews() {
         view.addSubview(progressLabel)
         view.addSubview(IncomeChoiceLabel)
@@ -126,7 +121,7 @@ class IncomeViewController: CustomProgressViewController {
            }
        }
     }
-
+    //MARK: -- Action
     @objc func radioButtonTapped(_ sender: UIButton) {
         // 이미지 변경 및 선택 상태 반전
         sender.isSelected = true
@@ -135,6 +130,7 @@ class IncomeViewController: CustomProgressViewController {
                 radioButton.isSelected = false
             }
         }
+        self.ranking = sender.titleLabel?.text
         if radioButtonIsSelected() {
             nextButton.isEnabled = true
             nextButton.backgroundColor = UIColor.PrimaryColor
@@ -155,30 +151,40 @@ class IncomeViewController: CustomProgressViewController {
         return false
     }
     @objc func nextButtonTapped(_ sender: UIButton) {
+        guard let ranking = self.ranking else {
+               // 라디오 버튼이 선택되지 않은 경우에는 메서드 종료
+               return
+           }
+        
+        // 라디오 버튼이 선택된 경우에만 다음 화면으로 이동
         let academicVC = AcademicYearViewController()
+        academicVC.ranking = ranking
+        print("Selected ranking:", ranking)
         self.navigationController?.pushViewController(academicVC, animated: true)
     }
 
 }
+
 extension UIButton {
     func alignTextBelow(spacing: CGFloat = 4.0) {
-            guard let image = self.imageView?.image else {
-                return
-            }
-
-            guard let titleLabel = self.titleLabel else {
-                return
-            }
-
-            guard let titleText = titleLabel.text else {
-                return
-            }
-
-            let titleSize = titleText.size(withAttributes: [
-                NSAttributedString.Key.font: titleLabel.font as Any
-            ])
-
-            titleEdgeInsets = UIEdgeInsets(top: spacing, left: -image.size.width, bottom: -image.size.height, right: 0)
-            imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
+        guard let image = self.imageView?.image else {
+            return
         }
+
+        guard let titleLabel = self.titleLabel else {
+            return
+        }
+
+        guard let titleText = titleLabel.text else {
+            return
+        }
+
+        let titleSize = titleText.size(withAttributes: [
+            NSAttributedString.Key.font: titleLabel.font as Any
+        ])
+
+        titleEdgeInsets = UIEdgeInsets(top: spacing, left: -image.size.width, bottom: -image.size.height, right: 0)
+        imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
+    }
 }
+

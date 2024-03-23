@@ -14,26 +14,25 @@ class TabViewController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.LoginCheck() //로그인 확인
-        self.tabBar.backgroundColor = .white
+        
         // HomeViewController 생성 및 탭바 아이템 설정
         let homeVC = HomeViewController()
-        homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "House"), selectedImage: nil)
+        homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "House"), selectedImage: UIImage(named: "blueHouse"))
         let homeNavigationController = UINavigationController(rootViewController: homeVC)
         
         // CalendarViewController 생성 및 탭바 아이템 설정
         let calendarVC = CalendarViewController()
-        calendarVC.tabBarItem = UITabBarItem(title: "일정", image: UIImage(named: "Date"), selectedImage: nil)
+        calendarVC.tabBarItem = UITabBarItem(title: "일정", image: UIImage(named: "Date"), selectedImage: UIImage(named: "blueDate"))
         let calendarNavigationController = UINavigationController(rootViewController: calendarVC)
         
-        // ListViewController 생성 및 탭바 아이템 설정
+        // AnnoucementViewController 생성 및 탭바 아이템 설정
         let listVC = AnnoucementViewController(order: "마감순")
-        listVC.tabBarItem = UITabBarItem(title: "공고 리스트", image: UIImage(named: "list"), selectedImage: nil)
+        listVC.tabBarItem = UITabBarItem(title: "공고 리스트", image: UIImage(named: "list"), selectedImage: UIImage(named: "blueList"))
         let listNavigationController = UINavigationController(rootViewController: listVC)
         
         // DocumentViewController 생성 및 탭바 아이템 설정
         let documentVC = DocumentViewController()
-        documentVC.tabBarItem = UITabBarItem(title: "서류", image: UIImage(named: "Layer"), selectedImage: nil)
+        documentVC.tabBarItem = UITabBarItem(title: "서류", image: UIImage(named: "Layer"), selectedImage: UIImage(named: "blueLayer"))
         let documentNavigationController = UINavigationController(rootViewController: documentVC)
         
         // 탭바에 뷰 컨트롤러들을 설정

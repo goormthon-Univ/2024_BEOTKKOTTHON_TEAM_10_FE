@@ -8,8 +8,12 @@
 import UIKit
 import Then
 import SnapKit
+import SwiftKeychainWrapper
+import Alamofire
 
 class AcademicYearViewController: CustomProgressViewController {
+    var ranking: String?
+    var grade: String?
     //MARK: -- UI Component
     private let progressLabel = UILabel().then {
         $0.text = "2/4"
@@ -103,7 +107,7 @@ class AcademicYearViewController: CustomProgressViewController {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 15
         stackView.distribution = .fillEqually
         return stackView
     } ()
@@ -148,7 +152,6 @@ class AcademicYearViewController: CustomProgressViewController {
         FourContainerView.addSubview(fourImageView)
         FourContainerView.addSubview(fourGradeLabel)
         view.addSubview(nextButton)
-        
         
     }
     func tapGesture() {
@@ -233,20 +236,40 @@ class AcademicYearViewController: CustomProgressViewController {
        
         
     }
-    @objc func nextButtonTapped(_ sender: UIButton) {
-        let majorVC = MajorViewController()
-        self.navigationController?.pushViewController(majorVC, animated: true)
-    }
     @objc func containerViewTapped(_ sender: UITapGestureRecognizer) {
-        oneContainerView.layer.borderColor = UIColor.ThirdaryColor.cgColor
-        twoContainerView.layer.borderColor = UIColor.ThirdaryColor.cgColor
-        threeContainerView.layer.borderColor = UIColor.ThirdaryColor.cgColor
-        FourContainerView.layer.borderColor = UIColor.ThirdaryColor.cgColor
-           if let tappedView = sender.view {
-               tappedView.layer.borderColor = UIColor.PrimaryColor.cgColor
-           }
+        let containerViews = [oneContainerView, twoContainerView, threeContainerView, FourContainerView]
+        for containerView in containerViews {
+            containerView.layer.borderColor = UIColor.ThirdaryColor.cgColor
+        }
+        
+        if let tappedView = sender.view as? UIView {
+                tappedView.layer.borderColor = UIColor.PrimaryColor.cgColor
+                
+                // 해당 containerView에 속한 gradeLabel의 텍스트를 가져옵니다.
+                if let gradeLabel = tappedView.subviews.compactMap({ $0 as? UILabel }).first {
+                    // gradeLabel의 텍스트에서 "학년"을 제외한 숫자만 추출합니다.
+                    if let gradeText = gradeLabel.text, let gradeNumber = gradeText.components(separatedBy: CharacterSet.decimalDigits.inverted).first {
+                        // 숫자만 있는 문자열을 가져옵니다.
+                        print("Grade Number:", gradeNumber)
+                        self.grade = gradeNumber // 학년 값을 변수에 저장합니다.
+                    }
+                }
+            }
+        
         nextButton.isUserInteractionEnabled = true
         nextButton.backgroundColor = UIColor.PrimaryColor
         nextButton.setTitleColor(.white, for: .normal)
+    }
+    @objc func nextButtonTapped(_ sender: UIButton) {
+        guard let grade = self.grade, let ranking = self.ranking else {
+                // 학년이나 소득분위가 선택되지 않은 경우에는 메서드 종료
+                return
+            }
+        let majorVC = MajorViewController()
+        majorVC.ranking = ranking
+        majorVC.grade = grade
+        print("Selected grade:", grade)
+        print("Selected ranking:", ranking)
+        self.navigationController?.pushViewController(majorVC, animated: true)
     }
 }

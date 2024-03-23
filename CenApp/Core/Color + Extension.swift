@@ -27,4 +27,7 @@ extension UIColor {
     static var PrimaryColor2 : UIColor {
         return UIColor(named: "PrimaryColor2") ?? .white
     }
+    static var cred : UIColor {
+        return UIColor(named: "customRed") ?? .white
+    }
 }

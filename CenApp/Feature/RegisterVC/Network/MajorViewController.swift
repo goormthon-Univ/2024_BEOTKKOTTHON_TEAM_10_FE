@@ -8,7 +8,9 @@
 import UIKit
 
 class MajorViewController: CustomProgressViewController {
-    
+    var ranking: String?
+    var grade: String?
+    var major: String?
     let majorArray = ["공학계열","교육게열","사회계열","예체능계열","의약계열","인문계열","자연계열"]
     //MARK: -- UI Component
     private let progressLabel = UILabel().then {
@@ -109,6 +111,8 @@ class MajorViewController: CustomProgressViewController {
         sender.backgroundColor = UIColor.PrimaryColor
         sender.setTitleColor(.white, for: .normal)
         
+        self.major = sender.titleLabel?.text
+        
         for subview in majorStackview.arrangedSubviews {
             if let button = subview as? UIButton, button != sender {
                 button.backgroundColor = .ThirdaryColor
@@ -120,9 +124,20 @@ class MajorViewController: CustomProgressViewController {
         nextButton.isEnabled = true
     }
     @objc func nextButtonTapped(_ sender: UIButton) {
+        guard let selectedMajor = self.major, let grade = self.grade, let ranking = self.ranking else {
+            // 전공이 선택되지 않은 경우에는 메서드 종료
+            return
+        }
+            // 선택된 전공 값을 LocationViewController로 전달
         let locationVC = LocationViewController()
-        self.navigationController?.pushViewController(locationVC, animated: true)
-    }
+        locationVC.major = selectedMajor
+        locationVC.ranking = ranking
+        locationVC.grade = grade
+            print("Selected grade:", grade)
+            print("Selected ranking:", ranking)
+            print("Selected major:",selectedMajor)
+            self.navigationController?.pushViewController(locationVC, animated: true)
+        }
    
 
 }

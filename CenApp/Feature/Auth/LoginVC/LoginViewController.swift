@@ -11,6 +11,7 @@ import Alamofire
 import Then
 import Kingfisher
 import UIKit
+import SwiftKeychainWrapper
 class LoginViewController : UIViewController, UITextFieldDelegate{
     // MARK: - UI Components
     //탭 제스처
@@ -290,7 +291,8 @@ extension LoginViewController {
                 if let result = result {
                     if result.message == "success" {
                         self.loadingIndicator.stopAnimating()
-                        self.navigationController?.pushViewController(StartOnboardingViewController(), animated: true)
+                        //사용자의 온보딩 상태 확인
+                        self.checkUserOnboardingStatus()
                     }
                 }else{
                     self.loadingIndicator.stopAnimating()
@@ -321,5 +323,35 @@ extension LoginViewController {
     }
     @objc private func secureBtnTapped() {
         self.pwText.isSecureTextEntry.toggle()
+    }
+    private func checkUserOnboardingStatus() {
+        let url = "https://www.dolshoi.shop/user/onboard/check"
+        if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
+            AF.request(url, method: .get, headers: ["accesstoken" : JWTaccesstoken])
+                .responseJSON { [weak self] response in
+                    switch response.result {
+                    case .success(let json):
+                        if let jsonObject = json as? [String: Any],
+                           let message = jsonObject["message"] as? String {
+                            if message == "true" {
+                                // 온보딩 정보가 저장된 사용자인 경우
+                                let tabViewController = TabViewController()
+                                UIApplication.shared.windows.first?.rootViewController = tabViewController
+                            } else if message == "false" {
+                                // 온보딩 정보가 저장되지 않은 사용자인 경우
+                                self?.navigationController?.pushViewController(StartOnboardingViewController(), animated: true)
+                            } else if message == "fail"{
+                                // 기타 오류 처리
+                                print("사용자 없음")
+                            } else {
+                                print("Failed to determine onboarding status")
+                            }
+                        }
+                    case .failure(let error):
+                        // 서버 요청 실패 시 에러 처리
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+        }
     }
 }
