@@ -54,6 +54,7 @@ class AnnoucementHeaderCell: UITableViewCell, UITextViewDelegate {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
+        fetchHashTag()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,7 +65,6 @@ extension AnnoucementHeaderCell {
     private func setLayout() {
         let view = self.contentView
         view.backgroundColor = .white
-        self.addtagStack()
         titleLabel.delegate = self
         self.tagScrollView.addSubview(tagStackView)
         view.addSubview(tagScrollView)
@@ -96,8 +96,7 @@ extension AnnoucementHeaderCell {
             make.height.equalTo(1)
         }
     }
-    private func addtagStack() {
-        let onboardList = ["#7분위", "#공학계열", "#4학년", "#서울", "#강북구"]
+    private func addtagStack(onboardList : [String]) {
         for onboard in onboardList {
             let label = UILabel()
             label.text = onboard
@@ -130,5 +129,12 @@ extension AnnoucementHeaderCell {
 }
 //MARK: - UI Action
 extension AnnoucementHeaderCell {
-    
+    //데이터 fetch
+    public func fetchHashTag() {
+        HashtagService.requestTag{ result in
+            self.addtagStack(onboardList: ["\(result.grade)학년", result.major, "\(result.ranking)분위", result.region_city_country_district, result.region_city_province])
+        } onError: { error in
+            print("Error fetching scholarships: \(error)")
+        }
+    }
 }

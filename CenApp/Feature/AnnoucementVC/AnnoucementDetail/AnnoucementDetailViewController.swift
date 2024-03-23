@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import SCLAlertView
+import NVActivityIndicatorView
 class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - UIComponent
     var post : ScholarshipModel
@@ -60,6 +61,12 @@ class AnnoucementDetailViewController : UIViewController, UITableViewDelegate, U
         view.allowsSelection = false
         return view
     }()
+    //로딩 인디케이터
+    private let loadingIndicator :  NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20), type: .ballRotateChase, color: .lightGray, padding: 0)
+        view.clipsToBounds = true
+        return view
+    }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -83,6 +90,12 @@ extension AnnoucementDetailViewController {
         self.view.addSubview(tableView)
         self.view.addSubview(saveBtn)
         self.view.addSubview(supportBtn)
+        self.view.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.height.equalTo(30)
+            make.center.equalToSuperview()
+        }
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview().inset(0)
             make.top.equalToSuperview().inset(self.view.frame.height / 10)
@@ -166,12 +179,25 @@ extension AnnoucementDetailViewController {
 //MARK: - Actions
 extension AnnoucementDetailViewController {
     @objc private func saveBtnTapped() {
-        let alertView = SCLAlertView()
-        alertView.iconTintColor = .PrimaryColor
-        alertView.addButton("캘린더로 이동", backgroundColor: .PrimaryColor, textColor: .white) {
-            
+        self.loadingIndicator.startAnimating()
+        if let id = post.id {
+            AnnoucementService.reqeustSave(scholarshipId: id) { result in
+                self.loadingIndicator.stopAnimating()
+                if result?.message == "success" {
+                    let alertView = SCLAlertView()
+                    alertView.iconTintColor = .PrimaryColor
+                    alertView.addButton("캘린더로 이동", backgroundColor: .PrimaryColor, textColor: .white) {
+                        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
+                    }
+                    alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
+                }
+            } onError: { error in
+                self.loadingIndicator.stopAnimating()
+                //로그아웃
+                LogoutService.requestLogout()
+                self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            }
         }
-        alertView.showCustom("\n저장이 완료되었습니다!\n", color: .PrimaryColor2, closeButtonTitle: "닫기", colorTextButton: .black)
     }
     @objc private func supportBtnTapped() {
         if let postSite = post.site {

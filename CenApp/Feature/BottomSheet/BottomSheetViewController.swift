@@ -30,17 +30,8 @@ class BottomSheetViewController : UIViewController {
         label.textAlignment = .left
         return label
     }()
-    //서류 상세
-    public let decLabel : UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textAlignment = .left
-        return label
-    }()
     //서류 URL로 가기
-    private let urlBtn : UIButton = {
+    private lazy var urlBtn : UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .PrimaryColor
         btn.setTitle("서류 URL로 이동하기", for: .normal)
@@ -49,6 +40,7 @@ class BottomSheetViewController : UIViewController {
         btn.titleLabel?.textAlignment = .center
         btn.layer.cornerRadius = 10
         btn.layer.masksToBounds = true
+        btn.addTarget(self, action: #selector(supportBtnTapped), for: .touchUpInside)
         return btn
     }()
     override func viewDidLoad() {
@@ -69,21 +61,15 @@ extension BottomSheetViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
         self.view.addSubview(titleLabel)
-        self.view.addSubview(decLabel)
         self.view.addSubview(urlBtn)
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(30)
-            make.top.equalToSuperview().offset(50)
+            make.top.equalToSuperview().offset(70)
             make.height.equalTo(30)
-        }
-        decLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(titleLabel.snp.bottom).offset(30)
-            make.height.equalTo(20)
         }
         urlBtn.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalTo(decLabel.snp.bottom).offset(50)
+            make.top.equalTo(titleLabel.snp.bottom).offset(80)
             make.height.equalTo(50)
         }
     }
@@ -92,7 +78,6 @@ extension BottomSheetViewController {
 extension BottomSheetViewController {
     private func setValue() {
         self.titleLabel.text = Info.title
-        self.decLabel.text = "어디? 들어와야함"
     }
     @objc private func supportBtnTapped() {
         if let postSite = Info.site {

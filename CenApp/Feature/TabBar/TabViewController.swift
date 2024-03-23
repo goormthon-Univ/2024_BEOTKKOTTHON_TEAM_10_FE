@@ -15,6 +15,7 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LoginCheck()
+        self.tabBar.backgroundColor = .white
         // HomeViewController 생성 및 탭바 아이템 설정
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "House"), selectedImage: UIImage(named: "blueHouse"))

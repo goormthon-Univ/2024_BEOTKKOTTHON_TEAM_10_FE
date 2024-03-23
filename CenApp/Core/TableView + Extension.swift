@@ -23,7 +23,25 @@ class AnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
         cell.companyLabel.text = scholarship.provider //제공자
         cell.dayLabel.text = scholarship.endDate //마감일
         if let dday = scholarship.dday {
-            cell.deadlineLabel.text = "D-\(dday)" //데드라인
+            if dday > 0 {
+                cell.deadlineLabel.text = "D-\(dday)" //데드라인
+                if dday <= 3 {
+                    cell.deadlineLabel.textColor = .red
+                }else {
+                    cell.deadlineLabel.textColor = .black
+                }
+            }else if dday < 0{
+                let positiveDday = abs(dday) // 음수인 경우 양수로 변환
+                cell.deadlineLabel.text = "D+\(positiveDday)" // "+" 기호를 붙여줌
+                if positiveDday <= 3 {
+                    cell.deadlineLabel.textColor = .red
+                }else {
+                    cell.deadlineLabel.textColor = .black
+                }
+            }else if dday == 0{
+                cell.deadlineLabel.text = "D-Day" //데드라인
+                cell.deadlineLabel.textColor = .red
+            }
         }
         return cell
     }

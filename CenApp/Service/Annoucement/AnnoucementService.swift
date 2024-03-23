@@ -17,7 +17,6 @@ class AnnoucementService {
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: [ScholarshipModel].self ) { response in
-                    print("마감순 : \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):
                         completion(data)
@@ -34,7 +33,6 @@ class AnnoucementService {
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: [ScholarshipModel].self ) { response in
-                    print("최신순 : \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):
                         completion(data)
@@ -45,7 +43,7 @@ class AnnoucementService {
         }
     }
     //장학금 저장
-    static func reqeustSave(scholarshipId : Int ,completion: @escaping ([ScholarshipModel]?) -> Void, onError: @escaping (Error) -> Void) {
+    static func reqeustSave(scholarshipId : Int ,completion: @escaping (SaveServiceModel?) -> Void, onError: @escaping (Error) -> Void) {
         if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
             let url = "https://www.dolshoi.shop/scholarship/each/save"
             let body = [
@@ -53,7 +51,7 @@ class AnnoucementService {
             ]
             AF.request(url, method: .post, parameters: body ,encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
-                .responseDecodable(of: [ScholarshipModel].self ) { response in
+                .responseDecodable(of: SaveServiceModel.self ) { response in
                     print("저장 : \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):

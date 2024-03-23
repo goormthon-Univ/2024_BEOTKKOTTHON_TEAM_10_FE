@@ -72,7 +72,3 @@ extension AnnoucementFooterCell {
         }
     }
 }
-//MARK: - UI Action
-extension AnnoucementFooterCell {
-    
-}

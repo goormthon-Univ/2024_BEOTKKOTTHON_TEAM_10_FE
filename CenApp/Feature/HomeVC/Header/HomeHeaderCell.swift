@@ -98,7 +98,7 @@ extension HomeHeaderCell {
                 NSAttributedString.Key.foregroundColor: UIColor.black,
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)
             ])
-            let secondPart = NSAttributedString(string: "\n\(amount.totalAmount)", attributes: [
+            let secondPart = NSAttributedString(string: "\n\(amount.totalAmount)원", attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor.PrimaryColor,
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)
             ])

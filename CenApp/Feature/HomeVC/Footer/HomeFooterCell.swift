@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 protocol HomeFooterCellDelegate: AnyObject {
     func didTapNewAnnouncementButton()
+    func didFooterLogout()
 }
 class HomeFooterCell: UITableViewCell {
     private let secondTableViewDataSource = newAnnoucementTableViewDataSource()
@@ -61,6 +62,15 @@ class HomeFooterCell: UITableViewCell {
         view.clipsToBounds = true
         return view
     }()
+    private let errormessage : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .gray
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        return label
+    }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
@@ -90,6 +100,7 @@ extension HomeFooterCell {
         View.backgroundColor = .white
         View.addSubview(checkTableView)
         view.addSubview(View)
+        view.addSubview(errormessage)
         checkLaebl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(20)
@@ -122,6 +133,11 @@ extension HomeFooterCell {
             make.height.equalTo(view.frame.width)
             make.width.equalTo(view.frame.height)
         }
+        errormessage.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
+        }
     }
     private func addCheckStack(onboardList : [String]) {
         for onboard in onboardList {
@@ -146,6 +162,9 @@ extension HomeFooterCell {
     @objc private func announcementBtnTapped() {
         delegate?.didTapNewAnnouncementButton()
     }
+    private func logoutDelegate() {
+        delegate?.didFooterLogout()
+    }
     //데이터 fetch
     public func fetchHashTag() {
         HashtagService.requestTag{ result in
@@ -163,6 +182,13 @@ extension HomeFooterCell {
                 self.checkTableView.reloadData() // 테이블 뷰 데이터 리로드
             }
         }, onError: { error in
+            let errorcode = ExpressionService.requestExpression(errorMessage: error.localizedDescription)
+            if errorcode == "404" {
+                self.errormessage.text = "추천 장학금이 없습니다⚠️"
+            }else{
+                LogoutService.requestLogout()
+                self.logoutDelegate()
+            }
             print("Error fetching scholarships: \(error)")
         })
     }

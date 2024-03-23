@@ -12,7 +12,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     public let dayLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
-        label.text = "3월 18일"
+        label.text = ""
         label.textAlignment = .left
         label.backgroundColor = .PrimaryColor2
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -30,7 +30,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     public let companyLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.text = "(주)우아한 청년들"
+        label.text = ""
         label.textAlignment = .left
         label.backgroundColor = .clear
         label.font = UIFont.boldSystemFont(ofSize: 12)
@@ -39,7 +39,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     public let titleText: UITextView = {
         let label = UITextView()
         label.textColor = .black
-        label.text = "2024년 우아한 사장님 자녀 장학금 지원 대학생 일반 장학생 모집"
+        label.text = ""
         label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .left
@@ -50,7 +50,7 @@ class AnnoucementTableViewCell: UITableViewCell {
     public let deadlineLabel : UILabel = {
         let label = UILabel()
         label.textColor = .red
-        label.text = "D-1"
+        label.text = ""
         label.textAlignment = .center
         label.backgroundColor = .cLightGray
         label.layer.cornerRadius = 5

@@ -94,6 +94,15 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         view.clipsToBounds = true
         return view
     }()
+    private let errormessage : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .gray
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        return label
+    }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -103,6 +112,7 @@ class AnnoucementViewController : UIViewController, UITableViewDelegate {
         setLayout()
         setupDropdown()
         fetchData()
+        fetchHashTag()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -113,9 +123,9 @@ extension AnnoucementViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.view.clipsToBounds = true
         //헤더
         self.headerView.addSubview(titleLabel)
-        self.addtagStack()
         self.tagScrollView.addSubview(tagStackView)
         self.headerView.addSubview(tagScrollView)
         self.headerView.addSubview(subLabel)
@@ -130,6 +140,7 @@ extension AnnoucementViewController {
         self.annoucementTableView.addSubview(refreshIndicator)
         View.addSubview(annoucementTableView)
         self.view.addSubview(View)
+        self.view.addSubview(errormessage)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -176,9 +187,13 @@ extension AnnoucementViewController {
             make.bottom.equalToSuperview().inset(0)
         }
         self.loadingIndicator.startAnimating()
+        errormessage.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
+        }
     }
-    private func addtagStack() {
-        let onboardList = ["#7분위", "#공학계열", "#4학년", "#서울", "#강북구"]
+    private func addtagStack(onboardList : [String]) {
         for onboard in onboardList {
             let label = UILabel()
             label.text = onboard
@@ -230,6 +245,13 @@ extension AnnoucementViewController {
         }
     }
     //데이터 fetch
+    public func fetchHashTag() {
+        HashtagService.requestTag{ result in
+            self.addtagStack(onboardList: ["\(result.grade)학년", result.major, "\(result.ranking)분위", result.region_city_country_district, result.region_city_province])
+        } onError: { error in
+            print("Error fetching scholarships: \(error)")
+        }
+    }
     private func fetchData() {
         if order == "마감순" {
             AnnoucementService.scholarshipDay(completion: { [weak self] scholarships in
@@ -241,7 +263,15 @@ extension AnnoucementViewController {
                     self.loadingIndicator.stopAnimating()
                 }
             }, onError: { error in
-                print("Error fetching scholarships: \(error)")
+                let errorcode = ExpressionService.requestExpression(errorMessage: error.localizedDescription)
+                if errorcode == "404" {
+                    self.errormessage.text = "추천 장학금이 없습니다⚠️"
+                    self.loadingIndicator.stopAnimating()
+                }else{
+                    self.loadingIndicator.stopAnimating()
+                    LogoutService.requestLogout()
+                    self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                }
             })
         } else if order == "최신순" {
             AnnoucementService.scholarshipNew(completion: { [weak self] scholarships in
@@ -253,7 +283,15 @@ extension AnnoucementViewController {
                     self.loadingIndicator.stopAnimating()
                 }
             }, onError: { error in
-                print("Error fetching scholarships: \(error)")
+                let errorcode = ExpressionService.requestExpression(errorMessage: error.localizedDescription)
+                if errorcode == "404" {
+                    self.errormessage.text = "추천 장학금이 없습니다⚠️"
+                    self.loadingIndicator.stopAnimating()
+                }else{
+                    self.loadingIndicator.stopAnimating()
+                    LogoutService.requestLogout()
+                    self.navigationController?.pushViewController(LoginViewController(), animated: true)
+                }
             })
         }
     }

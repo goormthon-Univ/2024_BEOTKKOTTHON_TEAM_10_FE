@@ -9,9 +9,13 @@ import Foundation
 import UIKit
 import SnapKit
 import NVActivityIndicatorView
+protocol HomeMiddleCellDelegate: AnyObject {
+    func didMiddleLogout()
+}
 class HomeMiddleCell: UITableViewCell {
     private let firstTableViewDataSource = mainSupportTableViewDataSource()
     private let firstTableViewDelegate = mainSupportTableViewDelegate()
+    weak var delegate: HomeMiddleCellDelegate?
     private let supportLaebl : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -33,6 +37,15 @@ class HomeMiddleCell: UITableViewCell {
         view.clipsToBounds = true
         view.register(MiddleTableViewCell.self, forCellReuseIdentifier: "Cell")
         return view
+    }()
+    private let errormessage : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .gray
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        return label
     }()
     //로딩인디케이터
     private let loadingIndicator :  NVActivityIndicatorView = {
@@ -59,6 +72,7 @@ extension HomeMiddleCell {
         view.addSubview(supportLaebl)
         view.addSubview(middleTableView)
         view.addSubview(loadingIndicator)
+        view.addSubview(errormessage)
         supportLaebl.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(20)
@@ -74,10 +88,18 @@ extension HomeMiddleCell {
             make.center.equalToSuperview()
             make.height.equalTo(30)
         }
+        errormessage.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.center.equalToSuperview().offset(50)
+            make.height.equalTo(30)
+        }
     }
 }
 //MARK: - Actioins
 extension HomeMiddleCell {
+    private func logoutDelegate() {
+        delegate?.didMiddleLogout()
+    }
     private func setTable() {
         middleTableView.dataSource = firstTableViewDataSource
         middleTableView.delegate = firstTableViewDelegate
@@ -93,8 +115,17 @@ extension HomeMiddleCell {
                 self.loadingIndicator.stopAnimating()
             }
         }, onError: { error in
-            print("Error fetching scholarships: \(error)")
             self.loadingIndicator.stopAnimating()
+            let errorcode = ExpressionService.requestExpression(errorMessage: error.localizedDescription)
+            if errorcode == "404" {
+                self.errormessage.text = "추천 장학금이 없습니다⚠️"
+                self.loadingIndicator.stopAnimating()
+            }else{
+                self.loadingIndicator.stopAnimating()
+                LogoutService.requestLogout()
+                self.logoutDelegate()
+            }
+            print("Error fetching scholarships: \(error)")
         })
     }
 }

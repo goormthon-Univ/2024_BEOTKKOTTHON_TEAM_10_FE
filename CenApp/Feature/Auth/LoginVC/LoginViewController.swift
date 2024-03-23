@@ -348,7 +348,6 @@ extension LoginViewController {
                             }
                         }
                     case .failure(let error):
-                        // 서버 요청 실패 시 에러 처리
                         print("Error: \(error.localizedDescription)")
                     }
                 }

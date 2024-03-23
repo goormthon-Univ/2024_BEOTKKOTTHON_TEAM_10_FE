@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, HomeHeaderCellDelegate, HomeFooterCellDelegate {
+class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, HomeHeaderCellDelegate, HomeFooterCellDelegate, HomeMiddleCellDelegate {
     //MARK: - UIComponent
     //재로드 refresh
     private lazy var refreshIndicator : UIRefreshControl = {
@@ -24,8 +24,8 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
         return view
     }()
     //검색 버튼
-    private lazy var searchBtn : UIBarButtonItem = {
-        let btn = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+    private lazy var settingBtn : UIBarButtonItem = {
+        let btn = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(settingBtnTapped))
         btn.tintColor = .gray
         return btn
     }()
@@ -52,7 +52,6 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +69,7 @@ extension HomeViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         self.navigationItem.leftBarButtonItem = mainIcon
-        self.navigationItem.rightBarButtonItems = [alertBtn, searchBtn]
+        self.navigationItem.rightBarButtonItems = [settingBtn, alertBtn]
         self.navigationController?.navigationBar.backgroundColor = .white
         self.tableView.addSubview(refreshIndicator)
         self.view.addSubview(tableView)
@@ -113,6 +112,7 @@ extension HomeViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SecondCell", for: indexPath) as? HomeMiddleCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdCell", for: indexPath) as? HomeFooterCell else {
@@ -125,6 +125,9 @@ extension HomeViewController {
 }
 // MARK: - Actions
 extension HomeViewController {
+    @objc private func settingBtnTapped() {
+        self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+    }
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
         // 첫 번째 셀 초기화와 재설정
@@ -149,5 +152,11 @@ extension HomeViewController {
     func didTapNewAnnouncementButton() {
         let announcementVC = AnnoucementViewController(order: "최신순")
         navigationController?.pushViewController(announcementVC, animated: true)
+    }
+    func didFooterLogout() {
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
+    }
+    func didMiddleLogout() {
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }

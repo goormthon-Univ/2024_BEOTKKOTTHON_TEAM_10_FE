@@ -180,7 +180,3 @@ extension AnnoucementMiddleCell {
         }
     }
 }
-//MARK: - UI Action
-extension AnnoucementMiddleCell {
-    
-}

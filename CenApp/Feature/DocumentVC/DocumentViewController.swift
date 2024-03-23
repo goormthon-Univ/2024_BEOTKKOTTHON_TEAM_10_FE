@@ -63,6 +63,15 @@ class DocumentViewController : UIViewController {
         view.clipsToBounds = true
         return view
     }()
+    private let errormessage : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .gray
+        label.clipsToBounds = true
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
@@ -74,6 +83,7 @@ extension DocumentViewController {
     private func setLayout() {
         self.view.backgroundColor = .PrimaryColor2
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.view.clipsToBounds = true
         self.loadingIndicator.startAnimating()
         //헤더
         self.headerView.addSubview(titleLabel)
@@ -87,6 +97,7 @@ extension DocumentViewController {
         //카테고리
         createCategoryButtons()
         self.view.addSubview(categoryStackView)
+        self.view.addSubview(errormessage)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -112,6 +123,11 @@ extension DocumentViewController {
             make.top.equalTo(headerView.snp.bottom).offset(10)
             make.height.equalTo(460)
             make.width.equalTo(20)
+        }
+        errormessage.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(0)
+            make.center.equalToSuperview()
+            make.height.equalTo(30)
         }
     }
     private func createCategoryButtons() {
@@ -237,6 +253,15 @@ extension DocumentViewController{
                 self.loadingIndicator.stopAnimating()
             }
         }, onError: { error in
+            let errorcode = ExpressionService.requestExpression(errorMessage: error.localizedDescription)
+            if errorcode == "404" {
+                self.errormessage.text = "추천 장학금이 없습니다⚠️"
+                self.loadingIndicator.stopAnimating()
+            }else{
+                self.loadingIndicator.stopAnimating()
+                LogoutService.requestLogout()
+                self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            }
             print("Error fetching scholarships: \(error)")
         })
     }
