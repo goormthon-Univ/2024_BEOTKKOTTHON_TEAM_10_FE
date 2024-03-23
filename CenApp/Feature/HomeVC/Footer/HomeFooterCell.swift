@@ -84,7 +84,7 @@ class HomeFooterCell: UITableViewCell {
 }
 //MARK: - Layout
 extension HomeFooterCell {
-    private func setTable() {
+    public func setTable() {
         checkTableView.delegate = secondTableViewDelegate
         checkTableView.dataSource = secondTableViewDataSource
     }

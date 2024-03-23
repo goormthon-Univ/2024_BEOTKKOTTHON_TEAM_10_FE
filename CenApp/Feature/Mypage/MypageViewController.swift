@@ -88,6 +88,7 @@ class MyPageViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.backgroundColor = .PrimaryColor2
+        self.tabBarController?.tabBar.isHidden = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,7 @@ class MyPageViewController : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.backgroundColor = .white
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 //MARK: - UI Layout

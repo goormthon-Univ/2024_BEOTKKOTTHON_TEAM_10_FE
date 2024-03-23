@@ -214,6 +214,7 @@ extension AnnoucementViewController {
 extension AnnoucementViewController {
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        self.setTableView()
         fetchData()
     }
     private func setTableView() {
@@ -237,9 +238,11 @@ extension AnnoucementViewController {
         dropdown.didSelect { (selectedItem, index, id) in
             if index == 0 {
                 self.order = "마감순"
+                self.setTableView()
                 self.fetchData()
             }else if index == 1 {
                 self.order = "최신순"
+                self.setTableView()
                 self.fetchData()
             }
         }

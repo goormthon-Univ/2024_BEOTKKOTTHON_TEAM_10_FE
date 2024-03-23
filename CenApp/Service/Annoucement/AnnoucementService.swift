@@ -29,7 +29,7 @@ class AnnoucementService {
     //전체 장학금(최신순)
     static func scholarshipNew(completion: @escaping ([ScholarshipModel]?) -> Void, onError: @escaping (Error) -> Void) {
         if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
-            let url = "https://www.dolshoi.shop/scholarship/user/update"
+            let url = "https://www.dolshoi.shop/scholarship/user/new"
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: [ScholarshipModel].self ) { response in
@@ -43,13 +43,13 @@ class AnnoucementService {
         }
     }
     //장학금 저장
-    static func reqeustSave(scholarshipId : Int ,completion: @escaping (SaveServiceModel?) -> Void, onError: @escaping (Error) -> Void) {
+    static func scholarshipSave(scholarshipId : Int ,completion: @escaping (SaveServiceModel?) -> Void, onError: @escaping (Error) -> Void) {
         if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
             let url = "https://www.dolshoi.shop/scholarship/each/save"
             let body = [
                 "scholarshipId" : scholarshipId
             ]
-            AF.request(url, method: .post, parameters: body ,encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
+            AF.request(url, method: .post, parameters: body , encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: SaveServiceModel.self ) { response in
                     print("저장 : \(response.debugDescription)")

@@ -8,4 +8,5 @@
 import Foundation
 struct SaveServiceModel : Codable {
     let message : String
+    let status : String
 }

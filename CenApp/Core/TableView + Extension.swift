@@ -65,6 +65,8 @@ class mainSupportTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if scholarships.count == 0 {
             return 0
+        }else if scholarships.count < 3 {
+            return scholarships.count
         }else {
             return 3
         }
@@ -78,7 +80,25 @@ class mainSupportTableViewDataSource: NSObject, UITableViewDataSource {
         let scholarship = scholarships[indexPath.row]
         cell.titleLabel.text = scholarship.title
         if let dday = scholarship.dday {
-            cell.dayLabel.text = "D-\(dday)" //데드라인
+            if dday > 0 {
+                cell.dayLabel.text = "D-\(dday)" //데드라인
+                if dday <= 3 {
+                    cell.dayLabel.textColor = .red
+                }else {
+                    cell.dayLabel.textColor = .black
+                }
+            }else if dday < 0{
+                let positiveDday = abs(dday) // 음수인 경우 양수로 변환
+                cell.dayLabel.text = "D+\(positiveDday)" // "+" 기호를 붙여줌
+                if positiveDday <= 3 {
+                    cell.dayLabel.textColor = .red
+                }else {
+                    cell.dayLabel.textColor = .black
+                }
+            }else if dday == 0{
+                cell.dayLabel.text = "D-Day" //데드라인
+                cell.dayLabel.textColor = .red
+            }
         }
         return cell
     }
@@ -93,8 +113,10 @@ class mainSupportTableViewDelegate: NSObject, UITableViewDelegate {
 class newAnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
     var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if scholarships.count == 0{
+        if scholarships.count == 0 {
             return 0
+        }else if scholarships.count < 5 {
+            return scholarships.count
         }else {
             return 5
         }

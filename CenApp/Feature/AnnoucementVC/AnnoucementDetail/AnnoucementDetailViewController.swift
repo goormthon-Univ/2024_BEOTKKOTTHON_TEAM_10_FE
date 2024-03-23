@@ -181,7 +181,7 @@ extension AnnoucementDetailViewController {
     @objc private func saveBtnTapped() {
         self.loadingIndicator.startAnimating()
         if let id = post.id {
-            AnnoucementService.reqeustSave(scholarshipId: id) { result in
+            AnnoucementService.scholarshipSave(scholarshipId: id){ result in
                 self.loadingIndicator.stopAnimating()
                 if result?.message == "success" {
                     let alertView = SCLAlertView()

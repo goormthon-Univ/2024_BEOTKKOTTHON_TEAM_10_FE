@@ -100,7 +100,7 @@ extension HomeMiddleCell {
     private func logoutDelegate() {
         delegate?.didMiddleLogout()
     }
-    private func setTable() {
+    public func setTable() {
         middleTableView.dataSource = firstTableViewDataSource
         middleTableView.delegate = firstTableViewDelegate
     }

@@ -130,6 +130,7 @@ extension HomeViewController {
     }
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
+        setTableView()
         // 첫 번째 셀 초기화와 재설정
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HomeHeaderCell {
             cell.delegate = self
@@ -138,10 +139,12 @@ extension HomeViewController {
         // 두 번째 셀 초기화와 재설정
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? HomeMiddleCell {
             cell.fetchData()
+            cell.setTable()
         }
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? HomeFooterCell {
             cell.delegate = self
             cell.fetchData()
+            cell.setTable()
         }
         tableView.reloadData()
     }
