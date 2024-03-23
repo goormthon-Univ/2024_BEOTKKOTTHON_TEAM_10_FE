@@ -149,7 +149,7 @@ extension HomeFooterCell {
     //데이터 fetch
     public func fetchHashTag() {
         HashtagService.requestTag{ result in
-            self.addCheckStack(onboardList: [result.grade, result.major, result.ranking, result.region_city_country_district, result.region_city_province])
+            self.addCheckStack(onboardList: ["\(result.grade)학년", result.major, "\(result.ranking)분위", result.region_city_country_district, result.region_city_province])
         } onError: { error in
             print("Error fetching scholarships: \(error)")
         }

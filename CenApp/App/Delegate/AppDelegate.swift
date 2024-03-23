@@ -61,7 +61,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     //디바이스 토큰 등록 성공 시 실행 메서드
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.map { String(format: "%02x", $0) }.joined()
-        print("디바이스 토큰\(deviceTokenString)")
+        UserDefaults.standard.setValue(deviceTokenString, forKey: "deviceToken")
     }
     //디바이스 토큰 등록 실패 시 실행 메서드
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

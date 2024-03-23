@@ -82,6 +82,10 @@
 		E409E2182BAEAF7C0013D913 /* MypopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2122BAEAF7C0013D913 /* MypopupView.swift */; };
 		E409E2192BAEAF7C0013D913 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2132BAEAF7C0013D913 /* CalendarManager.swift */; };
 		E409E21B2BAEAF860013D913 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E21A2BAEAF860013D913 /* CalendarTableViewCell.swift */; };
+		E409E21E2BAEB5B50013D913 /* DeviceTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E21D2BAEB5B50013D913 /* DeviceTokenService.swift */; };
+		E409E2212BAEB6580013D913 /* DeviceTokenServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E2202BAEB6580013D913 /* DeviceTokenServiceModel.swift */; };
+		E409E2242BAEC0E80013D913 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = E409E2232BAEC0E80013D913 /* NVActivityIndicatorView */; };
+		E409E2262BAEC0E80013D913 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = E409E2252BAEC0E80013D913 /* NVActivityIndicatorViewExtended */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +178,8 @@
 		E409E2122BAEAF7C0013D913 /* MypopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypopupView.swift; sourceTree = "<group>"; };
 		E409E2132BAEAF7C0013D913 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		E409E21A2BAEAF860013D913 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		E409E21D2BAEB5B50013D913 /* DeviceTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenService.swift; sourceTree = "<group>"; };
+		E409E2202BAEB6580013D913 /* DeviceTokenServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenServiceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,12 +189,14 @@
 			files = (
 				580AACCC2BA5828D00672050 /* Alamofire in Frameworks */,
 				E409E1972BAAC3DB0013D913 /* SCLAlertView in Frameworks */,
+				E409E2242BAEC0E80013D913 /* NVActivityIndicatorView in Frameworks */,
 				580AACC62BA5818700672050 /* SnapKit in Frameworks */,
 				580AACCF2BA582CE00672050 /* SwiftKeychainWrapper in Frameworks */,
 				580AAD2A2BA8280600672050 /* iOSDropDown in Frameworks */,
 				580AACC92BA581F400672050 /* Then in Frameworks */,
 				E409E1912BAAB24D0013D913 /* DGCharts in Frameworks */,
 				580AACD22BA582FF00672050 /* Kingfisher in Frameworks */,
+				E409E2262BAEC0E80013D913 /* NVActivityIndicatorViewExtended in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +477,7 @@
 		58FE17042BA9B5ED00FA3363 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E409E21C2BAEB3790013D913 /* Alert */,
 				E409E1DB2BAE7EC00013D913 /* Tag */,
 				E409E1B12BABFD570013D913 /* Auth */,
 				E409E1AB2BAB52C10013D913 /* Document */,
@@ -551,6 +560,7 @@
 		E409E1B62BABFDB10013D913 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				E409E21F2BAEB64D0013D913 /* Alert */,
 				E409E1D22BACAC130013D913 /* Findpw */,
 				E409E1B72BABFDC20013D913 /* LoginCheck */,
 				58FE16F82BA9B5DF00FA3363 /* Signup */,
@@ -711,6 +721,22 @@
 			path = PopControl;
 			sourceTree = "<group>";
 		};
+		E409E21C2BAEB3790013D913 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E409E21D2BAEB5B50013D913 /* DeviceTokenService.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		E409E21F2BAEB64D0013D913 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E409E2202BAEB6580013D913 /* DeviceTokenServiceModel.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -736,6 +762,8 @@
 				580AAD292BA8280600672050 /* iOSDropDown */,
 				E409E1902BAAB24D0013D913 /* DGCharts */,
 				E409E1962BAAC3DB0013D913 /* SCLAlertView */,
+				E409E2232BAEC0E80013D913 /* NVActivityIndicatorView */,
+				E409E2252BAEC0E80013D913 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = CenApp;
 			productReference = 580AAC912BA566F700672050 /* CenApp.app */;
@@ -818,6 +846,7 @@
 				580AAD282BA8280600672050 /* XCRemoteSwiftPackageReference "iOSDropDown" */,
 				E409E18F2BAAB24D0013D913 /* XCRemoteSwiftPackageReference "Charts" */,
 				E409E1952BAAC3DB0013D913 /* XCRemoteSwiftPackageReference "SCLAlertView-Swift" */,
+				E409E2222BAEC0E80013D913 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 580AAC922BA566F700672050 /* Products */;
 			projectDirPath = "";
@@ -881,6 +910,7 @@
 				E409E1A32BAB34060013D913 /* AnnoucementService.swift in Sources */,
 				58FE16E32BA9B5CD00FA3363 /* AnnoucementMiddleCell.swift in Sources */,
 				58FE16E12BA9B5CD00FA3363 /* AnnoucementFooterCell.swift in Sources */,
+				E409E21E2BAEB5B50013D913 /* DeviceTokenService.swift in Sources */,
 				580AACD62BA5845100672050 /* Color + Extension.swift in Sources */,
 				58FE16EC2BA9B5CD00FA3363 /* HomeFooterCell.swift in Sources */,
 				E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */,
@@ -917,6 +947,7 @@
 				E409E1B52BABFD780013D913 /* LoginCheckService.swift in Sources */,
 				58FE17062BA9B5ED00FA3363 /* LoginService.swift in Sources */,
 				58FE16F22BA9B5CD00FA3363 /* StartOnboardingViewController.swift in Sources */,
+				E409E2212BAEB6580013D913 /* DeviceTokenServiceModel.swift in Sources */,
 				E409E1D82BAD7A0B0013D913 /* AmountService.swift in Sources */,
 				58FE16EB2BA9B5CD00FA3363 /* MiddleTableViewCell.swift in Sources */,
 				580AAC972BA566F700672050 /* SceneDelegate.swift in Sources */,
@@ -1324,6 +1355,14 @@
 				minimumVersion = 0.8.2;
 			};
 		};
+		E409E2222BAEC0E80013D913 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1366,6 +1405,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E409E1952BAAC3DB0013D913 /* XCRemoteSwiftPackageReference "SCLAlertView-Swift" */;
 			productName = SCLAlertView;
+		};
+		E409E2232BAEC0E80013D913 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E409E2222BAEC0E80013D913 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		E409E2252BAEC0E80013D913 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E409E2222BAEC0E80013D913 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

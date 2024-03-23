@@ -17,7 +17,6 @@ class HashtagService {
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: HashtagServiceModel.self ) { response in
-                    print("해시테그 통신 \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):
                         completion(data)

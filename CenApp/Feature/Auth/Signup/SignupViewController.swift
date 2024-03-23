@@ -11,6 +11,7 @@ import Alamofire
 import Then
 import Kingfisher
 import UIKit
+import NVActivityIndicatorView
 class SignupViewController : UIViewController, UITextFieldDelegate{
     // MARK: - UI Components
     //탭 제스처
@@ -183,10 +184,9 @@ class SignupViewController : UIViewController, UITextFieldDelegate{
         return btn
     }()
     //로딩 인디케이터
-    private let loadingIndicator : UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.color = .gray
-        view.style = .large
+    private let loadingIndicator :  NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20), type: .ballRotateChase, color: .lightGray, padding: 0)
+        view.clipsToBounds = true
         return view
     }()
     override func viewWillAppear(_ animated: Bool) {

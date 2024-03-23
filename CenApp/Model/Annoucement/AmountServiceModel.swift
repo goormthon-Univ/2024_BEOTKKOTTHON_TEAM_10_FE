@@ -7,5 +7,5 @@
 
 import Foundation
 struct AmountServiceModel : Codable{
-    let message : String
+    let totalAmount : Int
 }

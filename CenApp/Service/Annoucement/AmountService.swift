@@ -15,7 +15,6 @@ class AmountService {
             AF.request(url, method: .get, encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: AmountServiceModel.self ) { response in
-                    print("금액 조회 \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):
                         completion(data)

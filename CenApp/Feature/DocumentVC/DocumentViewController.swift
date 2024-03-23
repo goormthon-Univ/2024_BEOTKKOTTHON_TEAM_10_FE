@@ -9,6 +9,7 @@ import Foundation
 import SnapKit
 import UIKit
 import iOSDropDown
+import NVActivityIndicatorView
 class DocumentViewController : UIViewController {
     //MARK: - UI Component
     private var documents = DocumentServiceModel(ㄱ: [], ㄴ: [], ㄷ: [])
@@ -28,11 +29,9 @@ class DocumentViewController : UIViewController {
         return control
     }()
     //로딩 인디케이터
-    private let loadingIndicator : UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.backgroundColor = .clear
-        view.color = .lightGray
-        view.style = .large
+    private let loadingIndicator :  NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20), type: .ballRotateChase, color: .lightGray, padding: 0)
+        view.clipsToBounds = true
         return view
     }()
     //상위 뷰

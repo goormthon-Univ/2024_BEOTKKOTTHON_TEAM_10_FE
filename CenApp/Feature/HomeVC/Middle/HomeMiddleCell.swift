@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import NVActivityIndicatorView
 class HomeMiddleCell: UITableViewCell {
     private let firstTableViewDataSource = mainSupportTableViewDataSource()
     private let firstTableViewDelegate = mainSupportTableViewDelegate()
@@ -34,10 +35,9 @@ class HomeMiddleCell: UITableViewCell {
         return view
     }()
     //로딩인디케이터
-    private let loadingIndicator : UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.style = .large
-        view.color = .gray
+    private let loadingIndicator :  NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20), type: .ballRotateChase, color: .lightGray, padding: 0)
+        view.clipsToBounds = true
         return view
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

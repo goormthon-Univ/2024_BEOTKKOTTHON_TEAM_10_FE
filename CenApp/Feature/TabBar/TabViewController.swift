@@ -14,7 +14,7 @@ class TabViewController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        LoginCheck()
         // HomeViewController 생성 및 탭바 아이템 설정
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "House"), selectedImage: UIImage(named: "blueHouse"))
@@ -55,6 +55,17 @@ extension TabViewController {
         } onError: { error in
             LogoutService.requestLogout()
             self.navigationController?.pushViewController(LoginViewController(), animated: true)
+        }
+    }
+    private func fetchDeviceToken() {
+        DeviceTokenService.requestDeviceToken { result in
+            if let message = result.message {
+                if message == "success" {
+                    return
+                }
+            }
+        } onError: { error in
+            
         }
     }
 }
