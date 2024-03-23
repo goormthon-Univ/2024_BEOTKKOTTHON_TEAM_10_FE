@@ -52,7 +52,6 @@ class AnnoucementService {
             AF.request(url, method: .post, parameters: body , encoding: JSONEncoding.default, headers: ["accesstoken" : JWTaccesstoken])
                 .validate()
                 .responseDecodable(of: SaveServiceModel.self ) { response in
-                    print("저장 : \(response.debugDescription)")
                     switch response.result {
                     case .success(let data):
                         completion(data)

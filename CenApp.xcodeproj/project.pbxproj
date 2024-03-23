@@ -52,7 +52,7 @@
 		E409E1972BAAC3DB0013D913 /* SCLAlertView in Frameworks */ = {isa = PBXBuildFile; productRef = E409E1962BAAC3DB0013D913 /* SCLAlertView */; };
 		E409E19D2BAAEEC90013D913 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E19C2BAAEEC90013D913 /* BottomSheetViewController.swift */; };
 		E409E1A32BAB34060013D913 /* AnnoucementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A22BAB34060013D913 /* AnnoucementService.swift */; };
-		E409E1A62BAB351F0013D913 /* ScholarshipDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */; };
+		E409E1A62BAB351F0013D913 /* ScholarshipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A52BAB351F0013D913 /* ScholarshipModel.swift */; };
 		E409E1AA2BAB41B40013D913 /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1A92BAB41B40013D913 /* Int + Extension.swift */; };
 		E409E1AD2BAB52CB0013D913 /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AC2BAB52CB0013D913 /* DocumentService.swift */; };
 		E409E1B02BAB53010013D913 /* DocumentServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */; };
@@ -150,7 +150,7 @@
 		E409E18E2BAA04C20013D913 /* CenApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CenApp.entitlements; sourceTree = "<group>"; };
 		E409E19C2BAAEEC90013D913 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		E409E1A22BAB34060013D913 /* AnnoucementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementService.swift; sourceTree = "<group>"; };
-		E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipDayModel.swift; sourceTree = "<group>"; };
+		E409E1A52BAB351F0013D913 /* ScholarshipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScholarshipModel.swift; sourceTree = "<group>"; };
 		E409E1A92BAB41B40013D913 /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		E409E1AC2BAB52CB0013D913 /* DocumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentService.swift; sourceTree = "<group>"; };
 		E409E1AF2BAB53010013D913 /* DocumentServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentServiceModel.swift; sourceTree = "<group>"; };
@@ -520,7 +520,7 @@
 		E409E1A42BAB34E30013D913 /* Annoucement */ = {
 			isa = PBXGroup;
 			children = (
-				E409E1A52BAB351F0013D913 /* ScholarshipDayModel.swift */,
+				E409E1A52BAB351F0013D913 /* ScholarshipModel.swift */,
 				E409E1D92BAD7A810013D913 /* AmountServiceModel.swift */,
 				E409E2272BAED9A40013D913 /* SaveServiceModel.swift */,
 			);
@@ -931,7 +931,7 @@
 				E409E1D42BACAC1C0013D913 /* FindpwModel.swift in Sources */,
 				58FE16FC2BA9B5DF00FA3363 /* SignupModel.swift in Sources */,
 				E409E2282BAED9A40013D913 /* SaveServiceModel.swift in Sources */,
-				E409E1A62BAB351F0013D913 /* ScholarshipDayModel.swift in Sources */,
+				E409E1A62BAB351F0013D913 /* ScholarshipModel.swift in Sources */,
 				58FE16EF2BA9B5CD00FA3363 /* HomeViewController.swift in Sources */,
 				58FE16FB2BA9B5DF00FA3363 /* LoginServiceModel.swift in Sources */,
 				58FE16EE2BA9B5CD00FA3363 /* HomeMiddleCell.swift in Sources */,

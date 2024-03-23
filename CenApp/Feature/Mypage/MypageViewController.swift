@@ -152,12 +152,12 @@ extension MyPageViewController {
             make.height.equalTo(1)
         }
         onboardingBtn.snp.makeConstraints { make in
-            make.top.equalTo(Spacing.snp.bottom).offset(30)
+            make.top.equalTo(Spacing.snp.bottom).offset(50)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(40)
         }
         logoutBtn.snp.makeConstraints { make in
-            make.top.equalTo(onboardingBtn.snp.bottom).offset(20)
+            make.top.equalTo(onboardingBtn.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(40)
         }
