@@ -183,7 +183,7 @@ extension AnnoucementDetailViewController {
         if let id = post.id {
             AnnoucementService.scholarshipSave(scholarshipId: id){ result in
                 self.loadingIndicator.stopAnimating()
-                if result?.message == "Scholarship successfully scraped." {
+                if result?.status == "success" {
                     let alertView = SCLAlertView()
                     alertView.iconTintColor = .PrimaryColor
                     alertView.addButton("캘린더로 이동", backgroundColor: .PrimaryColor, textColor: .white) {
