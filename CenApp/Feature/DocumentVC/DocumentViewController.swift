@@ -98,7 +98,7 @@ extension DocumentViewController {
         //카테고리
         createCategoryButtons()
         let View = UIView()
-        View.backgroundColor = .white
+        View.backgroundColor = .PrimaryColor2
         self.view.addSubview(categoryStackView)
         self.view.addSubview(View)
         self.view.addSubview(errormessage)
@@ -114,8 +114,9 @@ extension DocumentViewController {
             make.height.equalToSuperview().dividedBy(4.5)
         }
         documentTableView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview().inset(0)
+            make.leading.trailing.equalToSuperview().inset(0)
             make.top.equalTo(headerView.snp.bottom).offset(0)
+            make.bottom.equalToSuperview().offset(-self.view.frame.height / 7)
         }
         loadingIndicator.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(0)

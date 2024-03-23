@@ -44,6 +44,7 @@ class AnnoucementTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .left
         label.isEditable = false
+        label.isUserInteractionEnabled = false
         label.isScrollEnabled = false
         return label
     }()

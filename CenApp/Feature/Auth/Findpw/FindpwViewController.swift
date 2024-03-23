@@ -302,6 +302,7 @@ extension FindpwViewController {
                 if let result = result {
                     if result.message == "success" {
                         self.loadingIndicator.stopAnimating()
+                        self.navigationController?.popViewController(animated: true)
                     }else if result.message == "no user" {
                         self.idDescription.text = "* 등록되지 않은 아이디입니다"
                         self.loadingIndicator.stopAnimating()

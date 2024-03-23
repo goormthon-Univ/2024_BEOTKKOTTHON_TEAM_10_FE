@@ -29,12 +29,6 @@ class HomeViewController : UIViewController, UITableViewDelegate, UITableViewDat
         btn.tintColor = .gray
         return btn
     }()
-    //알림 버튼
-    private lazy var alertBtn : UIBarButtonItem = {
-        let btn = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: self, action: nil)
-        btn.tintColor = .gray
-        return btn
-    }()
     //상세 페이지 테이블
     private let tableView : UITableView = {
         let view = UITableView()
@@ -69,7 +63,7 @@ extension HomeViewController {
     private func setLayout() {
         self.view.backgroundColor = .white
         self.navigationItem.leftBarButtonItem = mainIcon
-        self.navigationItem.rightBarButtonItems = [settingBtn, alertBtn]
+        self.navigationItem.rightBarButtonItem = settingBtn
         self.navigationController?.navigationBar.backgroundColor = .white
         self.tableView.addSubview(refreshIndicator)
         self.view.addSubview(tableView)

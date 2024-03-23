@@ -32,7 +32,6 @@ class HomeMiddleCell: UITableViewCell {
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         view.separatorStyle = .none
-        view.allowsSelection = false
         view.isScrollEnabled = false
         view.clipsToBounds = true
         view.register(MiddleTableViewCell.self, forCellReuseIdentifier: "Cell")

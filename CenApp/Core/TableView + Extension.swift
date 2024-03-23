@@ -108,6 +108,13 @@ class mainSupportTableViewDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let scholarship = scholarships[indexPath.row]
+        let destinationViewController = AnnoucementDetailViewController(post: scholarship)
+        if let navigationController = tableView.window?.rootViewController as? UINavigationController {
+            navigationController.pushViewController(destinationViewController, animated: true)
+        }
+    }
 }
 //MARK: - 새로운 공고 테이블
 class newAnnoucementTableViewDataSource: NSObject, UITableViewDataSource {
@@ -137,5 +144,12 @@ class newAnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
     var scholarships: [ScholarshipModel] = [] // 장학금 데이터 배열
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let scholarship = scholarships[indexPath.row]
+        let destinationViewController = AnnoucementDetailViewController(post: scholarship)
+        if let navigationController = tableView.window?.rootViewController as? UINavigationController {
+            navigationController.pushViewController(destinationViewController, animated: true)
+        }
     }
 }
