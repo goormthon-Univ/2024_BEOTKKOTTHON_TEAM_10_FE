@@ -13,7 +13,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     static let identifier = "CalendarCollectionViewCell"
     
     lazy var dayLabel = UILabel()
-    var circleViews: [UIView] = []
+    lazy var circleView: UIView = UIView() // 단일 circle view
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -27,10 +27,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         dayLabel.text = nil
-        for circleView in circleViews {
-            circleView.removeFromSuperview()
-        }
-        circleViews.removeAll()
+        circleView.isHidden = true // circle view를 숨김
     }
     
     func update(day: String) {
@@ -45,49 +42,25 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(10)
         }
+        addCircleView()
     }
     
     func setSundayColor() {
-        dayLabel.textColor = .cred
+        dayLabel.textColor = .red // 색상 변경
     }
     
-    func applyCornerRadius() {
-        contentView.layer.cornerRadius = bounds.width / 2
-        contentView.clipsToBounds = true
-    }
-    
-    func removeCornerRadius() {
-        contentView.layer.cornerRadius = 0
-        contentView.clipsToBounds = false
-    }
-    
-    func addCircleViews(count: Int) {
-        let maxCircleCount = 3 // 최대 Circle View 개수
-        let circleCount = min(count, maxCircleCount) // 서버에서 받은 개수와 최대 개수 중 작은 값을 선택
-        for _ in 0..<circleCount {
-            let circleView = UIView()
-            circleView.backgroundColor = .PrimaryColor
-            let circleDiameter: CGFloat = 6 // Circle View 지름
-            circleView.layer.cornerRadius = circleDiameter / 2 // 원형으로 설정하기 위해 지름의 절반을 반지름으로 설정
-            circleView.clipsToBounds = true // 원형으로 보이도록 설정
-            addSubview(circleView)
-            circleViews.append(circleView)
-        }
-        layoutCircleViews()
-    }
-    
-    private func layoutCircleViews() {
+    private func addCircleView() {
+        circleView.backgroundColor = .PrimaryColor // 원하는 색상 설정
         let circleDiameter: CGFloat = 6 // Circle View 지름
-        let spacing: CGFloat = 1 // Circle View 간격
-        let totalWidth = CGFloat(circleViews.count) * circleDiameter + CGFloat(circleViews.count - 1) * spacing
-        var leadingConstraint = (bounds.width - totalWidth) / 2
-        for circleView in circleViews {
-            circleView.snp.makeConstraints {
-                $0.width.height.equalTo(circleDiameter)
-                $0.top.equalTo(dayLabel.snp.bottom)
-                $0.leading.equalToSuperview().offset(leadingConstraint)
-            }
-            leadingConstraint += circleDiameter + spacing
+        circleView.layer.cornerRadius = circleDiameter / 2 // 원형으로 설정하기 위해 지름의 절반을 반지름으로 설정
+        circleView.clipsToBounds = true // 원형으로 보이도록 설정
+        addSubview(circleView)
+        
+        // Circle View를 dayLabel 아래에 배치
+        circleView.snp.makeConstraints {
+            $0.width.height.equalTo(circleDiameter)
+            $0.top.equalTo(dayLabel.snp.bottom).offset(4) // 조정 가능한 값
+            $0.centerX.equalToSuperview()
         }
     }
 }

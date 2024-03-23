@@ -2,16 +2,17 @@
 //  CalendarTableViewCell.swift
 //  CenApp
 //
-//  Created by 김민솔 on 3/20/24.
+//  Created by 정성윤 on 2024/03/24.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 class CalendarTableViewCell: UITableViewCell {
     static let identifier = "CalendarTableViewCell"
     weak var delegate: CalendarTableViewCellDelegate?
 
-    lazy var dayLabel: UILabel = {
+    public let dayLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.textAlignment = .left
@@ -20,47 +21,46 @@ class CalendarTableViewCell: UITableViewCell {
         return label
     }()
     //전체 뷰
-    private let totalView : UIView = {
+    public let totalView : UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         return view
     }()
-    private let companyLabel : UILabel = {
+    public let companyLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.text = "(주)우아한 청년들"
+        label.text = ""
         label.textAlignment = .left
         label.backgroundColor = .clear
-        label.layer.cornerRadius = 10
         label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.layer.masksToBounds = true
         return label
     }()
-    private let titleText: UITextView = {
+    public let titleText: UITextView = {
         let label = UITextView()
         label.textColor = .black
-        label.text = "2024년 우아한 사장님 자녀 장학금 지원 대학생 일반 장학생 모집"
+        label.text = ""
         label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .left
         label.isEditable = false
+        label.isUserInteractionEnabled = false
         label.isScrollEnabled = false
         return label
     }()
-    private let deadlineLabel : UILabel = {
+    public let deadlineLabel : UILabel = {
         let label = UILabel()
         label.textColor = .red
         label.text = "D-1"
         label.textAlignment = .center
-        label.backgroundColor = UIColor.PrimaryColor2
+        label.backgroundColor = .PrimaryColor2
         label.layer.cornerRadius = 5
         label.font = UIFont.systemFont(ofSize: 13)
         label.layer.masksToBounds = true
         return label
     }()
-    private let ingView : UIView = {
+    public let ingView : UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.cGray.cgColor
@@ -69,15 +69,15 @@ class CalendarTableViewCell: UITableViewCell {
         view.layer.masksToBounds = true
         return view
     } ()
-    private let ingButton = UIButton().then {
+    public let ingButton = UIButton().then {
         $0.setImage(UIImage(named: "Ellipse"), for: .normal)
 
     }
-    private func addTapGestureToIngView() {
+    public func addTapGestureToIngView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ingViewTapped))
         ingView.addGestureRecognizer(tapGesture)
     }
-    private func addTapGestureToIngButton() {
+    public func addTapGestureToIngButton() {
         ingButton.addTarget(self, action: #selector(ingButtonTapped), for: .touchUpInside)
     }
     // ingView 클릭 시 호출되는 메서드
@@ -93,12 +93,14 @@ class CalendarTableViewCell: UITableViewCell {
    //진행상황 버튼
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        //서버에서 데이터 받아와서 셀
+        amountdata()
         setLayout()
 
     }
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.dayLabel.text = nil
+        //self.dayLabel.text = nil
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -160,11 +162,16 @@ class CalendarTableViewCell: UITableViewCell {
         }
         
     }
-    func update(day: String) {
-        self.dayLabel.text = day
-    }
+//    func update(day: String) {
+//        self.dayLabel.text = day
+//    }
 }
 protocol CalendarTableViewCellDelegate: AnyObject {
     func ingViewDidTap()
     func ingButtonDidTap()
+}
+extension CalendarTableViewCell {
+    func amountdata() {
+
+    }
 }

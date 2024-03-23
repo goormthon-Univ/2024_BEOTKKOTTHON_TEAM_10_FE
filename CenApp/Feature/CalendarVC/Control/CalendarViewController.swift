@@ -13,8 +13,13 @@ import Charts
 import Alamofire
 import SwiftKeychainWrapper
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, UITableViewDelegate {
+    private let calendarTableViewDelegate = CalendarTableViewDelegate()
+    private let calendarTableViewDatasource = CalendarTableViewDataSource()
     var isSelectedCell = false // 선택 여부를 추적하는 변수
+    var selectedIndexPath: IndexPath?
+    var scholarships: [CalendarModel] = [] // 장학금 데이터 배열
+    var endData : [CalendarEndModel] = []
     private lazy var weekStackView = UIStackView()
     private lazy var calendarView = UIView()
     private var currentDate = Date() // 현재 날짜를 가져옴
@@ -33,7 +38,7 @@ class CalendarViewController: UIViewController {
     }
     private let calendartTableView : UITableView = {
         let view = UITableView()
-        view.backgroundColor = .SecondaryColor
+        view.backgroundColor = .PrimaryColor2
         view.separatorStyle = .none
         view.showsHorizontalScrollIndicator = false
         view.showsVerticalScrollIndicator = false
@@ -46,29 +51,90 @@ class CalendarViewController: UIViewController {
     private lazy var refreshIndicator : UIRefreshControl = {
         let control = UIRefreshControl()
         control.tintColor = .SecondaryColor
-        control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+       // control.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return control
     }()
     //MARK: -- 함수호출
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendartTableView.delegate = calendarTableViewDelegate
+        calendartTableView.dataSource = calendarTableViewDatasource
         let currentDate = Date()
         let calendar = Calendar.current
         let year = calendar.component(.year, from: currentDate)
         let month = String(format: "%02d", calendar.component(.month, from: currentDate))
-        //fetchMonthData(year: String(year), month: month)
         view.backgroundColor = .white
         addSubviews()
         configure()
         configUI()
-      
+        //MARK: -- API 호출
+        CalendarAPI.fetchMonthData(year: String(year), month: month,completion: { [weak self] scholarships in
+            guard let self = self, let scholarships = scholarships else {return}
+            calendarTableViewDatasource.scholarships = scholarships
+            calendarTableViewDelegate.scholarships = scholarships
+            DispatchQueue.main.async {
+                print("tableview didload")
+                self.calendartTableView.reloadData() // 테이블 뷰 데이터 리로드
+                
+            }
+        },onError: {error in
+            print("Error fetching scholarships: \(error)")
+        })
+        
+        CalendarCountAPI.fetchMonthData(year: String(year), month: month, completion: { [weak self] endData in
+            guard let self = self, let endData = endData else {
+                // 서버에서 데이터를 받아오지 못한 경우
+                // 모든 셀의 Circle View를 숨김
+                return
+            }
+            print("endData", endData)
+            
+            DispatchQueue.main.async {
+                // 월별 데이터가 있을 때
+                // 모든 셀의 Circle View를 숨김
+                for cell in self.collectionView.visibleCells {
+                    if let calendarCell = cell as? CalendarCollectionViewCell {
+                        calendarCell.circleView.isHidden = true
+                    }
+                }
+                
+                // 월별 데이터가 있을 때 각 날짜에 대해 Circle View를 추가
+                for date in endData {
+                    print("CircleDate: \(date)")
+                    let components = date.split(separator: "-")
+                    guard let day = components.last else {
+                        print("Failed to extract day from date: \(date)")
+                        continue
+                    }
+                    print("Day: \(day)")
+                    let dayString = String(day)
+                    
+                    // 날짜에 해당하는 인덱스 찾기
+                    if let index = self.days.firstIndex(of: dayString) {
+                        // 인덱스에 해당하는 셀 업데이트
+                        if let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? CalendarCollectionViewCell {
+                            // 업데이트된 날짜와 셀의 일치 여부 확인 후 Circle view 표시
+                                cell.circleView.isHidden = false // Circle view를 표시
+                            
+                        }
+                    }
+                }
+                
+                print("Success")
+            }
+        }, onError: { error in
+            print("Error fetching scholarships: \(error)")
+        })
+
+
+
     }
     
     func configure() {
         configureTitleLabel()
         configureWeekStackView()
         configureWeekLabel()
-        configureTableView()
+        //configureTableView()
         configureCollectionView()
         self.configureCalendar()
         
@@ -148,10 +214,6 @@ class CalendarViewController: UIViewController {
             self.weekStackView.addArrangedSubview(label)
         }
     }
-    private func configureTableView() {
-        self.calendartTableView.delegate = self
-        self.calendartTableView.dataSource = self
-    }
     private func configureCollectionView() {
         self.calendarView.addSubview(self.collectionView)
         collectionView.backgroundColor = .white
@@ -166,35 +228,10 @@ class CalendarViewController: UIViewController {
         }
     }
     //해당 년/월 서버
-    func fetchMonthData(year: String, month:String) {
-        let url = "https://www.dolshoi./calendar/\(year)/\(month)"
-        if let JWTaccesstoken = KeychainWrapper.standard.string(forKey: "JWTaccesstoken") {
-            AF.request(url, method: .get, headers: ["accesstoken" : JWTaccesstoken])
-                .validate(statusCode: 200..<300) // 상태 코드가 200~299 사이인지 확인
-                .responseJSON { [weak self] response in
-                    guard let self = self else { return }
-                    
-                    switch response.result {
-                    case .success(let value):
-                        // 성공적으로 데이터를 가져온 경우 처리
-                        if let jsonArray = value as? [[String: Any]] {
-                            // 여기서 jsonArray를 모델로 파싱하고 사용합니다.
-                            for item in jsonArray {
-                                if let title = item["title"] as? String {
-                                    print("Title:", title)
-                                }
-                                // 다른 필요한 데이터도 처리합니다.
-                            }
-                        }
-                    case .failure(let error):
-                        // 데이터 가져오기 실패한 경우 처리
-                        print("Error:", error.localizedDescription)
-                    }
-            }
-        }
-    }
+
     
 }
+
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
  
@@ -211,12 +248,49 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         if indexPath.item % 7 == 0 {
                 cell.setSundayColor()
         }
-        cell.addCircleViews(count: 3)
+        //서버 호출
+        //MARK: -- API 호출 2
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: currentDate)
+        let month = String(format: "%02d", calendar.component(.month, from: currentDate))
+        //이전에 선택한 셀
+        if let previousSelectedIndexPath = selectedIndexPath {
+                if let previousSelectedCell = collectionView.cellForItem(at: previousSelectedIndexPath) as? CalendarCollectionViewCell {
+                        previousSelectedCell.backgroundColor = .white // 원래의 배경색으로 변경
+            }
+            
+            if previousSelectedIndexPath == indexPath {
+                collectionView.deselectItem(at: indexPath, animated: true)
+                // 선택된 인덱스 패스를 nil로 설정하여 선택 취소를 나타냅니다
+                selectedIndexPath = nil
+                
+                CalendarAPI.fetchMonthData(year: String(year), month: month,completion: { [weak self] scholarships in
+                    guard let self = self, let scholarships = scholarships else {return}
+                    calendarTableViewDatasource.scholarships = scholarships
+                    calendarTableViewDelegate.scholarships = scholarships
+                    DispatchQueue.main.async {
+                        print("tableview didload")
+                        self.calendartTableView.reloadData() // 테이블 뷰 데이터 리로드
+                        
+                    }
+                },onError: {error in
+                    print("Error fetching scholarships: \(error)")
+                })
+                // 선택된 셀의 배경색을 초기화합니다
+                if let selectedCell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
+                    selectedCell.backgroundColor = .white
+                    
+                }
+                
+                // 선택 취소 후 추가 작업이 필요한 경우에는 여기에 작성합니다
+                return
+            }
+        }
         // 선택된 날짜 가져오기
         let selectedDate = calendar.date(byAdding: .day, value: indexPath.item - startDayOfTheWeek(), to: calendar.startOfDay(for: calendarDate))!
 
@@ -225,6 +299,7 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
 //            dispatchGroup.leave()
             return
         }
+        
         // 선택된 셀의 모습 업데이트
             if let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell {
                 cell.backgroundColor = .PrimaryColor2
@@ -240,10 +315,25 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
                 print(day)
                 cell.isSelected = !cell.isSelected
                 let tableViewIndexPath = IndexPath(row: 0, section: 0)
+                //셀 선택시 api 호출
+                CalendarDayAPI.fetchMonthData(year: String(year),month: month,day: String(day),completion: { [weak self] scholarships in
+                    guard let self = self, let scholarships = scholarships else {return}
+                    calendarTableViewDatasource.scholarships = scholarships
+                    calendarTableViewDelegate.scholarships = scholarships
+                    DispatchQueue.main.async {
+                        print("tableview didload")
+                        self.calendartTableView.reloadData() // 테이블 뷰 데이터 리로드
+                        
+                    }
+                },onError: {error in
+                    print("Error fetching scholarships: \(error)")
+                })
+                selectedIndexPath = indexPath
 
-                updateDayLabel(at: tableViewIndexPath, with: "\(month)월 \(day)일" )
             }
     }
+    /// didDeselectItemAt
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (self.collectionView.frame.width - 30) / 7
         return CGSize(width: width, height: width * 0.8)
@@ -271,40 +361,75 @@ extension CalendarViewController: CalendarTableViewCellDelegate {
     }
 }
 //MARK: - TableViewDelegate, TableViewDataSource
-
-extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
+extension CalendarViewController  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as! CalendarTableViewCell
         cell.delegate = self //델리게이트 설정
-        cell.selectionStyle = .none
         return cell
     }
+    func updateCircleCount(forDate date: String) {
+           print("CircleDate: \(date)")
+           let components = date.split(separator: "-")
+           guard let day = components.last else {
+               print("Failed to extract day from date: \(date)")
+               return
+           }
+           print("Day: \(day)")
+           let dayString = String(day)
+           for (index, cellDate) in days.enumerated() {
+               if cellDate == dayString {
+                   if let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? CalendarCollectionViewCell {
+                       cell.circleView.isHidden = false // Circle view를 표시
+                   }
+               }
+           }
+       }
+}
+//extension CalendarViewController: UITableViewDataSource {
+   
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 20
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(
+//            withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as! CalendarTableViewCell
+//        cell.delegate = self //델리게이트 설정
+//        cell.selectionStyle = .none
+//        let scholarship = scholarships[indexPath.row]
+//        cell.dayLabel.text = scholarship.endDate
+//        cell.companyLabel.text = scholarship.provider
+//        cell.titleText.text = scholarship.title
+//        if let dday = scholarship.dday {
+//            cell.dayLabel.text = "D-\(dday)" //데드라인
+//        }
+//        return cell
+//    }
     //테이블 뷰 셀 클릭 시
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("cell click")
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//       // self.navigationController?.pushViewController(AnnoucementDetailViewController(post: scholarship), animated: true)
+//        print("cell click")
+//    }
+//    @objc private func refreshData() {
+//        refreshIndicator.endRefreshing()
+//    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 160
+//    }
+//    func updateDayLabel(at indexPath: IndexPath, with text: String) {
+//        if let cell = calendartTableView.cellForRow(at: indexPath) as? CalendarTableViewCell {
+//            print(text)
+//            print("클릭 ")
+//            cell.update(day: text)
+//        }
+//    }
+//}
+
+extension CalendarViewController {
     @objc private func refreshData() {
         refreshIndicator.endRefreshing()
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
-    }
-    func updateDayLabel(at indexPath: IndexPath, with text: String) {
-        if let cell = calendartTableView.cellForRow(at: indexPath) as? CalendarTableViewCell {
-            print(text)
-            print("클릭 ")
-            cell.update(day: text)
-        }
-    }
-}
-
-extension CalendarViewController {
-    
     private func configureCalendar() {
         self.dateFormatter.dateFormat = "M월"
         self.today()

@@ -10,6 +10,7 @@ import SnapKit
 import Then
 
 class MyPopupView: UIView {
+   
     private let popupView = UIView().then {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 12
@@ -24,6 +25,7 @@ class MyPopupView: UIView {
         $0.backgroundColor = .ThirdaryColor
         $0.layer.cornerRadius = 10
         $0.layer.masksToBounds = true
+        
     }
     private let ingLabel = UILabel().then {
         $0.textColor = .black
@@ -134,12 +136,22 @@ class MyPopupView: UIView {
         
     
     }
-
+    
+    //지원 완료 버튼 눌를 시
+    @objc private func finishButtonTapped() {
+        //지원 완료 이미지로 바뀜
+        
+    }
+    //지원 중 버튼 눌를 시
+    @objc private func ingButtonTapped() {
+        dismissPopup()
+    }
     @objc private func cancelButtonTapped() {
         dismissPopup()
     }
 
     private func dismissPopup() {
+        self.alpha = 0 // 투명도를 0으로 설정하여 화면에서 사라지도록 함
         self.removeFromSuperview()
     }
 

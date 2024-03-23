@@ -153,3 +153,58 @@ class newAnnoucementTableViewDelegate: NSObject, UITableViewDelegate {
         }
     }
 }
+//MARK: -- 달력 데이터 모델
+
+class CalendarTableViewDelegate : NSObject, UITableViewDelegate {
+    var scholarships: [CalendarModel] = [] // 장학금 데이터 배열
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("셀셀셀 click")
+        let scholarship = scholarships[indexPath.row]
+        let destinationViewController = AnnoucementDetailViewController(post:ScholarshipModel(id: scholarship.id, title: scholarship.title, description: scholarship.description, description2: scholarship.description2, description3: scholarship.description3, description4: scholarship.description4, provider: scholarship.provider, startDate: scholarship.start_date, endDate: scholarship.end_date, amount: scholarship.amount, amount2: scholarship.amount2, supportRanking: scholarship.supportRanking, supportGrade: scholarship.supportGrade, supportTarget: scholarship.supportTarget, supportTarget2: scholarship.supportTarget2, supportTarget3: scholarship.supportTarget3, supportCityProvince: scholarship.support_city_province, supportCityCountryDistrict: scholarship.support_city_country_district, supportMajor: scholarship.support_major, requiredDocuments: scholarship.required_documents, site: scholarship.site, createdAt: nil, dday: Int(scholarship.d_day!)))
+        
+        if let currentViewController = UIApplication.shared.keyWindow?.rootViewController {
+            // Check if the current view controller is embedded in a navigation controller
+            if let navigationController = currentViewController.navigationController {
+                navigationController.pushViewController(destinationViewController, animated: true)
+            } else {
+                // If not embedded in a navigation controller, present the destination view controller
+                currentViewController.present(destinationViewController, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+class CalendarTableViewDataSource : NSObject, UITableViewDataSource {
+    var scholarships: [CalendarModel] = [] // 장학금 데이터 배열
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scholarships.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as! CalendarTableViewCell
+        //cell.delegate = self //델리게이트 설정
+        cell.selectionStyle = .none
+        cell.backgroundColor = .PrimaryColor2
+        let scholarship = scholarships[indexPath.row]
+        cell.dayLabel.text = scholarship.end_date
+        cell.companyLabel.text = scholarship.provider
+        cell.titleText.text = scholarship.title
+        cell.deadlineLabel.text = scholarship.d_day
+        switch scholarship.status {
+        case "SAVED":
+            cell.ingButton.setImage(UIImage(named: "Elipse2"), for: .normal)
+        case "APPLYING":
+            cell.ingButton.setImage(UIImage(named: "Ellipse"), for: .normal)
+        case "COMPLETED":
+            cell.ingButton.setImage(UIImage(named: "Ellipse3"), for: .normal)
+        default:
+            // 기본 이미지 설정 (상태에 따른 이미지가 없는 경우)
+            cell.ingButton.setImage(UIImage(named: "Cancel"), for: .normal)
+        }
+        
+        return cell
+    }
+    
+}
+
